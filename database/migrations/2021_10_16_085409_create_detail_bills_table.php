@@ -15,7 +15,7 @@ class CreateDetailBillsTable extends Migration
     {
         Schema::create('detail_bills', function (Blueprint $table) {
             $table->id();
-            $table->string('room_id');
+            $table->bigInteger('room_name')->unsigned();
             $table->string('bill_id');
             $table->date('start_at');
             $table->date('finish_at');
