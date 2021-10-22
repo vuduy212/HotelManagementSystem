@@ -3,6 +3,7 @@
 use App\Http\Controllers\RoomCategoriesController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomStatusController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,18 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 /*------ Admin ------*/
 Route::prefix('admin')->middleware('auth')->group(function () {
+
+    /*------ Route Users ------*/
+    Route::prefix('users')->name('users.')->group(function () {
+        $class = UserController::class;
+        Route::get('/', [$class, 'index'])->name('index');
+        Route::get('/create', [$class, 'create'])->name('create');
+        Route::post('/', [$class, 'store'])->name('store');
+        Route::get('/{user}', [$class, 'show'])->name('show');
+        Route::put('/{user}', [$class, 'update'])->name('update');
+        Route::delete('/{user}', [$class, 'destroy'])->name('destroy');
+        Route::get('/{user}/edit', [$class, 'edit'])->name('edit');
+    });
 
     /*------ Route RoomCategory ------*/
     Route::prefix('categories')->name('categories.')->group(function () {

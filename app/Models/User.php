@@ -41,4 +41,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function search(array $data)
+    {
+        $userName = array_key_exists('key', $data) ? $data['key'] : null;
+
+        return $this->SearchUserName($userName)->latest('id')->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+    }
+
+    public function scopeSearchUserName($query, $userName)
+    {
+        return $query->where('name', 'like', '%' . $userName . '%');
+    }
 }
