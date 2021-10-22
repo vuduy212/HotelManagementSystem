@@ -7,14 +7,23 @@ use Illuminate\Http\Request;
 
 class RoomStatusController extends Controller
 {
+    protected $roomStatus;
+
+    public function __construct(RoomStatus $roomStatus)
+    {
+        $this->roomStatus = $roomStatus;
+        //$this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $roomStatus = $this->roomStatus->search($request->all());
+        return view('AdminPage.room_statuses.index', compact('roomStatus'));
     }
 
     /**

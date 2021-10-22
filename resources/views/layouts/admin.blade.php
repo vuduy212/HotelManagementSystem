@@ -101,7 +101,7 @@
                             </a>
 
                             <a href="{{ route('categories.index') }}" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <a href="" class="nav-link collapsed">Quan ly Tinh trang phong</a>
+                                <a href="{{ route('status.index') }}" class="nav-link collapsed">Quan ly Tinh trang phong</a>
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Addons</div>
