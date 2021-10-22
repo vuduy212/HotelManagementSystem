@@ -93,11 +93,15 @@
                             </div> --}}
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                Quan ly Phong
+                                <a href="{{ route('rooms.index') }}" class="nav-link collapsed">Quan ly Phong</a>
                             </a>
 
                             <a href="{{ route('categories.index') }}" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <a href="{{ route('categories.index') }}" class="nav-link collapsed">Quan ly Loai phong</a>
+                            </a>
+
+                            <a href="{{ route('categories.index') }}" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <a href="" class="nav-link collapsed">Quan ly Tinh trang phong</a>
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Addons</div>

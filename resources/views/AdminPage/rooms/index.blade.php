@@ -1,98 +1,57 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Hotel management</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Welcome to Hotel management !!</li>
-    </ol>
-    <div class="row">
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-primary text-white mb-4">
-                <div class="card-body">Primary Card</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
-                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-warning text-white mb-4">
-                <div class="card-body">Warning Card</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
-                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-success text-white mb-4">
-                <div class="card-body">Success Card</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
-                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-danger text-white mb-4">
-                <div class="card-body">Danger Card</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
-                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-6">
-            <div class="card mb-4">
+<div class="container">
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+            <h1 class="mt-4">Rooms Management</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Welcome to Rooms Management !!</li>
+            </ol>
+            <div class="card">
                 <div class="card-header">
-                    <i class="fas fa-chart-area me-1"></i>
-                    Area Chart Example
+                    <a href="{{ route('categories.create') }}" class="btn btn-primary">Create New Rooms</a>
                 </div>
-                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-            </div>
-        </div>
-        <div class="col-xl-6">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-chart-bar me-1"></i>
-                    Bar Chart Example
+                <form action="{{ route('categories.index') }}" method="GET" class="md-3 d-flex">
+                    <input type="text" class="form-control" name="key" value="{{request('key')}}">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+                <div class="card-body">
+
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Status now</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($rooms as $room)
+                            <tr>
+                                <th scope="row">{{$room->id}}</th>
+                                <td>{{$room->room_name}}</td>
+                                <td>{{$room->description}}</td>
+                                <td># status</td>
+                                <td>
+                                    <a href="{{ route('categories.show', $room->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a>
+                                    <a href="{{ route('categories.edit', $room->id) }}"><button type="button" class="btn btn-warning">EDIT</button>
+                                    <form action="{{ route('categories.destroy', $room) }}" method="POST" class="float-left">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">DELETE</button>
+                                    </form>
+                                </td>
+                              </tr>
+                            @endforeach
+                        </tbody>
+                      </table>
+                      {{$rooms->appends(request()->only('key','number'))->links()}}
                 </div>
-                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
             </div>
-        </div>
-    </div>
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-table me-1"></i>
-            DataTable Example
-        </div>
-        <div class="card-body">
-            <table id="datatablesSimple">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Room's name</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>ID</th>
-                        <th>Room's name</th>
-                        <th>Description</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Vip 01</td>
-                        <td>in Dubai</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>

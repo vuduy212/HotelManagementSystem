@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RoomCategoriesController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,18 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     /*------ Route RoomCategory ------*/
     Route::prefix('categories')->name('categories.')->group(function () {
         $class = RoomCategoriesController::class;
+        Route::get('/', [$class, 'index'])->name('index');
+        Route::get('/create', [$class, 'create'])->name('create');
+        Route::post('/', [$class, 'store'])->name('store');
+        Route::get('/{user}', [$class, 'show'])->name('show');
+        Route::put('/{user}', [$class, 'update'])->name('update');
+        Route::delete('/{user}', [$class, 'destroy'])->name('destroy');
+        Route::get('/{user}/edit', [$class, 'edit'])->name('edit');
+    });
+
+    /*------ Route Room ------*/
+    Route::prefix('rooms')->name('rooms.')->group(function () {
+        $class = RoomController::class;
         Route::get('/', [$class, 'index'])->name('index');
         Route::get('/create', [$class, 'create'])->name('create');
         Route::post('/', [$class, 'store'])->name('store');

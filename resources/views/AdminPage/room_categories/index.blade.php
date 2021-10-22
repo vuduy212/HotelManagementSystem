@@ -3,10 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+
         <div class="col-md-8">
+            <h1 class="mt-4">Room Categories Management</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Welcome to Room Categories Management !!</li>
+            </ol>
             <div class="card">
                 <div class="card-header">
-                    Room Categories
                     <a href="{{ route('categories.create') }}" class="btn btn-primary">Create New Room Categories</a>
                 </div>
                 <form action="{{ route('categories.index') }}" method="GET" class="md-3 d-flex">
