@@ -7,14 +7,23 @@ use Illuminate\Http\Request;
 
 class RoomCategoriesController extends Controller
 {
+    protected $roomCategories;
+
+    public function __construct(RoomCategories $roomCategories)
+    {
+        $this->roomCategories = $roomCategories;
+        //$this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $roomCategories = $this->roomCategories->search($request->all());
+        return view('AdminPage.room_categories.index', compact('roomCategories'));
     }
 
     /**
