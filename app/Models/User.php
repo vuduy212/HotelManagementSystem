@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -46,6 +48,67 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    public function hasRole($roles){
+        foreach($roles as $role)
+        {
+            if($this->roles->contains('name', $role))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function attachRoles(int $roleId)
+    {
+        return $this->roles()->attach($roleId);
+    }
+
+    public function detachRoles()
+    {
+        return $this->roles()->detach();
+    }
+
+    public function syncRoles($role)
+    {
+        return $this->roles()->sync($role);
+    }
+
+    public function getRolesID($roles) //return 1 array cac roles
+    {
+        $getRoles = [];
+        foreach($roles as $role)
+        {
+            $getRoles[] = $role;
+        }
+        return $getRoles;
+    }
+
+    public function saveUser(Request $data)
+    {
+        $user = $this->create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        if(empty($data['roles']))
+        {
+            $roles = [
+                'client' => '4'
+            ];
+        }
+        else
+        {
+            $roles = $this->getRolesID($data['roles']);
+        }
+
+        $user->roles()->attach($roles);
+
+        return $user;
+    }
+
 
     public function search(array $data)
     {

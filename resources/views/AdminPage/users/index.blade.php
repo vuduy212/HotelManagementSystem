@@ -34,7 +34,7 @@
                                 <th scope="row">{{$user->id}}</th>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
-                                <td># roles</td>
+                                <td>{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</td>
                                 <td>
                                     <a href="{{ route('users.show', $user->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a>
                                     <a href="{{ route('users.edit', $user->id) }}"><button type="button" class="btn btn-warning">EDIT</button>
