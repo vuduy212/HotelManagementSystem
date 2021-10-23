@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
 
         <div class="col-md-8">
-            <h1 class="mt-4">status's Status Management</h1>
+            <h1 class="mt-4">Room's Status Management</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Welcome to status's Status Management !!</li>
+                <li class="breadcrumb-item active">Welcome to Room's Status Management !!</li>
             </ol>
             <div class="card">
                 <div class="card-header">
