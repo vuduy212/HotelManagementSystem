@@ -16,13 +16,13 @@ class RoomStatusesSeeder extends Seeder
     {
         $v101_01_01_2021 = RoomStatus::updateOrCreate([
             'room_name' => 'V101',
-            'status_name' => 'empty',
+            'status' => '0',
             'time' => '2021-01-01'
         ]);
 
         $v101_02_01_2021 = RoomStatus::updateOrCreate([
             'room_name' => 'V101',
-            'status_name' => 'fill',
+            'status' => '1',
             'time' => '2021-01-02'
         ]);
     }
