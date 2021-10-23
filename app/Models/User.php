@@ -42,11 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
     public function search(array $data)
     {
         $userName = array_key_exists('key', $data) ? $data['key'] : null;
 
-        return $this->SearchUserName($userName)->latest('id')->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+        return $this->SearchUserName($userName)->latest('id')->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
     }
 
     public function scopeSearchUserName($query, $userName)
