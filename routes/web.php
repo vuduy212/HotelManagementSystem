@@ -47,10 +47,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/', [$class, 'index'])->name('index');
         Route::get('/create', [$class, 'create'])->name('create');
         Route::post('/', [$class, 'store'])->name('store');
-        Route::get('/{user}', [$class, 'show'])->name('show');
-        Route::put('/{user}', [$class, 'update'])->name('update');
-        Route::delete('/{user}', [$class, 'destroy'])->name('destroy');
-        Route::get('/{user}/edit', [$class, 'edit'])->name('edit');
+        Route::get('/{category}', [$class, 'show'])->name('show');
+        Route::put('/{category}', [$class, 'update'])->name('update');
+        Route::delete('/{category}', [$class, 'destroy'])->name('destroy');
+        Route::get('/{category}/edit', [$class, 'edit'])->name('edit');
     });
 
     /*------ Route Room ------*/
@@ -59,10 +59,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/', [$class, 'index'])->name('index');
         Route::get('/create', [$class, 'create'])->name('create');
         Route::post('/', [$class, 'store'])->name('store');
-        Route::get('/{user}', [$class, 'show'])->name('show');
-        Route::put('/{user}', [$class, 'update'])->name('update');
-        Route::delete('/{user}', [$class, 'destroy'])->name('destroy');
-        Route::get('/{user}/edit', [$class, 'edit'])->name('edit');
+        Route::get('/{room}', [$class, 'show'])->name('show');
+        Route::put('/{room}', [$class, 'update'])->name('update');
+        Route::delete('/{room}', [$class, 'destroy'])->name('destroy');
+        Route::get('/{room}/edit', [$class, 'edit'])->name('edit');
     });
 
     /*------ Route Room's status ------*/
@@ -71,9 +71,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/', [$class, 'index'])->name('index');
         Route::get('/create', [$class, 'create'])->name('create');
         Route::post('/', [$class, 'store'])->name('store');
-        Route::get('/{user}', [$class, 'show'])->name('show');
-        Route::put('/{user}', [$class, 'update'])->name('update');
-        Route::delete('/{user}', [$class, 'destroy'])->name('destroy');
-        Route::get('/{user}/edit', [$class, 'edit'])->name('edit');
+        Route::get('/{roomStatus}', [$class, 'show'])->name('show');
+        Route::put('/{roomStatus}', [$class, 'update'])->name('update');
+        Route::delete('/{roomStatus}', [$class, 'destroy'])->name('destroy');
+        Route::get('/{roomStatus}/edit', [$class, 'edit'])->name('edit');
     });
 });
