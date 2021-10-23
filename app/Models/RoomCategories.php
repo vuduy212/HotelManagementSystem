@@ -16,6 +16,11 @@ class RoomCategories extends Model
         'price'
     ];
 
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
+
     public function search(array $data)
     {
         $roomCategoryName = array_key_exists('key', $data) ? $data['key'] : null;

@@ -14,6 +14,16 @@ class Room extends Model
         'description',
     ];
 
+    public function status()
+    {
+        return $this->hasMany(RoomStatus::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsTo(RoomCategories::class);
+    }
+
     public function search(array $data)
     {
         $roomName = array_key_exists('key', $data) ? $data['key'] : null;
