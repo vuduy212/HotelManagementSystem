@@ -11,7 +11,7 @@
             </ol>
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('status.create') }}" class="btn btn-primary">Create New status's Status</a>
+                    <a href="{{ route('status.create') }}" class="btn btn-primary">Create New Room's Status</a>
                 </div>
                 <form action="{{ route('status.index') }}" method="GET" class="md-3 d-flex">
                     <input type="text" class="form-control" name="key" value="{{request('key')}}">

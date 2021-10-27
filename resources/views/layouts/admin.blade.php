@@ -16,7 +16,7 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Nhom 9 - CNPM - CNTT1 K59</a>
+            <a class="navbar-brand ps-3" href="index.html">Group 9 - CNPM - IT1 K59 UTC</a>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -77,7 +77,7 @@
                             <div class="sb-sidenav-menu-heading">Modules</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 {{-- <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div> --}}
-                                <a href="{{ route('users.index') }}" class="nav-link collapsed">Quan ly Tai khoan</a>
+                                <a href="{{ route('users.index') }}" class="nav-link collapsed">User Management</a>
                             </a>
                             {{-- <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
@@ -109,20 +109,20 @@
 
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <a href="{{ route('rooms.index') }}" class="nav-link collapsed">Quan ly Phong</a>
+                                <a href="{{ route('rooms.index') }}" class="nav-link collapsed">Room Management</a>
                             </a>
 
                             <a href="{{ route('categories.index') }}" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <a href="{{ route('categories.index') }}" class="nav-link collapsed">Quan ly Loai phong</a>
+                                <a href="{{ route('categories.index') }}" class="nav-link collapsed">Room Category Management</a>
                             </a>
 
                             <a href="{{ route('categories.index') }}" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <a href="{{ route('status.index') }}" class="nav-link collapsed">Quan ly Tinh trang phong</a>
+                                <a href="{{ route('status.index') }}" class="nav-link collapsed">Room Status Management</a>
                             </a>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 {{-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> --}}
-                                Quan ly Don dat phong
+                                Room Order Management
                                 {{-- <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> --}}
                             </a>
                             {{-- <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
