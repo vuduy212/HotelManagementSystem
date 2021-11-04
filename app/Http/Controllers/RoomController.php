@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\RoomCategories;
+use App\Models\RoomStatus;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -32,7 +34,10 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        $rooms = Room::all();
+        $roomCategories = RoomCategories::all();
+        //$roomStatus = RoomStatus::all();
+        return view('AdminPage.rooms.create', compact('rooms', 'roomCategories'));
     }
 
     /**
@@ -43,7 +48,8 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->rooms->saveRoom($request);
+        return redirect(route('rooms.index'));
     }
 
     /**
@@ -54,7 +60,9 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        //
+        return view('AdminPage.rooms.show')->with([
+            'room' => $room,
+        ]);
     }
 
     /**
@@ -65,7 +73,11 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        $roomCategories = RoomCategories::all();
+        return view("AdminPage.rooms.edit")->with([
+            'roomCategories' => $roomCategories,
+            'room' => $room,
+        ]);
     }
 
     /**
@@ -77,7 +89,12 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        $room->room_name = $request->room_name;
+        $room->category_name = $request->category_name;
+        $room->description = $request->description;
+        $room->save();
+
+        return redirect()->route('rooms.index');
     }
 
     /**
@@ -88,6 +105,7 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        $room->delete();
+        return redirect()->route('rooms.index');
     }
 }
