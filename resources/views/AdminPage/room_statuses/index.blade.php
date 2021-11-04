@@ -11,9 +11,9 @@
             </ol>
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('categories.create') }}" class="btn btn-primary">Create New status's Status</a>
+                    <a href="{{ route('status.create') }}" class="btn btn-primary">Create New Room's Status</a>
                 </div>
-                <form action="{{ route('categories.index') }}" method="GET" class="md-3 d-flex">
+                <form action="{{ route('status.index') }}" method="GET" class="md-3 d-flex">
                     <input type="text" class="form-control" name="key" value="{{request('key')}}">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>
@@ -34,12 +34,12 @@
                             <tr>
                                 <th scope="row">{{$status->id}}</th>
                                 <td>{{$status->room_name}}</td>
-                                <td>{{$status->status_name}}</td>
+                                <td>{{$status->status}}</td>
                                 <td>{{$status->time}}</td>
                                 <td>
-                                    <a href="{{ route('categories.show', $status->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a>
-                                    <a href="{{ route('categories.edit', $status->id) }}"><button type="button" class="btn btn-warning">EDIT</button>
-                                    <form action="{{ route('categories.destroy', $status) }}" method="POST" class="float-left">
+                                    <a href="{{ route('status.show', $status->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a>
+                                    <a href="{{ route('status.edit', $status->id) }}"><button type="button" class="btn btn-warning">EDIT</button>
+                                    <form action="{{ route('status.destroy', $status) }}" method="POST" class="float-left">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">DELETE</button>

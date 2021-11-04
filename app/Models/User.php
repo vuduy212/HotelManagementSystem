@@ -121,4 +121,16 @@ class User extends Authenticatable
     {
         return $query->where('name', 'like', '%' . $userName . '%');
     }
+
+    public function searchByRole(array $data)
+    {
+        $userName = array_key_exists('key', $data) ? $data['key'] : null;
+
+        return $this->SearchUserName($userName)->latest('id')->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
+    }
+
+    public function scopeSearchRole($query, $role)
+    {
+        return $query->where('role', 'like', '%' . $role . '%');
+    }
 }

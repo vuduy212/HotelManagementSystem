@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class RoomCategories extends Model
 {
@@ -15,6 +16,23 @@ class RoomCategories extends Model
         'images',
         'price'
     ];
+
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
+
+    public function saveCategory(Request $data)
+    {
+        $category = $this->create([
+            'category_name' => $data['category_name'],
+            'description' => $data['description'],
+            'images' => $data['images'],
+            'price' => $data['price'],
+        ]);
+
+        return $category;
+    }
 
     public function search(array $data)
     {

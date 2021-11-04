@@ -11,9 +11,9 @@
             </ol>
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('categories.create') }}" class="btn btn-primary">Create New Rooms</a>
+                    <a href="{{ route('rooms.create') }}" class="btn btn-primary">Create New Rooms</a>
                 </div>
-                <form action="{{ route('categories.index') }}" method="GET" class="md-3 d-flex">
+                <form action="{{ route('rooms.index') }}" method="GET" class="md-3 d-flex">
                     <input type="text" class="form-control" name="key" value="{{request('key')}}">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>
@@ -23,9 +23,9 @@
                         <thead>
                           <tr>
                             <th scope="col">ID</th>
+                            <th scope="col">Category</th>
                             <th scope="col">Name</th>
                             <th scope="col">Description</th>
-                            <th scope="col">Status now</th>
                             <th scope="col">Actions</th>
                           </tr>
                         </thead>
@@ -33,13 +33,13 @@
                             @foreach ($rooms as $room)
                             <tr>
                                 <th scope="row">{{$room->id}}</th>
+                                <td>{{$room->category_name}}</td>
                                 <td>{{$room->room_name}}</td>
                                 <td>{{$room->description}}</td>
-                                <td># status</td>
                                 <td>
-                                    <a href="{{ route('categories.show', $room->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a>
-                                    <a href="{{ route('categories.edit', $room->id) }}"><button type="button" class="btn btn-warning">EDIT</button>
-                                    <form action="{{ route('categories.destroy', $room) }}" method="POST" class="float-left">
+                                    <a href="{{ route('rooms.show', $room->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a>
+                                    <a href="{{ route('rooms.edit', $room->id) }}"><button type="button" class="btn btn-warning">EDIT</button>
+                                    <form action="{{ route('rooms.destroy', $room) }}" method="POST" class="float-left">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">DELETE</button>

@@ -20,6 +20,27 @@
                 <div class="card-body">
 
                     <table class="table">
+                        {{-- <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Status</label>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input type="radio" name="status" value="0" @if($users->roles == 'admin') checked @endif>
+                                    <label for="">Admin</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" name="status" value="1" @if($users->roles == 'room_manager') checked @endif>
+                                    <label for="">Le tan</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" name="status" value="1" @if($users->roles == 'receptionist') checked @endif>
+                                    <label for="">QUan ly phong</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" name="status" value="1" @if($users->roles == 'client') checked @endif>
+                                    <label for="">Khach hang</label>
+                                </div>
+                            </div>
+                        </div> --}}
                         <thead>
                           <tr>
                             <th scope="col">ID</th>

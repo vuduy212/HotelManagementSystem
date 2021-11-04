@@ -33,7 +33,7 @@ class RoomCategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('AdminPage.room_categories.create');
     }
 
     /**
@@ -44,7 +44,8 @@ class RoomCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->roomCategories->saveCategory($request);
+        return redirect(route('categories.index'));
     }
 
     /**
@@ -55,7 +56,9 @@ class RoomCategoriesController extends Controller
      */
     public function show(RoomCategories $roomCategories)
     {
-        //
+        return view('AdminPage.room_categories.show')->with([
+            'roomCategories' => $roomCategories,
+        ]);
     }
 
     /**
@@ -66,7 +69,9 @@ class RoomCategoriesController extends Controller
      */
     public function edit(RoomCategories $roomCategories)
     {
-        //
+        return view("AdminPage.room_categories.edit")->with([
+            'roomCategories' => $roomCategories,
+        ]);
     }
 
     /**
@@ -78,7 +83,13 @@ class RoomCategoriesController extends Controller
      */
     public function update(Request $request, RoomCategories $roomCategories)
     {
-        //
+        $roomCategories->category_name = $request->category_name;
+        $roomCategories->description = $request->description;
+        $roomCategories->images = $request->images;
+        $roomCategories->price = $request->price;
+        $roomCategories->save();
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -89,6 +100,7 @@ class RoomCategoriesController extends Controller
      */
     public function destroy(RoomCategories $roomCategories)
     {
-        //
+        $roomCategories->delete();
+        return redirect()->route('categories.index');
     }
 }

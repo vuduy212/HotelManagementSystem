@@ -14,14 +14,16 @@ class RoomSeeder extends Seeder
      */
     public function run()
     {
-        $v101 = Room::updateOrCreate(
-            ['room_name' => 'V101'],
-            ['description' => 'This is VIP Room - 101']
-        );
+        $v101 = Room::updateOrCreate([
+            'room_name' => 'V101',
+            'description' => 'This is VIP Room - 101',
+            'category_name' => 'VIP',
+        ]);
 
-        $n101 = Room::updateOrCreate(
-            ['room_name' => 'N101'],
-            ['description' => 'This is Normal Room - 101']
-        );
+        $n101 = Room::updateOrCreate([
+            'room_name' => 'N101',
+            'description' => 'This is Normal Room - 101',
+            'category_name' => 'NORMAL',
+        ]);
     }
 }

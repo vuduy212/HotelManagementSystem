@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class RoomStatus extends Model
 {
@@ -11,9 +12,25 @@ class RoomStatus extends Model
 
     protected $fillable = [
         'room_name',
-        'status_name',
+        'status',
         'time',
     ];
+
+    public function rooms()
+    {
+        return $this->belongsTo(Room::class);
+    }
+
+    public function saveCategory(Request $data)
+    {
+        $status = $this->create([
+            'room_name' => $data['room_name'],
+            'status' => $data['status'],
+            'time' => $data['time'],
+        ]);
+
+        return $status;
+    }
 
     public function search(array $data)
     {

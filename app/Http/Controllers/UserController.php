@@ -34,7 +34,6 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-
         return view('AdminPage.users.create', compact('roles'));
     }
 
