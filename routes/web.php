@@ -47,10 +47,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/', [$class, 'index'])->name('index');
         Route::get('/create', [$class, 'create'])->name('create');
         Route::post('/', [$class, 'store'])->name('store');
-        Route::get('/{category}', [$class, 'show'])->name('show');
-        Route::put('/{category}', [$class, 'update'])->name('update');
-        Route::delete('/{category}', [$class, 'destroy'])->name('destroy');
-        Route::get('/{category}/edit', [$class, 'edit'])->name('edit');
+        Route::get('/{roomCategories}', [$class, 'show'])->name('show');
+        Route::put('/{roomCategories}', [$class, 'update'])->name('update');
+        Route::delete('/{roomCategories}', [$class, 'destroy'])->name('destroy');
+        Route::get('/{roomCategories}/edit', [$class, 'edit'])->name('edit');
     });
 
     /*------ Route Room ------*/

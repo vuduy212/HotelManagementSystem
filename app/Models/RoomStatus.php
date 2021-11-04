@@ -21,7 +21,7 @@ class RoomStatus extends Model
         return $this->belongsTo(Room::class);
     }
 
-    public function saveStatus(Request $data)
+    public function saveCategory(Request $data)
     {
         $status = $this->create([
             'room_name' => $data['room_name'],

@@ -28,7 +28,7 @@ class LoginPageTest extends TestCase
     {
         $user = User::factory()->create();
         $this->actingAs($user);
-        $response = $response = $this->get('/home');
+        $response = $this->get('/home');
         $response->assertStatus(200);
     }
 }
