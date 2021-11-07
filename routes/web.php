@@ -25,6 +25,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/denies', [App\Http\Controllers\HomeController::class, 'denies'])->name('denies');
 
 /*------ Admin ------*/
 Route::prefix('admin')->middleware('auth')->group(function () {

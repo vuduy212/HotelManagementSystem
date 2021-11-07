@@ -11,7 +11,9 @@
             </ol>
             <div class="card">
                 <div class="card-header">
+                    @receptionist
                     <a href="{{ route('status.create') }}" class="btn btn-primary">Create New Room's Status</a>
+                    @endif
                 </div>
                 <form action="{{ route('status.index') }}" method="GET" class="md-3 d-flex">
                     <input type="text" class="form-control" name="key" value="{{request('key')}}">
@@ -26,7 +28,9 @@
                             <th scope="col">Room's Name</th>
                             <th scope="col">Status</th>
                             <th scope="col">Time</th>
+                            @receptionist
                             <th scope="col">Actions</th>
+                            @endif
                           </tr>
                         </thead>
                         <tbody>
@@ -36,6 +40,7 @@
                                 <td>{{$status->room_name}}</td>
                                 <td>{{$status->status}}</td>
                                 <td>{{$status->time}}</td>
+                                @receptionist
                                 <td>
                                     <a href="{{ route('status.show', $status->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a>
                                     <a href="{{ route('status.edit', $status->id) }}"><button type="button" class="btn btn-warning">EDIT</button>
@@ -45,6 +50,7 @@
                                         <button type="submit" class="btn btn-danger">DELETE</button>
                                     </form>
                                 </td>
+                                @endif
                               </tr>
                             @endforeach
                         </tbody>
