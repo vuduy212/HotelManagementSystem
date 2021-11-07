@@ -11,7 +11,9 @@
             </ol>
             <div class="card">
                 <div class="card-header">
+                    @admin
                     <a href="{{ route('users.create') }}" class="btn btn-primary">Create New User</a>
+                    @endif
                 </div>
                 <form action="{{ route('users.index') }}" method="GET" class="md-3 d-flex">
                     <input type="text" class="form-control" name="key" value="{{request('key')}}">
@@ -20,33 +22,16 @@
                 <div class="card-body">
 
                     <table class="table">
-                        {{-- <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">Status</label>
-                            <div class="col-md-6">
-                                <div class="form-check">
-                                    <input type="radio" name="status" value="0" @if($users->roles == 'admin') checked @endif>
-                                    <label for="">Admin</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="radio" name="status" value="1" @if($users->roles == 'room_manager') checked @endif>
-                                    <label for="">Le tan</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="radio" name="status" value="1" @if($users->roles == 'receptionist') checked @endif>
-                                    <label for="">QUan ly phong</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="radio" name="status" value="1" @if($users->roles == 'client') checked @endif>
-                                    <label for="">Khach hang</label>
-                                </div>
-                            </div>
-                        </div> --}}
+
                         <thead>
                           <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Roles</th>
+                            @admin
+                            <th scope="col">Actions</th>
+                            @endif
                           </tr>
                         </thead>
                         <tbody>
@@ -56,6 +41,7 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</td>
+                                @admin
                                 <td>
                                     <a href="{{ route('users.show', $user->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a>
                                     <a href="{{ route('users.edit', $user->id) }}"><button type="button" class="btn btn-warning">EDIT</button>
@@ -65,6 +51,7 @@
                                         <button type="submit" class="btn btn-danger">DELETE</button>
                                     </form>
                                 </td>
+                                @endif
                               </tr>
                             @endforeach
                         </tbody>

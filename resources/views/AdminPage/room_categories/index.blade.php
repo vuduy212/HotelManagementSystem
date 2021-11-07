@@ -11,7 +11,9 @@
             </ol>
             <div class="card">
                 <div class="card-header">
+                    @room_manager
                     <a href="{{ route('categories.create') }}" class="btn btn-primary">Create New Room Categories</a>
+                    @endif
                 </div>
                 <form action="{{ route('categories.index') }}" method="GET" class="md-3 d-flex">
                     <input type="text" class="form-control" name="key" value="{{request('key')}}">
@@ -27,7 +29,9 @@
                             <th scope="col">Description</th>
                             <th scope="col">Images</th>
                             <th scope="col">Price</th>
+                            @room_manager
                             <th scope="col">Actions</th>
+                            @endif
                           </tr>
                         </thead>
                         <tbody>
@@ -39,6 +43,7 @@
                                 <td>{{$category->images}}</td>
                                 <td>{{$category->price}}</td>
                                 <td>
+                                    @room_manager
                                     <a href="{{ route('categories.show', $category->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a>
                                     <a href="{{ route('categories.edit', $category->id) }}"><button type="button" class="btn btn-warning">EDIT</button>
                                     <form action="{{ route('categories.destroy', $category) }}" method="POST" class="float-left">
@@ -46,6 +51,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">DELETE</button>
                                     </form>
+                                    @endif
                                 </td>
                               </tr>
                             @endforeach

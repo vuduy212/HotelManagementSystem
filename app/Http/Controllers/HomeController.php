@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('AdminPage/index');
     }
+
+    public function denies()
+    {
+        return view('denies');
+    }
 }
