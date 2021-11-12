@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Room Categories {{$roomCategories->id}}</div>
 
@@ -17,7 +17,6 @@
                             <th scope="col">Description</th>
                             <th scope="col">Images</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Actions</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -25,7 +24,7 @@
                                 <th scope="row">{{$roomCategories->id}}</th>
                                 <td>{{$roomCategories->category_name}}</td>
                                 <td>{{$roomCategories->description}}</td>
-                                <td>{{$roomCategories->image}}</td>
+                                <td><img src="{{ $roomCategories->getImage() }}" alt="{{ $roomCategories->name }}" class="image-show"></td>
                                 <td>{{$roomCategories->price}}</td>
                               </tr>
                         </tbody>

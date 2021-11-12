@@ -44,7 +44,7 @@ class RoomCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->roomCategories->saveCategory($request);
+        $this->roomCategories->store($request);
         return redirect(route('categories.index'));
     }
 
@@ -83,12 +83,14 @@ class RoomCategoriesController extends Controller
      */
     public function update(Request $request, RoomCategories $roomCategories)
     {
-        $roomCategories->category_name = $request->category_name;
-        $roomCategories->description = $request->description;
-        $roomCategories->images = $request->images;
-        $roomCategories->price = $request->price;
-        $roomCategories->save();
+        // $roomCategories->category_name = $request->category_name;
+        // $roomCategories->description = $request->description;
+        // $roomCategories->images = $request->images;
+        // $roomCategories->price = $request->price;
+        // $roomCategories->save();
 
+        // return redirect()->route('categories.index');
+        $roomCategories->updateCategory($request, $roomCategories);
         return redirect()->route('categories.index');
     }
 

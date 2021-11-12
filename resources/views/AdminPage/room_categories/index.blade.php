@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
 
-        <div class="col-md-8">
+        <div class="col-md-12">
             <h1 class="mt-4">Room Categories Management</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Welcome to Room Categories Management !!</li>
@@ -40,8 +40,8 @@
                                 <th scope="row">{{$category->id}}</th>
                                 <td>{{$category->category_name}}</td>
                                 <td>{{$category->description}}</td>
-                                <td>{{$category->images}}</td>
-                                <td>{{$category->price}}</td>
+                                <td><img src="{{ $category->getImage() }}" alt="{{ $category->name }}" class="image-show"></td>
+                                <td>{{$category->price}} $</td>
                                 <td>
                                     @room_manager
                                     <a href="{{ route('categories.show', $category->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a>
