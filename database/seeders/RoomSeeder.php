@@ -14,16 +14,40 @@ class RoomSeeder extends Seeder
      */
     public function run()
     {
-        $v101 = Room::updateOrCreate([
-            'room_name' => 'V101',
-            'description' => 'This is VIP Room - 101',
-            'category_name' => 'VIP',
+        $v1_101 = Room::updateOrCreate([
+            'room_name' => 'VIP1_101',
+            'description' => 'This is VIP Room for one people - 101',
+            'category_id' => '1',
         ]);
 
-        $n101 = Room::updateOrCreate([
-            'room_name' => 'N101',
-            'description' => 'This is Normal Room - 101',
-            'category_name' => 'NORMAL',
+        $n1_111 = Room::updateOrCreate([
+            'room_name' => 'NORMAL1_101',
+            'description' => 'This is Normal Room for one people - 111',
+            'category_id' => '4',
+        ]);
+
+        $v2_201 = Room::updateOrCreate([
+            'room_name' => 'VIP2_101',
+            'description' => 'This is VIP Room for 2 people - 201',
+            'category_id' => '2',
+        ]);
+
+        $n2_211 = Room::updateOrCreate([
+            'room_name' => 'NORMAL2_101',
+            'description' => 'This is Normal Room for 2 people - 211',
+            'category_id' => '5',
+        ]);
+
+        $v4_301 = Room::updateOrCreate([
+            'room_name' => 'VIP4_101',
+            'description' => 'This is VIP Room for 4 people - 301',
+            'category_id' => '3',
+        ]);
+
+        $n4_311 = Room::updateOrCreate([
+            'room_name' => 'NORMAL4_101',
+            'description' => 'This is Normal Room for 4 people - 311',
+            'category_id' => '6',
         ]);
     }
 }

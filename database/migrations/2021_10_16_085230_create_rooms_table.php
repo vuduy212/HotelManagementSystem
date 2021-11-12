@@ -17,7 +17,7 @@ class CreateRoomsTable extends Migration
             $table->id();
             $table->string('room_name');
             $table->string('description')->nullable();
-            $table->string('category_name');
+            $table->bigInteger('category_id')->unsigned();
             $table->timestamps();
         });
     }
