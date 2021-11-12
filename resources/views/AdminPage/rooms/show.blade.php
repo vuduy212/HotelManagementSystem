@@ -21,7 +21,7 @@
                         <tbody>
                             <tr>
                                 <th scope="row">{{$room->id}}</th>
-                                <td>{{$room->category_name}}</td>
+                                <td>{{$room->category_id}}</td>
                                 <td>{{$room->room_name}}</td>
                                 <td>{{$room->description}}</td>
                               </tr>

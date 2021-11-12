@@ -40,8 +40,8 @@
                             <div class="col-md-6">
                                 @foreach ($roomCategories as $category)
                                     <div class="form-check">
-                                        <input type="radio" name="category_name" id="category_name" value="{{ $category->category_name }}"
-                                        @if($room->category_name == $category->category_name) checked @endif>
+                                        <input type="radio" name="category_id" id="category_id" value="{{ $category->id }}"
+                                        @if($room->category_id == $category->id) checked @endif>
                                         <label for="">{{ $category->category_name }}</label>
                                     </div>
                                 @endforeach

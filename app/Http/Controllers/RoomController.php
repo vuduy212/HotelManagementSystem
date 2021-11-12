@@ -23,7 +23,8 @@ class RoomController extends Controller
     public function index(Request $request)
     {
         $rooms = $this->rooms->search($request->all());
-        return view('AdminPage.rooms.index', compact('rooms'));
+        $roomCategories = RoomCategories::all();
+        return view('AdminPage.rooms.index', compact('rooms', 'roomCategories'));
     }
 
     /**
@@ -35,7 +36,6 @@ class RoomController extends Controller
     {
         $rooms = Room::all();
         $roomCategories = RoomCategories::all();
-        //$roomStatus = RoomStatus::all();
         return view('AdminPage.rooms.create', compact('rooms', 'roomCategories'));
     }
 
@@ -89,7 +89,7 @@ class RoomController extends Controller
     public function update(Request $request, Room $room)
     {
         $room->room_name = $request->room_name;
-        $room->category_name = $request->category_name;
+        $room->category_id = $request->category_id;
         $room->description = $request->description;
         $room->save();
 

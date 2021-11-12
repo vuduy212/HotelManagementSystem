@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
 
-        <div class="col-md-8">
+        <div class="col-md-12">
             <h1 class="mt-4">Rooms Management</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Welcome to Rooms Management !!</li>
@@ -15,10 +15,26 @@
                     <a href="{{ route('rooms.create') }}" class="btn btn-primary">Create New Rooms</a>
                     @endif
                 </div>
-                <form action="{{ route('rooms.index') }}" method="GET" class="md-3 d-flex">
+
+
+                <form action="{{ route("rooms.index") }}" method="GET" class="md-3 d-flex">
+                    <select id="select-role" name="category_id">
+                        <option value="">All</option>
+                        @foreach ($roomCategories as $category)
+                            <option value="{{ $category->id }}" {{ request('category') == $category->id ? "selected":"" }}> {{ $category->category_name }}</option>
+                        @endforeach
+                    </select>
+
+                    <input type="text" class="form-control" placeholder="Enter room's name" name="key" value="{{ request('key') }}">
+
+                    <button type="submit" class="btn btn-success">Search</button>
+                </form>
+
+
+                {{-- <form action="{{ route('rooms.index') }}" method="GET" class="md-3 d-flex">
                     <input type="text" class="form-control" name="key" value="{{request('key')}}">
                     <button class="btn btn-primary" type="submit">Search</button>
-                </form>
+                </form> --}}
                 <div class="card-body">
 
                     <table class="table">
@@ -37,7 +53,11 @@
                             @foreach ($rooms as $room)
                             <tr>
                                 <th scope="row">{{$room->id}}</th>
-                                <td>{{$room->category_name}}</td>
+                                <td>
+                                    @foreach ($roomCategories as $category)
+                                        @if($room->category_id == $category->id) {{$category->category_name}} @endif
+                                    @endforeach
+                                </td>
                                 <td>{{$room->room_name}}</td>
                                 <td>{{$room->description}}</td>
                                 @room_manager
@@ -55,7 +75,7 @@
                             @endforeach
                         </tbody>
                       </table>
-                      {{$rooms->appends(request()->only('key','number'))->links()}}
+                      {{$rooms->appends(request()->only('key','number','category_id'))->links()}}
                 </div>
             </div>
         </div>
