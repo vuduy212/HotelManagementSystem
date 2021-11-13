@@ -11,7 +11,7 @@ class RoomStatus extends Model
     use HasFactory;
 
     protected $fillable = [
-        'room_name',
+        'room_id',
         'status',
         'time',
     ];
@@ -21,10 +21,10 @@ class RoomStatus extends Model
         return $this->belongsTo(Room::class);
     }
 
-    public function saveCategory(Request $data)
+    public function saveStatus(Request $data)
     {
         $status = $this->create([
-            'room_name' => $data['room_name'],
+            'room_id' => $data['room_id'],
             'status' => $data['status'],
             'time' => $data['time'],
         ]);
@@ -34,13 +34,30 @@ class RoomStatus extends Model
 
     public function search(array $data)
     {
-        $roomStatusName = array_key_exists('key', $data) ? $data['key'] : null;
+        $roomStatusTime = array_key_exists('key', $data) ? $data['key'] : null;
+        $filterStatus = array_key_exists('filter_status', $data) ? $data['filter_status'] : null;
+        $room = array_key_exists('room_id', $data) ? $data['room_id'] : null;
 
-        return $this->SearchRoomStatusName($roomStatusName)->latest('id')->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+        return $this
+                    ->SearchRoomStatusTime($roomStatusTime)
+                    ->FilterByStatus($filterStatus)
+                    ->WhereHasRoom($room)
+                    ->latest('id')
+                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
     }
 
-    public function scopeSearchRoomStatusName($query, $roomStatusName)
+    public function scopeSearchRoomStatusTime($query, $roomStatusTime)
     {
-        return $query->where('room_name', 'like', '%' . $roomStatusName . '%');
+        return $query->where('time', 'like', '%' . $roomStatusTime . '%');
+    }
+
+    public function scopeFilterByStatus($query, $filterStatus)
+    {
+        return $query->where('status', 'like', '%' . $filterStatus . '%');
+    }
+
+    public function scopeWhereHasRoom($query, $room)
+    {
+        return $query->where('room_id', 'like', '%' . $room . '%');
     }
 }

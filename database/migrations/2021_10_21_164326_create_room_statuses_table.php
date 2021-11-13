@@ -15,7 +15,7 @@ class CreateRoomStatusesTable extends Migration
     {
         Schema::create('room_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('room_name');
+            $table->bigInteger('room_id')->unsigned();
             $table->boolean('status');
             $table->date('time');
             $table->timestamps();

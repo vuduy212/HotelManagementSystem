@@ -40,7 +40,7 @@
                             <div class="col-md-6">
                                 @foreach ($roomCategories as $category)
                                     <div class="form-check">
-                                        <input type="radio" name="category_name" id="category_name" value="{{ $category->category_name }}">
+                                        <input type="radio" name="category_id" id="category_name" value="{{ $category->id }}">
                                         <label for="">{{ $category->category_name }}</label>
                                     </div>
                                 @endforeach

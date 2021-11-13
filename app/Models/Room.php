@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class Room extends Model
     protected $fillable = [
         'room_name',
         'description',
-        'category_name'
+        'category_id'
     ];
 
     public function status()
@@ -23,7 +24,7 @@ class Room extends Model
 
     public function categories()
     {
-        return $this->belongsTo(RoomCategories::class);
+        return $this->belongsTo(RoomCategories::class, 'category_id');
     }
 
     public function saveRoom(Request $data)
@@ -31,7 +32,7 @@ class Room extends Model
         $room = $this->create([
             'room_name' => $data['room_name'],
             'description' => $data['description'],
-            'category_name' => $data['category_name'],
+            'category_id' => $data['category_id'],
         ]);
 
         return $room;
@@ -40,12 +41,22 @@ class Room extends Model
     public function search(array $data)
     {
         $roomName = array_key_exists('key', $data) ? $data['key'] : null;
+        $category = array_key_exists('category_id', $data) ? $data['category_id'] : null;
 
-        return $this->SearchRoomName($roomName)->latest('id')->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+        return $this
+                    ->SearchRoomName($roomName)
+                    ->WhereHasCategory($category)
+                    ->latest('id')
+                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 2);
     }
 
     public function scopeSearchRoomName($query, $roomName)
     {
         return $query->where('room_name', 'like', '%' . $roomName . '%');
+    }
+
+    public function scopeWhereHasCategory($query, $category)
+    {
+        return $query->where('category_id', 'like', '%' . $category . '%');
     }
 }

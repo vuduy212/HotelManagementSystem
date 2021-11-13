@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
 
-        <div class="col-md-8">
+        <div class="col-md-12">
             <h1 class="mt-4">Users Management</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Welcome to Users Management !!</li>
@@ -15,10 +15,24 @@
                     <a href="{{ route('users.create') }}" class="btn btn-primary">Create New User</a>
                     @endif
                 </div>
-                <form action="{{ route('users.index') }}" method="GET" class="md-3 d-flex">
-                    <input type="text" class="form-control" name="key" value="{{request('key')}}">
-                    <button class="btn btn-primary" type="submit">Search</button>
+
+                <form action="{{ route("users.index") }}" method="GET" class="md-3 d-flex">
+                    <select name="role_id">
+                        <option value="">Filter by Role</option>
+                        @foreach ($roles as $role)
+                            <option value="{{ $role->id }}" {{ request('role_id') == $role->id ? "selected":"" }}> {{ $role->name }}</option>
+                        @endforeach
+                    </select>
+
+                    <input type="text" class="form-control" placeholder="Enter Username..." name="key" value="{{ request('key') }}">
+
+                    <button type="submit" class="btn btn-success">Search</button>
                 </form>
+
+                {{-- <form action="{{ route('users.index') }}" method="GET" class="md-3 d-flex">
+                    <input type="text" class="form-control" name="key" value="{{request('key')}}" placeholder="Enter Username...">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form> --}}
                 <div class="card-body">
 
                     <table class="table">

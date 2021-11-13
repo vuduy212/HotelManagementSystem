@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
 
-        <div class="col-md-8">
+        <div class="col-md-12">
             <h1 class="mt-4">Room's Status Management</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Welcome to Room's Status Management !!</li>
@@ -15,9 +15,30 @@
                     <a href="{{ route('status.create') }}" class="btn btn-primary">Create New Room's Status</a>
                     @endif
                 </div>
-                <form action="{{ route('status.index') }}" method="GET" class="md-3 d-flex">
-                    <input type="text" class="form-control" name="key" value="{{request('key')}}">
-                    <button class="btn btn-primary" type="submit">Search</button>
+
+                <form action="{{ route("status.index") }}" method="GET" class="md-3">
+                    <div class="col-sm-8">
+                        <select name="room_id" class="form-select form-select-sm">
+                            <option value="">Filter by Room</option>
+                            @foreach ($rooms as $room)
+                                <option value="{{ $room->id }}" {{ request('room') == $room->id ? "selected":"" }}> Room {{ $room->room_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <br>
+                    <div class="col-sm-8">
+                        <select name="filter_status" class="form-select form-select-sm">
+                            <option value="">Filter by Status</option>
+                            <div class="col-md-6">
+                                <option name="status" value="1">Active</option>
+                                <option name="status" value="0">Close</option>
+                            </div>
+                        </select>
+                    </div>
+                    <br>
+                        <input type="text" class="form-control" placeholder="Enter time" name="key" value="{{ request('key') }}">
+                    <br>
+                    <button type="submit" class="btn btn-success">Search</button>
                 </form>
                 <div class="card-body">
 
@@ -37,8 +58,16 @@
                             @foreach ($roomStatus as $status)
                             <tr>
                                 <th scope="row">{{$status->id}}</th>
-                                <td>{{$status->room_name}}</td>
-                                <td>{{$status->status}}</td>
+                                <td>
+                                    @foreach ($rooms as $room)
+                                        @if($status->room_id == $room->id) {{$room->room_name}} @endif
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @if($status->status == '0') Empty
+                                    @else Active
+                                    @endif
+                                </td>
                                 <td>{{$status->time}}</td>
                                 @receptionist
                                 <td>
@@ -55,7 +84,7 @@
                             @endforeach
                         </tbody>
                       </table>
-                      {{$roomStatus->appends(request()->only('key','number'))->links()}}
+                      {{$roomStatus->appends(request()->only('key','number','filter_status'))->links()}}
                 </div>
             </div>
         </div>
