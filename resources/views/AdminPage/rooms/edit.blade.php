@@ -14,24 +14,24 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Room Name') }}</label>
                             <div class="col-md-6">
-                                <input id="room_name" name="room_name" type="text" value="{{ $room->room_name }}" class="form-control{{-- @error('time') is-invalid @enderror --}}" >
-                                {{-- @error('time') --}}
-                                    {{-- <span class="invalid-feedback" role="alert">
+                                <input id="room_name" name="room_name" type="text" value="{{ $room->room_name }}" class="form-control @error('room_name') is-invalid @enderror" >
+                                @error('room_name')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span> --}}
-                                {{-- @enderror --}}
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
                             <div class="col-md-6">
-                                <input id="description" name="description" type="text" value="{{ $room->description }}" class="form-control {{-- @error('time') is-invalid @enderror --}}" >
-                                {{-- @error('time') --}}
-                                    {{-- <span class="invalid-feedback" role="alert">
+                                <input id="description" name="description" type="text" value="{{ $room->description }}" class="form-control @error('description') is-invalid @enderror" >
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span> --}}
-                                {{-- @enderror --}}
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
