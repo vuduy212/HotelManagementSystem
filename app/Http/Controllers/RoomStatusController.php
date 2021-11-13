@@ -23,8 +23,10 @@ class RoomStatusController extends Controller
      */
     public function index(Request $request)
     {
+        $rooms = Room::all();
         $roomStatus = $this->roomStatus->search($request->all());
-        return view('AdminPage.room_statuses.index', compact('roomStatus'));
+        //$roomStatus = RoomStatus::all();
+        return view('AdminPage.room_statuses.index', compact('roomStatus', 'rooms'));
     }
 
     /**
@@ -74,11 +76,9 @@ class RoomStatusController extends Controller
     public function edit(RoomStatus $roomStatus)
     {
         $rooms = Room::all();
-        //$room1 = RoomStatus::first()->rooms()->where('room_name', 'foo')->first();;
         return view("AdminPage.room_statuses.edit")->with([
             'roomStatus' => $roomStatus,
             'rooms' => $rooms,
-            //'room1' => $room1,
         ]);
     }
 
@@ -93,7 +93,7 @@ class RoomStatusController extends Controller
     {
         $roomStatus->time = $request->time;
         $roomStatus->status = $request->status;
-        $roomStatus->room_name = $request->room_name;
+        $roomStatus->room_id = $request->room_id;
         $roomStatus->save();
 
         return redirect()->route('status.index');

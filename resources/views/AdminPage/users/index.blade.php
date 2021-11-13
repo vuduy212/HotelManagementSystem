@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
 
-        <div class="col-md-8">
+        <div class="col-md-12">
             <h1 class="mt-4">Users Management</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Welcome to Users Management !!</li>
@@ -16,7 +16,7 @@
                     @endif
                 </div>
                 <form action="{{ route('users.index') }}" method="GET" class="md-3 d-flex">
-                    <input type="text" class="form-control" name="key" value="{{request('key')}}">
+                    <input type="text" class="form-control" name="key" value="{{request('key')}}" placeholder="Enter Username...">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>
                 <div class="card-body">

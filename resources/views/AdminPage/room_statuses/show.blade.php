@@ -13,7 +13,7 @@
                         <thead>
                           <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Room Name</th>
+                            <th scope="col">Room ID</th>
                             <th scope="col">Status</th>
                             <th scope="col">Time</th>
                           </tr>
@@ -21,7 +21,7 @@
                         <tbody>
                             <tr>
                                 <th scope="row">{{$roomStatus->id}}</th>
-                                <td>{{$roomStatus->room_name}}</td>
+                                <td>{{$roomStatus->room_id}}</td>
                                 <td>{{$roomStatus->status}}</td>
                                 <td>{{$roomStatus->time}}</td>
                               </tr>

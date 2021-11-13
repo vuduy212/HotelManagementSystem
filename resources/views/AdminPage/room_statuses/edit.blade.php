@@ -21,15 +21,13 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">Room</label>
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Select Room</label>
                             <div class="col-md-6">
-                                @foreach ($rooms as $room)
-                                    <div class="form-check">
-                                        <input type="radio" name="room_name" value="{{ $room->room_name }}"
-                                            @if($roomStatus->room_name == $room->room_name) checked @endif>
-                                        <label for="">{{ $room->room_name }}</label>
-                                    </div>
-                                @endforeach
+                                <select name="room_id" class="form-select form-select-sm">
+                                    @foreach ($rooms as $room)
+                                        <option value="{{ $room->id }}"> Room {{ $room->room_name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -42,7 +40,7 @@
                                 </div>
                                 <div class="form-check">
                                     <input type="radio" name="status" value="1" @if($roomStatus->status == 1) checked @endif>
-                                    <label for="">Fill</label>
+                                    <label for="">Active</label>
                                 </div>
                             </div>
                         </div>

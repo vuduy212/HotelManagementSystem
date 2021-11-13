@@ -18,14 +18,14 @@
 
 
                 <form action="{{ route("rooms.index") }}" method="GET" class="md-3 d-flex">
-                    <select id="select-role" name="category_id">
-                        <option value="">All</option>
+                    <select name="category_id">
+                        <option value="">Filter by Category</option>
                         @foreach ($roomCategories as $category)
                             <option value="{{ $category->id }}" {{ request('category') == $category->id ? "selected":"" }}> {{ $category->category_name }}</option>
                         @endforeach
                     </select>
 
-                    <input type="text" class="form-control" placeholder="Enter room's name" name="key" value="{{ request('key') }}">
+                    <input type="text" class="form-control" placeholder="Enter room's name..." name="key" value="{{ request('key') }}">
 
                     <button type="submit" class="btn btn-success">Search</button>
                 </form>

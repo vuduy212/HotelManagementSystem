@@ -16,7 +16,7 @@
                     @endif
                 </div>
                 <form action="{{ route('categories.index') }}" method="GET" class="md-3 d-flex">
-                    <input type="text" class="form-control" name="key" value="{{request('key')}}">
+                    <input type="text" class="form-control" name="key" value="{{request('key')}}" placeholder="Enter Room Category">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>
                 <div class="card-body">

@@ -11,7 +11,7 @@
                     <form method="POST" action="{{ route('status.store') }}">
                         @csrf
 
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">Room</label>
                             <div class="col-md-6">
                                 @foreach ($rooms as $room)
@@ -20,6 +20,17 @@
                                         <label for="">{{ $room->room_name }}</label>
                                     </div>
                                 @endforeach
+                            </div>
+                        </div> --}}
+
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Select Room</label>
+                            <div class="col-md-6">
+                                <select name="room_id" class="form-select form-select-sm">
+                                    @foreach ($rooms as $room)
+                                        <option value="{{ $room->id }}">Room {{ $room->room_name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -32,7 +43,7 @@
                                 </div>
                                 <div class="form-check">
                                     <input type="radio" name="status" value="1">
-                                    <label for="">Fill</label>
+                                    <label for="">Active</label>
                                 </div>
                             </div>
                         </div>
