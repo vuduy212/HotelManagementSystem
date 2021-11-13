@@ -94,7 +94,13 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->roles()->sync($request->roles);
+        if(empty($request->roles))
+        {
+            $roles = [
+                'client' => '4'
+            ];
+        }
+        $user->roles()->sync($roles);
 
         $user->name = $request->name;
         $user->email = $request->email;
