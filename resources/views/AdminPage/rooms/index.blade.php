@@ -18,7 +18,7 @@
 
 
                 <form action="{{ route("rooms.index") }}" method="GET" class="md-3 d-flex">
-                    <select name="category_id">
+                    <select name="filter_category">
                         <option value="">Filter by Category</option>
                         @foreach ($roomCategories as $category)
                             <option value="{{ $category->id }}" {{ request('category') == $category->id ? "selected":"" }}> {{ $category->category_name }}</option>
@@ -75,7 +75,7 @@
                             @endforeach
                         </tbody>
                       </table>
-                      {{$rooms->appends(request()->only('key','number','category_id'))->links()}}
+                      {{$rooms->appends(request()->only('key','number','filter_category'))->links()}}
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@
                 </div>
 
                 <form action="{{ route("users.index") }}" method="GET" class="md-3 d-flex">
-                    <select name="role_id">
+                    <select name="filter_role">
                         <option value="">Filter by Role</option>
                         @foreach ($roles as $role)
                             <option value="{{ $role->id }}" {{ request('role_id') == $role->id ? "selected":"" }}> {{ $role->name }}</option>
@@ -70,7 +70,7 @@
                             @endforeach
                         </tbody>
                       </table>
-                      {{$users->appends(request()->only('key','number'))->links()}}
+                      {{$users->appends(request()->only('key','number','filter_role'))->links()}}
                 </div>
             </div>
         </div>

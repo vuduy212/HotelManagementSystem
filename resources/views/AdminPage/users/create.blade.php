@@ -66,7 +66,8 @@
                             <div class="col-md-6">
                                 @foreach ($roles as $role)
                                     <div class="form-check">
-                                        <input type="checkbox" name="roles[{{$role->name}}]" value="{{ $role->id }}">
+                                        <input type="checkbox" name="roles[{{$role->name}}]" value="{{ $role->id }}"
+                                        @if($role->id == 4) checked @endif>
                                         <label for="">{{ $role->name }}</label>
                                     </div>
                                 @endforeach
