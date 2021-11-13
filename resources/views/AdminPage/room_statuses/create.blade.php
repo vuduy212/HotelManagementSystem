@@ -38,7 +38,7 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">Status</label>
                             <div class="col-md-6">
                                 <div class="form-check">
-                                    <input type="radio" name="status" value="0">
+                                    <input type="radio" name="status" value="0" checked>
                                     <label for="">Empty</label>
                                 </div>
                                 <div class="form-check">
@@ -51,12 +51,12 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Time') }}</label>
                             <div class="col-md-6">
-                                <input id="time" name="time" type="text" class="form-control {{-- @error('time') is-invalid @enderror --}}" >
-                                {{-- @error('time') --}}
-                                    {{-- <span class="invalid-feedback" role="alert">
+                                <input id="time" name="time" type="text" class="form-control @error('time') is-invalid @enderror" >
+                                @error('time')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span> --}}
-                                {{-- @enderror --}}
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

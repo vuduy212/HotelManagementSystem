@@ -14,13 +14,23 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Category Name</label>
                             <div class="col-md-6">
-                                <input id="category_name" type="text" class="form-control" name="category_name" value="{{ $roomCategories->category_name }}" autofocus>
+                                <input id="category_name" name="category_name" value="{{ $roomCategories->category_name }}" type="text" class="form-control @error('category_name') is-invalid @enderror" >
+                                @error('category_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Description</label>
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ $roomCategories->description }}" autofocus>
+                                <input id="description" name="description" value="{{ $roomCategories->description }}" type="text" class="form-control @error('description') is-invalid @enderror" >
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
@@ -32,7 +42,12 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Price</label>
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control" name="price" value="{{ $roomCategories->price }}" autofocus>
+                                <input id="price" name="price" value="{{ $roomCategories->price }}" type="text" class="form-control @error('price') is-invalid @enderror" >
+                                @error('price')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">

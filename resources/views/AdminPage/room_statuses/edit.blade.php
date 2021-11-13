@@ -14,7 +14,12 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">Time</label>
 
                             <div class="col-md-6">
-                                <input id="time" type="text" class="form-control" name="time" value="{{ $roomStatus->time }}" autofocus>
+                                <input id="time" name="time" value="{{ $roomStatus->time }}" type="text" class="form-control @error('time') is-invalid @enderror" >
+                                @error('time')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

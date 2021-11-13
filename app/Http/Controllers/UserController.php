@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -45,7 +47,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
         $this->users->saveUser($request);
         return redirect(route('users.index'));
@@ -76,7 +78,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all();
-
+        $user->email = $user->email . '-edited';
         return view("AdminPage.users.edit")->with([
             'user' => $user,
             'roles' => $roles
@@ -90,7 +92,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
         $user->roles()->sync($request->roles);
 
