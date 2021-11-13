@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRoomRequest;
+use App\Http\Requests\UpdateRoomRequest;
 use App\Models\Room;
 use App\Models\RoomCategories;
 use App\Models\RoomStatus;
@@ -45,7 +47,7 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRoomRequest $request)
     {
         $this->rooms->saveRoom($request);
         return redirect(route('rooms.index'));
@@ -86,7 +88,7 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(UpdateRoomRequest $request, Room $room)
     {
         $room->room_name = $request->room_name;
         $room->category_id = $request->category_id;

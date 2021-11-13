@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class RoomCategories extends Model
 {
@@ -71,11 +72,12 @@ class RoomCategories extends Model
         return $fileName;
     }
 
-    private function deleteFile(string $path)
+    public function deleteFile(string $path)
     {
         if(file_exists($path))
         {
-            unlink($path);
+            //unlink($path);
+            File::delete($path);
         }
     }
 

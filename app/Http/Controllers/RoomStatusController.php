@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRoomStatusRequest;
+use App\Http\Requests\UpdateRoomStatusRequest;
 use App\Models\Room;
 use App\Models\RoomStatus;
 use Illuminate\Http\Request;
@@ -48,7 +50,7 @@ class RoomStatusController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(CreateRoomStatusRequest $request)
     {
         $this->roomStatus->saveStatus($request);
         return redirect(route('status.index'));
@@ -89,7 +91,7 @@ class RoomStatusController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RoomStatus $roomStatus)
+    public function update(UpdateRoomStatusRequest $request, RoomStatus $roomStatus)
     {
         $roomStatus->time = $request->time;
         $roomStatus->status = $request->status;

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRoomCategoryRequest;
+use App\Http\Requests\UpdateRoomCategoryRequest;
 use App\Models\RoomCategories;
 use Illuminate\Http\Request;
 
@@ -42,7 +44,7 @@ class RoomCategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRoomCategoryRequest $request)
     {
         $this->roomCategories->store($request);
         return redirect(route('categories.index'));
@@ -81,7 +83,7 @@ class RoomCategoriesController extends Controller
      * @param  \App\Models\RoomCategories  $roomCategories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RoomCategories $roomCategories)
+    public function update(UpdateRoomCategoryRequest $request, RoomCategories $roomCategories)
     {
         // $roomCategories->category_name = $request->category_name;
         // $roomCategories->description = $request->description;
@@ -102,6 +104,8 @@ class RoomCategoriesController extends Controller
      */
     public function destroy(RoomCategories $roomCategories)
     {
+        $path = '/images/room_categories/' . $roomCategories->images;
+        $roomCategories->deleteFile($path);
         $roomCategories->delete();
         return redirect()->route('categories.index');
     }
