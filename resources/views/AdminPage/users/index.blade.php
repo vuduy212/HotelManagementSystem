@@ -15,10 +15,24 @@
                     <a href="{{ route('users.create') }}" class="btn btn-primary">Create New User</a>
                     @endif
                 </div>
-                <form action="{{ route('users.index') }}" method="GET" class="md-3 d-flex">
+
+                <form action="{{ route("users.index") }}" method="GET" class="md-3 d-flex">
+                    <select name="role_id">
+                        <option value="">Filter by Role</option>
+                        @foreach ($roles as $role)
+                            <option value="{{ $role->id }}" {{ request('role_id') == $role->id ? "selected":"" }}> {{ $role->name }}</option>
+                        @endforeach
+                    </select>
+
+                    <input type="text" class="form-control" placeholder="Enter Username..." name="key" value="{{ request('key') }}">
+
+                    <button type="submit" class="btn btn-success">Search</button>
+                </form>
+
+                {{-- <form action="{{ route('users.index') }}" method="GET" class="md-3 d-flex">
                     <input type="text" class="form-control" name="key" value="{{request('key')}}" placeholder="Enter Username...">
                     <button class="btn btn-primary" type="submit">Search</button>
-                </form>
+                </form> --}}
                 <div class="card-body">
 
                     <table class="table">

@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -46,7 +48,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id')->withPivot('user_id', 'role_id');
     }
 
     public function hasRole($roles){
@@ -113,8 +115,13 @@ class User extends Authenticatable
     public function search(array $data)
     {
         $userName = array_key_exists('key', $data) ? $data['key'] : null;
+        $role_id = array_key_exists('key', $data) ? $data['role_id'] : null;
 
-        return $this->SearchUserName($userName)->latest('id')->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
+        return $this
+                    ->WhereHasRoles($role_id)
+                    ->SearchUserName($userName)
+                    ->latest('id')
+                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
     }
 
     public function scopeSearchUserName($query, $userName)
@@ -122,15 +129,11 @@ class User extends Authenticatable
         return $query->where('name', 'like', '%' . $userName . '%');
     }
 
-    public function searchByRole(array $data)
+    public function scopeWhereHasRoles($query, $role_id)
     {
-        $userName = array_key_exists('key', $data) ? $data['key'] : null;
-
-        return $this->SearchUserName($userName)->latest('id')->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
-    }
-
-    public function scopeSearchRole($query, $role)
-    {
-        return $query->where('role', 'like', '%' . $role . '%');
+        return $role_id ? $query->WhereHas('roles', function (Builder $query) use ($role_id) {
+            $query->where('roles.id', $role_id);
+        })
+        : null;
     }
 }

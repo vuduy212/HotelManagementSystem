@@ -22,8 +22,9 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $roles = Role::all();
         $users = $this->users->search($request->all());
-        return view('AdminPage.users.index', compact('users'));
+        return view('AdminPage.users.index', compact('users', 'roles'));
     }
 
     /**
