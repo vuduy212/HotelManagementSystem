@@ -115,7 +115,7 @@ class User extends Authenticatable
     public function search(array $data)
     {
         $userName = array_key_exists('key', $data) ? $data['key'] : null;
-        $role_id = array_key_exists('key', $data) ? $data['role_id'] : null;
+        $role_id = array_key_exists('filter_role', $data) ? $data['filter_role'] : null;
 
         return $this
                     ->WhereHasRoles($role_id)

@@ -41,7 +41,7 @@ class Room extends Model
     public function search(array $data)
     {
         $roomName = array_key_exists('key', $data) ? $data['key'] : null;
-        $category = array_key_exists('category_id', $data) ? $data['category_id'] : null;
+        $category = array_key_exists('filter_category', $data) ? $data['filter_category'] : null;
 
         return $this
                     ->SearchRoomName($roomName)
