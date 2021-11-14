@@ -3,7 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
+            <h1 class="mt-4">Room Order</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Welcome to Room Order !!</li>
+            </ol>
             <div class="card">
                 <div class="card-header">{{ __('Order') }}</div>
 
@@ -33,7 +37,7 @@
                                 </select>
                             </div>
                         </div>
-
+                        <br>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Date Start') }}</label>
                             <div class="col-md-6">
@@ -45,7 +49,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <br>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Date Finish') }}</label>
                             <div class="col-md-6">
@@ -57,7 +61,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <br>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
                             <div class="col-md-6">
@@ -69,7 +73,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <br>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('CMND') }}</label>
                             <div class="col-md-6">
@@ -81,7 +85,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <br>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Phone number') }}</label>
                             <div class="col-md-6">
@@ -93,7 +97,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <br>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
                             <div class="col-md-6">
@@ -105,7 +109,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <br>
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">Payment method</label>
                             <div class="col-md-6">
@@ -119,7 +123,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <br>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

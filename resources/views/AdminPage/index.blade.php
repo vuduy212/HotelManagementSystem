@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container-fluid px-4">
+<div class="container">
     <h1 class="mt-4">Hotel management</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Welcome {{ Auth::user()->name }} to Hotel management !!</li>

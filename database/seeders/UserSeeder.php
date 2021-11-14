@@ -20,9 +20,10 @@ class UserSeeder extends Seeder
         $adminRole = Role::where('id', '1')->first();
         $room_managerRole = Role::where('id', '2')->first();
         $receptionistRole = Role::where('id', '3')->first();
+        $clientRole = Role::where('id', '4')->first();
 
         $qtv = User::updateOrCreate([
-            'name' => 'Quan Tri Vien',
+            'name' => 'Que Anh',
             'email' => 'qtv@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
@@ -30,7 +31,7 @@ class UserSeeder extends Seeder
         $qtv->roles()->attach($adminRole);
 
         $letan = User::updateOrCreate([
-            'name' => 'Le Tan',
+            'name' => 'Mai Anh',
             'email' => 'letan@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
@@ -38,7 +39,7 @@ class UserSeeder extends Seeder
         $letan->roles()->attach($receptionistRole);
 
         $qlp = User::updateOrCreate([
-            'name' => 'Quan Ly Phong',
+            'name' => 'Pham Tu',
             'email' => 'qlp@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
@@ -46,7 +47,7 @@ class UserSeeder extends Seeder
         $qlp->roles()->attach($room_managerRole);
 
         $superAdmin = User::updateOrCreate([
-            'name' => 'Super Admin',
+            'name' => 'Tran Kien',
             'email' => 'super_admin@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
@@ -54,5 +55,14 @@ class UserSeeder extends Seeder
         $superAdmin->roles()->attach($receptionistRole);
         $superAdmin->roles()->attach($room_managerRole);
         $superAdmin->roles()->attach($adminRole);
+        $superAdmin->roles()->attach($clientRole);
+
+        $client = User::updateOrCreate([
+            'name' => 'Vu Duy',
+            'email' => 'vuduy@gmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
+
+        $client->roles()->attach($clientRole);
     }
 }
