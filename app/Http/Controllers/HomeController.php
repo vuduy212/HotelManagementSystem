@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RoomCategories;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('AdminPage/index');
+        $roomCategories = RoomCategories::all();
+        return view('AdminPage/index', compact('roomCategories'));
     }
 
     public function denies()
