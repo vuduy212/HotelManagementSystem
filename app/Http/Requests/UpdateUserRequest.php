@@ -29,7 +29,6 @@ class UpdateUserRequest extends FormRequest
                 'required',
                 new StrLengthRule()
             ],
-            'email' => 'required|unique:users,email',
         ];
     }
 }
