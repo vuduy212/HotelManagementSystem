@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,39 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Paginator::useBootstrap();
+
+        $this->customIfStatementAdmin();
+        $this->customIfStatementReceptionist();
+        $this->customIfStatementRoomManager();
+        $this->customIfStatementClient();
+    }
+
+    public function customIfStatementAdmin()
+    {
+        Blade::if('admin', function () {
+            return auth()->user()->hasRole(['admin']);
+        });
+    }
+
+    public function customIfStatementReceptionist()
+    {
+        Blade::if('receptionist', function () {
+            return auth()->user()->hasRole(['receptionist']);
+        });
+    }
+
+    public function customIfStatementRoomManager()
+    {
+        Blade::if('room_manager', function () {
+            return auth()->user()->hasRole(['room_manager']);
+        });
+    }
+
+    public function customIfStatementClient()
+    {
+        Blade::if('client', function () {
+            return auth()->user()->hasRole(['client']);
+        });
     }
 }
