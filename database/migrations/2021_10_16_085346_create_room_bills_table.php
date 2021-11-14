@@ -15,13 +15,14 @@ class CreateRoomBillsTable extends Migration
     {
         Schema::create('room_bills', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('category_id')->unsigned();
+            $table->date('date_start');
+            $table->date('date_finish');
             $table->string('client_name');
-            $table->string('ID_card');
-            $table->float('phone');
-            $table->string('email');
-            $table->string('address');
-            $table->integer('payment_method');
-            $table->float('total_money');
+            $table->string('CMND');
+            $table->string('phone');
+            $table->string('email')->nullable();
+            $table->integer('payment');
             $table->integer('bill_status');
             $table->timestamps();
         });
