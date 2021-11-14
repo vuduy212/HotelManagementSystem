@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
 
         <div class="col-md-12">
-            <h1 class="mt-4">Room Categories Management</h1>
+            <h1 class="mt-4">Room Categories</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Welcome to Room Categories Management !!</li>
+                <li class="breadcrumb-item active">Welcome to Room Categories !!</li>
             </ol>
             <div class="card">
                 <div class="card-header">

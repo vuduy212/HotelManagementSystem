@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\RoomBillController;
 use App\Http\Controllers\RoomCategoriesController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomStatusController;
 use App\Http\Controllers\UserController;
+use App\Models\RoomBill;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -76,5 +78,17 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::put('/{roomStatus}', [$class, 'update'])->name('update');
         Route::delete('/{roomStatus}', [$class, 'destroy'])->name('destroy');
         Route::get('/{roomStatus}/edit', [$class, 'edit'])->name('edit');
+    });
+
+    /*------ Route Room's order ------*/
+    Route::prefix('bills')->name('bills.')->group(function () {
+        $class = RoomBillController::class;
+        Route::get('/', [$class, 'index'])->name('index');
+        Route::get('/create', [$class, 'create'])->name('create');
+        Route::post('/', [$class, 'store'])->name('store');
+        Route::get('/{roomBill}', [$class, 'show'])->name('show');
+        Route::put('/{roomBill}', [$class, 'update'])->name('update');
+        Route::delete('/{roomBill}', [$class, 'destroy'])->name('destroy');
+        Route::get('/{roomBill}/edit', [$class, 'edit'])->name('edit');
     });
 });
