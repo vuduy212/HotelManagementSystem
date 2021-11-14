@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         $this->customIfStatementAdmin();
         $this->customIfStatementReceptionist();
         $this->customIfStatementRoomManager();
+        $this->customIfStatementClient();
     }
 
     public function customIfStatementAdmin()
@@ -50,6 +51,13 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::if('room_manager', function () {
             return auth()->user()->hasRole(['room_manager']);
+        });
+    }
+
+    public function customIfStatementClient()
+    {
+        Blade::if('client', function () {
+            return auth()->user()->hasRole(['client']);
         });
     }
 }
