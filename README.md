@@ -13,8 +13,6 @@ Website Quản lý khách sạn
 
 ## Install
 
-Mở Git Bash và chạy các câu lệnh lần lượt
-
 1. Clone:
 - HTTPS: git clone https://gitlab.com/vuduy0212/cnpm.git
 - SSH: git clone git@gitlab.com:vuduy0212/cnpm.git
@@ -22,18 +20,12 @@ Mở Git Bash và chạy các câu lệnh lần lượt
 2. Install Package
 - composer install
 - npm install
+- npm run dev
 
 3. Tạo database và config database
 - Tạo database có tên khachsan trên phần mềm quản lý mysql
 - cp .env.example .env
-- Cập nhật file env:
-
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=khachsan
-DB_USERNAME=root
-DB_PASSWORD=root
+- Cập nhật file env: DB_DATABASE=khachsan
 
 4. Tạo key
 - php artisan key:generate
