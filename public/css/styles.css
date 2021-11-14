@@ -11690,4 +11690,10 @@ body {
 .image-show{
     display: block;
     width: 250px;
+    height: 200px;
+}
+
+.image-slide{
+    width: 1300px;
+    height: 350px;
 }
