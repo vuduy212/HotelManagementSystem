@@ -2,19 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRoomBillRequest;
+use App\Http\Requests\UpdateRoomBillRequest;
 use App\Models\RoomBill;
+use App\Models\RoomCategories;
 use Illuminate\Http\Request;
 
 class RoomBillController extends Controller
 {
+    protected $bills;
+
+    public function __construct(RoomBill $bills)
+    {
+        $this->bills = $bills;
+        //$this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        //$bills = RoomBill::all();
+        $bills = $this->bills->search($request->all());
+        $roomCategories = RoomCategories::all();
+        return view('AdminPage.room_bills.index', compact('bills', 'roomCategories'));
     }
 
     /**
@@ -24,7 +37,9 @@ class RoomBillController extends Controller
      */
     public function create()
     {
-        //
+        $bills = RoomBill::all();
+        $roomCategories = RoomCategories::all();
+        return view('AdminPage.room_bills.create', compact('bills', 'roomCategories'));
     }
 
     /**
@@ -33,9 +48,12 @@ class RoomBillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRoomBillRequest $request)
     {
-        //
+        $this->bills->saveBill($request);
+        return view("AdminPage.room_bills.success");
+        // $roomBill = $this->bills;
+        // return redirect(route('bills.show', $roomBill));
     }
 
     /**
@@ -46,7 +64,7 @@ class RoomBillController extends Controller
      */
     public function show(RoomBill $roomBill)
     {
-        //
+        return view("AdminPage.room_bills.show", compact('roomBill'));
     }
 
     /**
@@ -57,7 +75,7 @@ class RoomBillController extends Controller
      */
     public function edit(RoomBill $roomBill)
     {
-        //
+        return view("AdminPage.room_bills.edit", compact('roomBill'));
     }
 
     /**
@@ -67,9 +85,15 @@ class RoomBillController extends Controller
      * @param  \App\Models\RoomBill  $roomBill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RoomBill $roomBill)
+    public function update(UpdateRoomBillRequest $request, RoomBill $roomBill)
     {
-        //
+        $roomBill->bill_status = $request->bill_status;
+        $roomBill->payment = $request->payment;
+        $roomBill->date_start = $request->date_start;
+        $roomBill->date_finish = $request->date_finish;
+        $roomBill->save();
+
+        return redirect()->route('bills.index');
     }
 
     /**
@@ -80,6 +104,7 @@ class RoomBillController extends Controller
      */
     public function destroy(RoomBill $roomBill)
     {
-        //
+        $roomBill->delete();
+        return redirect()->route('bills.index');
     }
 }
