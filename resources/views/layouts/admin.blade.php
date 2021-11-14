@@ -111,25 +111,34 @@
 
                             @room_manager
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <a href="{{ route('rooms.index') }}" class="nav-link collapsed">Room Management</a>
+                                <a href="{{ route('rooms.index') }}" class="nav-link collapsed">Rooms Management</a>
                             </a>
                             @endif
 
                             <a href="{{ route('categories.index') }}" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <a href="{{ route('categories.index') }}" class="nav-link collapsed">Room Category Management</a>
+                                <a href="{{ route('categories.index') }}" class="nav-link collapsed">Room Categories</a>
                             </a>
 
                             @receptionist
                             <a href="{{ route('categories.index') }}" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <a href="{{ route('status.index') }}" class="nav-link collapsed">Room Status Management</a>
+                                <a href="{{ route('status.index') }}" class="nav-link collapsed">Statuses Management</a>
                             </a>
-                            @endif
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 {{-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> --}}
-                                Room Order Management
+                                <a href="{{ route('bills.index') }}" class="nav-link collapsed">Orders Management</a>
                                 {{-- <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> --}}
                             </a>
+                            @endif
+
+                            @client
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                {{-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> --}}
+                                <a href="{{ route('bills.create') }}" class="nav-link collapsed">Order</a>
+                                {{-- <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> --}}
+                            </a>
+                            @endif
+
                             {{-- <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="layout-static.html">Static Navigation</a>

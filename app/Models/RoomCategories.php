@@ -24,6 +24,11 @@ class RoomCategories extends Model
         return $this->hasMany(Room::class);
     }
 
+    public function bills()
+    {
+        return $this->hasMany(RoomBill::class);
+    }
+
     public function getImage()
     {
         return asset("images/room_categories/".$this->images);

@@ -27,6 +27,7 @@ class CreateUserRequest extends FormRequest
         return [
             'name' => [
                 'required',
+                'alpha',
                 new StrLengthRule()
             ],
             'email' => 'required|unique:users,email',

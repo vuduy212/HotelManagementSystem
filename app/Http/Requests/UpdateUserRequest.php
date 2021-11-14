@@ -27,6 +27,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => [
                 'required',
+                'alpha',
                 new StrLengthRule()
             ],
         ];
