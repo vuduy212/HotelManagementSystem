@@ -78,7 +78,6 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all();
-        $user->email = $user->email . '-edited';
         return view("AdminPage.users.edit")->with([
             'user' => $user,
             'roles' => $roles
@@ -99,11 +98,14 @@ class UserController extends Controller
             $roles = [
                 'client' => '4'
             ];
+            $user->roles()->sync($roles);
         }
-        $user->roles()->sync($roles);
+        else
+        {
+            $user->roles()->sync($request->roles);
+        }
 
         $user->name = $request->name;
-        $user->email = $request->email;
         $user->save();
 
         return redirect()->route('users.index');
