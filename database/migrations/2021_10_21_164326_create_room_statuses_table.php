@@ -19,6 +19,7 @@ class CreateRoomStatusesTable extends Migration
             $table->boolean('status');
             $table->date('time');
             $table->timestamps();
+            $table->unique(['room_id', 'time']);
         });
     }
 
