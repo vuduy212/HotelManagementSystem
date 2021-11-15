@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Rules\StrLengthRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CreateRoomStatusRequest extends FormRequest
 {
@@ -25,8 +26,13 @@ class CreateRoomStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'time' => 'required|date_format:"Y-m-d"',
-            'status' => 'required'
+            'status' => 'required',
+            'room_id' => 'required',
+            'time' => ['required','date_format:"Y-m-d"',
+                    Rule::unique('room_statuses')
+                                    // ->ignore($this->user)
+                                    ->where('room_id', $this->room_id)
+            ]
         ];
     }
 }
