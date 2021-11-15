@@ -6,7 +6,9 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
+use App\Rules\StrLengthRule;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -91,8 +93,19 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(Request $request, User $user)
     {
+        $this->validate($request, [
+            'name' => [
+                'required',
+                'alpha',
+                new StrLengthRule()
+            ],
+            'email' => ['required', 'string', 'email', 'max:255',
+                Rule::unique('users')->ignore($user),
+            ],
+        ]);
+
         if(empty($request->roles))
         {
             $roles = [
@@ -106,6 +119,7 @@ class UserController extends Controller
         }
 
         $user->name = $request->name;
+        $user->email = $request->email;
         $user->save();
 
         return redirect()->route('users.index');
