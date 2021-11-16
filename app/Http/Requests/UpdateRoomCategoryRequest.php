@@ -27,11 +27,12 @@ class UpdateRoomCategoryRequest extends FormRequest
         return [
             'category_name' => [
                 'required',
+                'unique:room_categories',
                 'alpha_dash',
                 new StrLengthRule()
             ],
             'description' => 'required|min:6|max:255',
-            'price' => 'numeric|min:100|max:999',
+            'price' => 'numeric|min:100|max:2000',
         ];
     }
 }

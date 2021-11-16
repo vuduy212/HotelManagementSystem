@@ -47,7 +47,7 @@ class Room extends Model
                     ->SearchRoomName($roomName)
                     ->WhereHasCategory($category)
                     ->latest('id')
-                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 2);
+                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
     }
 
     public function scopeSearchRoomName($query, $roomName)

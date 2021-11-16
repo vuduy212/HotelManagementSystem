@@ -11,13 +11,7 @@
             </ol>
             <div class="card">
                 <form action="{{ route("bills.index") }}" method="GET" class="md-3 d-flex">
-                    {{-- <select name="filter_payment">
-                        <option value="">Filter by Payment</option>
-                        @foreach ($bills as $bill)
-                            <option value="{{ $bill->date_start }}" {{ request('date_start') == $bill->id ? "selected":"" }}> {{ $bill->name }}</option>
-                        @endforeach
-                    </select> --}}
-
+                    
                     <select name="filter_status">
                         <option value="">Filter by Status</option>
                         <option name="bill_status" value="0">Unconfirmed</option>
@@ -29,8 +23,10 @@
                     <input type="text" class="form-control" placeholder="Enter phonenumber..." name="key" value="{{ request('key') }}">
                     <input type="text" class="form-control" placeholder="Enter date start..." name="filter_date_start" value="{{ request('date_start') }}">
                     <input type="text" class="form-control" placeholder="Enter date finish..." name="filter_date_finish" value="{{ request('date_end') }}">
+                    <input type="text" class="form-control" placeholder="Enter number per page" name="number" value="{{ request('number') }}">
 
-                    <button type="submit" class="btn btn-success">Search</button>
+
+                    <button type="submit" class="btn btn-success">Submit</button>
                 </form>
                 <div class="card-body">
 

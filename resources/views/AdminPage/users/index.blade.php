@@ -20,11 +20,12 @@
                     <select name="filter_role">
                         <option value="">Filter by Role</option>
                         @foreach ($roles as $role)
-                            <option value="{{ $role->id }}" {{ request('role_id') == $role->id ? "selected":"" }}> {{ $role->name }}</option>
+                            <option value="{{ $role->id }}" {{ request('filter_role') == $role->id ? "selected":"" }}> {{ $role->name }}</option>
                         @endforeach
                     </select>
 
                     <input type="text" class="form-control" placeholder="Enter Username..." name="key" value="{{ request('key') }}">
+                    <input type="text" class="form-control" placeholder="Enter number per page" name="number" value="{{ request('number') }}">
 
                     <button type="submit" class="btn btn-success">Search</button>
                 </form>

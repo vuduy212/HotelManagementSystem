@@ -27,6 +27,7 @@ class CreateRoomRequest extends FormRequest
         return [
             'room_name' => [
                 'required',
+                'unique:rooms',
                 'alpha_dash',
                 new StrLengthRule()
             ],
