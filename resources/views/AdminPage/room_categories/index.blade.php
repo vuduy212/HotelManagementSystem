@@ -16,7 +16,15 @@
                     @endif
                 </div>
                 <form action="{{ route('categories.index') }}" method="GET" class="md-3 d-flex">
+                    <select name="sort_by_price">
+                        <option value="">Sort by price</option>
+                        <option name="price" value="ascending">Ascending</option>
+                        <option name="price" value="descending">Descending</option>
+                    </select>
+
                     <input type="text" class="form-control" name="key" value="{{request('key')}}" placeholder="Enter Room Category">
+                    <input type="text" class="form-control" placeholder="Enter number per page" name="number" value="{{ request('number') }}">
+                    
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>
                 <div class="card-body">
@@ -57,7 +65,7 @@
                             @endforeach
                         </tbody>
                       </table>
-                      {{$roomCategories->appends(request()->only('key','number'))->links()}}
+                      {{$roomCategories->appends(request()->only('key','number','sort_by_price'))->links()}}
                 </div>
             </div>
         </div>

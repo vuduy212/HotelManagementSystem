@@ -21,11 +21,12 @@
                     <select name="filter_category">
                         <option value="">Filter by Category</option>
                         @foreach ($roomCategories as $category)
-                            <option value="{{ $category->id }}" {{ request('category') == $category->id ? "selected":"" }}> {{ $category->category_name }}</option>
+                            <option value="{{ $category->id }}" {{ request('filter_category') == $category->id ? "selected":"" }}> {{ $category->category_name }}</option>
                         @endforeach
                     </select>
 
                     <input type="text" class="form-control" placeholder="Enter room's name..." name="key" value="{{ request('key') }}">
+                    <input type="text" class="form-control" placeholder="Enter number per page" name="number" value="{{ request('number') }}">
 
                     <button type="submit" class="btn btn-success">Search</button>
                 </form>

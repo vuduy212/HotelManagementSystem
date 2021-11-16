@@ -108,8 +108,29 @@ class RoomCategories extends Model
     public function search(array $data)
     {
         $roomCategoryName = array_key_exists('key', $data) ? $data['key'] : null;
+        $filterPrice = array_key_exists('sort_by_price', $data) ? $data['sort_by_price'] : null;
 
-        return $this->SearchRoomCategoryName($roomCategoryName)->latest('id')->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+        if($filterPrice == 'ascending')
+        {
+            return $this
+                    ->SearchRoomCategoryName($roomCategoryName)
+                    ->orderBy('price')
+                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
+        }
+        elseif ($filterPrice == 'descending')
+        {
+            return $this
+                    ->SearchRoomCategoryName($roomCategoryName)
+                    ->orderBy('price', 'desc')
+                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
+        }
+        else
+        {
+            return $this
+                    ->SearchRoomCategoryName($roomCategoryName)
+                    ->latest('id')
+                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
+        }
     }
 
     public function scopeSearchRoomCategoryName($query, $roomCategoryName)
