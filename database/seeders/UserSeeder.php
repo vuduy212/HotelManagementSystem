@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
         $clientRole = Role::where('id', '4')->first();
 
         $qtv = User::updateOrCreate([
-            'name' => 'Que Anh',
+            'name' => 'Sơn',
             'email' => 'qtv@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
         $qtv->roles()->attach($adminRole);
 
         $letan = User::updateOrCreate([
-            'name' => 'Mai Anh',
+            'name' => 'Bảo',
             'email' => 'letan@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         $letan->roles()->attach($receptionistRole);
 
         $qlp = User::updateOrCreate([
-            'name' => 'Pham Tu',
+            'name' => 'An',
             'email' => 'qlp@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
         $qlp->roles()->attach($room_managerRole);
 
         $superAdmin = User::updateOrCreate([
-            'name' => 'Tran Kien',
+            'name' => 'Minh',
             'email' => 'super_admin@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
@@ -58,8 +58,8 @@ class UserSeeder extends Seeder
         $superAdmin->roles()->attach($clientRole);
 
         $client = User::updateOrCreate([
-            'name' => 'Vu Duy',
-            'email' => 'vuduy@gmail.com',
+            'name' => 'Duy',
+            'email' => 'client@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
 

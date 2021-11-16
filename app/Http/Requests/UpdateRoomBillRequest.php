@@ -24,7 +24,7 @@ class UpdateRoomBillRequest extends FormRequest
     public function rules()
     {
         return [
-            'date_start' => 'required|date_format:"Y-m-d"|after:tomorrow',
+            'date_start' => 'required|date_format:"Y-m-d"',
             'date_finish' => 'required|date_format:"Y-m-d"|after_or_equal:date_start',
         ];
     }
