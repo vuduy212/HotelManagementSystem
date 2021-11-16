@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Create New Room') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('rooms.store') }}">
@@ -14,7 +14,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Room Name') }}</label>
                             <div class="col-md-6">
-                                <input id="room_name" name="room_name" type="text" class="form-control @error('room_name') is-invalid @enderror" >
+                                <input id="room_name" value="{{ old('room_name') }}" name="room_name" type="text" class="form-control @error('room_name') is-invalid @enderror" >
                                 @error('room_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -26,7 +26,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
                             <div class="col-md-6">
-                                <input id="description" name="description" type="text" class="form-control @error('description') is-invalid @enderror" >
+                                <input id="description" value="{{ old('description') }}" name="description" type="text" class="form-control @error('description') is-invalid @enderror" >
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
