@@ -17,6 +17,9 @@
                             <th scope="col">Description</th>
                             <th scope="col">Images</th>
                             <th scope="col">Price</th>
+                            @client
+                            <th scope="col">Action</th>
+                            @endif
                           </tr>
                         </thead>
                         <tbody>
@@ -26,6 +29,9 @@
                                 <td>{{$roomCategories->description}}</td>
                                 <td><img src="{{ $roomCategories->getImage() }}" alt="{{ $roomCategories->name }}" class="image-show"></td>
                                 <td>{{$roomCategories->price}}</td>
+                                <td>
+                                <a href="{{route('categories.select', $roomCategories->id)}}"><button type="button" class="btn btn-danger">Order</button></a>
+                                </td>
                               </tr>
                         </tbody>
                       </table>

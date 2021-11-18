@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateRoomCategoryRequest;
 use App\Http\Requests\UpdateRoomCategoryRequest;
+use App\Models\RoomBill;
 use App\Models\RoomCategories;
+use App\Rules\StrLengthRule;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class RoomCategoriesController extends Controller
 {
@@ -36,6 +39,17 @@ class RoomCategoriesController extends Controller
     public function create()
     {
         return view('AdminPage.room_categories.create');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SelectCategoryOrder(RoomCategories $roomCategories)
+    {
+        $bills = RoomBill::all();
+        return view('AdminPage.room_bills.selected', compact('bills', 'roomCategories'));
     }
 
     /**
@@ -83,8 +97,18 @@ class RoomCategoriesController extends Controller
      * @param  \App\Models\RoomCategories  $roomCategories
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRoomCategoryRequest $request, RoomCategories $roomCategories)
+    public function update(Request $request, RoomCategories $roomCategories)
     {
+        $this->validate($request, [
+            'category_name' => [
+                'required',
+                'alpha_dash',
+                Rule::unique('room_categories')->ignore($roomCategories),
+                new StrLengthRule()
+            ],
+            'description' => 'required|min:6|max:255',
+            'price' => 'numeric|min:100|max:2000',
+        ]);
         $roomCategories->updateCategory($request, $roomCategories);
         return redirect()->route('categories.index');
     }
@@ -97,7 +121,7 @@ class RoomCategoriesController extends Controller
      */
     public function destroy(RoomCategories $roomCategories)
     {
-        $path = '/images/room_categories/' . $roomCategories->images;
+        $path = public_path().'/images/room_categories/' . $roomCategories->images;
         $roomCategories->deleteFile($path);
         $roomCategories->delete();
         return redirect()->route('categories.index');

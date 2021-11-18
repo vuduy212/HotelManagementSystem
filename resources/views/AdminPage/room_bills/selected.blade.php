@@ -16,12 +16,10 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">Select Room Category</label>
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Selected Room Category</label>
                             <div class="col-md-6">
                                 <select name="category_id" class="form-select form-select-sm">
-                                    @foreach ($roomCategories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                    @endforeach
+                                    <option value="{{ $roomCategories->id }}">{{ $roomCategories->category_name }}</option>
                                 </select>
                             </div>
                         </div>

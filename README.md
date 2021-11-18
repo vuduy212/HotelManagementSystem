@@ -22,22 +22,32 @@ Website Quản lý khách sạn
 - npm install
 - npm run dev
 
-3. Tạo database và config database
-- Tạo database có tên khachsan trên phần mềm quản lý mysql
+3. Create and connect database
+- Create database 'khachsan' by using Phpmyadmin
 - cp .env.example .env
-- Cập nhật file env: DB_DATABASE=khachsan
+- env: DB_DATABASE=khachsan
 
-4. Tạo key
+4. Add key
 - php artisan key:generate
 
-5. Tạo ra các bảng và dữ liệu mẫu cho database
+5. Create tables and data samples
 - php artisan migrate
 - php artisan db:seed
-- php artisan db:seed --class='UserSeeder'
 
-6. Chạy trên web và đăng nhập để sử dụng
-- Username: super_admin@gmail.com
-- Password: 12345678
+6. Login
+*Role: client
+- Username: client@gmail.com
+
+*Role: admin
+- Username: qtv@gmail.com
+
+*Role: receptionist
+- Username: letan@gmail.com
+
+*Role: room manager
+- Username: qlp@gmail.com
+
+Password: 12345678
 
 ## Laravel Sponsors
 
