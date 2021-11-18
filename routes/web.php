@@ -54,6 +54,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::put('/{roomCategories}', [$class, 'update'])->name('update');
         Route::delete('/{roomCategories}', [$class, 'destroy'])->name('destroy');
         Route::get('/{roomCategories}/edit', [$class, 'edit'])->name('edit');
+        Route::get('/{roomCategories}/select', [$class, 'SelectCategoryOrder'])->name('select');
     });
 
     /*------ Route Room ------*/

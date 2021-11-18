@@ -15,39 +15,15 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
-
+        //User::truncate();
+        
         $adminRole = Role::where('id', '1')->first();
         $room_managerRole = Role::where('id', '2')->first();
         $receptionistRole = Role::where('id', '3')->first();
         $clientRole = Role::where('id', '4')->first();
-
-        $qtv = User::updateOrCreate([
-            'name' => 'Sơn',
-            'email' => 'qtv@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-
-        $qtv->roles()->attach($adminRole);
-
-        $letan = User::updateOrCreate([
-            'name' => 'Bảo',
-            'email' => 'letan@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-
-        $letan->roles()->attach($receptionistRole);
-
-        $qlp = User::updateOrCreate([
-            'name' => 'An',
-            'email' => 'qlp@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-
-        $qlp->roles()->attach($room_managerRole);
-
+        
         $superAdmin = User::updateOrCreate([
-            'name' => 'Minh',
+            'name' => 'Bảo',
             'email' => 'super_admin@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
@@ -56,9 +32,34 @@ class UserSeeder extends Seeder
         $superAdmin->roles()->attach($room_managerRole);
         $superAdmin->roles()->attach($adminRole);
         $superAdmin->roles()->attach($clientRole);
+        
+        $qtv = User::updateOrCreate([
+            'name' => 'Duy',
+            'email' => 'qtv@gmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
+
+        $qtv->roles()->attach($adminRole);
+
+        $letan = User::updateOrCreate([
+            'name' => 'Quế',
+            'email' => 'letan@gmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
+
+        $letan->roles()->attach($receptionistRole);
+
+        $qlp = User::updateOrCreate([
+            'name' => 'Thủy',
+            'email' => 'qlp@gmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
+
+        $qlp->roles()->attach($room_managerRole);
+
 
         $client = User::updateOrCreate([
-            'name' => 'Duy',
+            'name' => 'Sơn',
             'email' => 'client@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
