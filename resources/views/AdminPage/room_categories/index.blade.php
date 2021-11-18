@@ -37,9 +37,7 @@
                             <th scope="col">Description</th>
                             <th scope="col">Images</th>
                             <th scope="col">Price</th>
-                            @room_manager
                             <th scope="col">Actions</th>
-                            @endif
                           </tr>
                         </thead>
                         <tbody>
@@ -51,8 +49,8 @@
                                 <td><img src="{{ $category->getImage() }}" alt="{{ $category->name }}" class="image-show"></td>
                                 <td>{{$category->price}} $</td>
                                 <td>
-                                    @room_manager
                                     <a href="{{ route('categories.show', $category->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a>
+                                    @room_manager
                                     <a href="{{ route('categories.edit', $category->id) }}"><button type="button" class="btn btn-warning">EDIT</button>
                                     <form action="{{ route('categories.destroy', $category) }}" method="POST" class="float-left">
                                         @csrf

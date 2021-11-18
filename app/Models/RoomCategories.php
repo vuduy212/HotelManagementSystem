@@ -34,18 +34,6 @@ class RoomCategories extends Model
         return asset("images/room_categories/".$this->images);
     }
 
-    // public function saveCategory(Request $data)
-    // {
-    //     $category = $this->create([
-    //         'category_name' => $data['category_name'],
-    //         'description' => $data['description'],
-    //         'images' => $data['images'],
-    //         'price' => $data['price'],
-    //     ]);
-
-    //     return $category;
-    // }
-
     public function store(Request $request)
     {
         $data = [
@@ -81,7 +69,6 @@ class RoomCategories extends Model
     {
         if(file_exists($path))
         {
-            //unlink($path);
             File::delete($path);
         }
     }
@@ -94,7 +81,7 @@ class RoomCategories extends Model
 
         if($request->hasFile('images'))
         {
-            $path = '/images/room_categories/' . $roomCategories->images;
+            $path = public_path().'/images/room_categories/' . $roomCategories->images;
             $this->deleteFile($path);
             $roomCategories['images'] = $this->saveFile($request, 'images');
         }
@@ -128,7 +115,7 @@ class RoomCategories extends Model
         {
             return $this
                     ->SearchRoomCategoryName($roomCategoryName)
-                    ->latest('id')
+                    ->oldest('id')
                     ->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
         }
     }

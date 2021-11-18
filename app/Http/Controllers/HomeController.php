@@ -28,8 +28,8 @@ class HomeController extends Controller
         return view('AdminPage/index', compact('roomCategories'));
     }
 
-    public function denies()
-    {
-        return view('denies');
-    }
+    // public function denies()
+    // {
+    //     return view('denies');
+    // }
 }

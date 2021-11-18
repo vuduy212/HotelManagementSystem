@@ -15,18 +15,6 @@
                     <form method="POST" action="{{ route('bills.store') }}">
                         @csrf
 
-                        {{-- <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">Room</label>
-                            <div class="col-md-6">
-                                @foreach ($rooms as $room)
-                                    <div class="form-check">
-                                        <input type="radio" name="room_name" value="{{ $room->room_name }}">
-                                        <label for="">{{ $room->room_name }}</label>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div> --}}
-
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">Select Room Category</label>
                             <div class="col-md-6">
