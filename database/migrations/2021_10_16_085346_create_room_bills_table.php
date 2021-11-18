@@ -24,6 +24,7 @@ class CreateRoomBillsTable extends Migration
             $table->string('email')->nullable();
             $table->integer('payment');
             $table->integer('bill_status');
+            $table->foreign('category_id')->references('id')->on('room_categories');
             $table->timestamps();
         });
     }
