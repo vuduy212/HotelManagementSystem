@@ -30,7 +30,7 @@
                         <option name="status" value="1" {{ request('filter_status') == '1' ? "selected":"" }}>Used</option>
                     </select>
                     <br>
-                    <input type="text" class="form-control" placeholder="Enter time" name="key" value="{{ request('key') }}">
+                    <input type="date" class="form-control" placeholder="Enter time" name="key" value="{{ request('key') }}">
                     <br>
                     <input type="text" class="form-control" placeholder="Enter number per page" name="number" value="{{ request('number') }}">
                     <br>

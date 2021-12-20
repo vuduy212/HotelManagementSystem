@@ -29,7 +29,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Date Start* (dd-mm-YYYY)</label>
                             <div class="col-md-6">
-                                <input id="date_start" value="{{ old('date_start') }}" name="date_start" type="text" class="form-control @error('date_start') is-invalid @enderror" >
+                                <input id="date_start" value="{{ old('date_start') }}" name="date_start" type="date" class="form-control @error('date_start') is-invalid @enderror" >
                                 @error('date_start')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Date Finish* (dd-mm-YYYY)</label>
                             <div class="col-md-6">
-                                <input id="date_finish" value="{{ old('date_finish') }}" name="date_finish" type="text" class="form-control @error('date_finish') is-invalid @enderror" >
+                                <input id="date_finish" value="{{ old('date_finish') }}" name="date_finish" type="date" class="form-control @error('date_finish') is-invalid @enderror" >
                                 @error('date_finish')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -21,8 +21,8 @@
                     </select>
 
                     <input type="text" class="form-control" placeholder="Enter phonenumber..." name="key" value="{{ request('key') }}">
-                    <input type="text" class="form-control" placeholder="Enter date start..." name="filter_date_start" value="{{ request('date_start') }}">
-                    <input type="text" class="form-control" placeholder="Enter date finish..." name="filter_date_finish" value="{{ request('date_end') }}">
+                    <input type="date" class="form-control" placeholder="Enter date start..." name="filter_date_start" value="{{ request('date_start') }}">
+                    <input type="date" class="form-control" placeholder="Enter date finish..." name="filter_date_finish" value="{{ request('date_end') }}">
                     <input type="text" class="form-control" placeholder="Enter number per page" name="number" value="{{ request('number') }}">
 
                     <button type="submit" class="btn btn-success">Submit</button>
