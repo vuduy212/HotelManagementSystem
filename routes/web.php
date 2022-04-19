@@ -40,7 +40,10 @@ Route::prefix('client')->name('client.')->group(function () {
     Route::get('/details', [$class, 'details'])->name('details');
     Route::get('/reservation', [$class, 'reservation'])->name('reservation');
     Route::get('/rooms', [$class, 'rooms'])->name('rooms');
+    Route::get('/book', [$class, 'book'])->name('book');
 });
+
+Route::post('/', [RoomBillController::class, 'store'])->name('store');
 
 /*------ Admin ------*/
 Route::prefix('admin')->middleware('auth')->group(function () {

@@ -57,12 +57,12 @@ class RoomBill extends Model
         $date_finish = array_key_exists('filter_date_finish', $data) ? $data['filter_date_finish'] : null;
 
         return $this
-                    ->SearchStatus($filterStatus)
-                    ->SearchPhone($phone)
-                    ->SearchDateStart($date_start)
-                    ->SearchDateFinish($date_finish)
-                    ->latest('id')
-                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+            ->SearchStatus($filterStatus)
+            ->SearchPhone($phone)
+            ->SearchDateStart($date_start)
+            ->SearchDateFinish($date_finish)
+            ->latest('id')
+            ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
     }
 
     public function scopeSearchStatus($query, $filterStatus)

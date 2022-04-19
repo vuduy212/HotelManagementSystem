@@ -14,10 +14,10 @@
                     <div class="slide_content">
                         <div class="slide_content_wrap">
                             <!-- Text title -->
-                            <h4 class="title"><i class="bg"></i>Lorem Ipsum is simply <span
-                                    class="hide">dummy text</span></h4>
-                            <h5 class="title1"><i class="bg"></i>Morbi justo <span
-                                    class="hide">condimentum accumsan</span></h5>
+                            <h4 class="title"><i class="bg"></i>Paradise <span
+                                    class="hide">Hotel</span></h4>
+                            <h5 class="title1"><i class="bg"></i>Cau Giay, <span class="hide">Ha
+                                    Noi</span></h5>
                             <!-- /Text title -->
                         </div>
                     </div>
@@ -29,10 +29,10 @@
                     <div class="slide_content">
                         <div class="slide_content_wrap">
                             <!-- Text title -->
-                            <h4 class="title"><i class="bg"></i>Morbi justo <span
-                                    class="hide"> condimentum </span>text</h4>
-                            <h5 class="title1"><i class="bg"></i>Lorem Ipsum is <span
-                                    class="hide">simply dummy text</span> </h5>
+                            <h4 class="title"><i class="bg"></i>Paradise <span
+                                    class="hide">Hotel </span>text</h4>
+                            <h5 class="title1"><i class="bg"></i>Paper Bridge, <span
+                                    class="hide">Ha Noi</span> </h5>
                             <!-- /Text title -->
                         </div>
                     </div>
@@ -55,41 +55,41 @@
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
                     </div>
                     <div class="reservation">
-                        <ul>
-                            <li class="span1_of_1">
-                                <h5>type of room:</h5>
-                                <!----------start section_room----------->
-                                <div class="section_room">
-                                    <select id="country" onchange="change_country(this.value)" class="frm-field required">
-                                        <option value="null">Select a type of room</option>
-                                        <option value="null">Suite room</option>
-                                        <option value="AX">Single room</option>
-                                        <option value="AX">Double room</option>
-                                    </select>
-                                </div>
-                            </li>
-                            <li class="span1_of_1 left">
-                                <h5>check-in-date:</h5>
-                                <div class="book_date">
-                                    <form>
-                                        <input class="date" id="datepicker" type="text" value="DD/MM/YY"
-                                            onfocus="this.value = '';"
+                        <form method="GET" action="{{ route('client.book') }}">
+                            @csrf
+                            <ul>
+                                <li class="span1_of_1">
+                                    <h5>Type of room:</h5>
+                                    <!----------start section_room----------->
+                                    <div class="section_room">
+                                        <select id="country" onchange="change_country(this.value)"
+                                            class="frm-field required" name="room_category">
+                                            <option value="null">Select a type of room</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->category_name }}">
+                                                    {{ $category->category_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="span1_of_1 left">
+                                    <h5>check-in-date:</h5>
+                                    <div class="book_date">
+                                        <input name="checkin" class="date" id="datepicker" type="text"
+                                            value="DD/MM/YY" onfocus="this.value = '';"
                                             onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
-                                    </form>
 
-                                </div>
-                            </li>
-                            <li class="span1_of_1 left">
-                                <h5>check-out-date:</h5>
-                                <div class="book_date">
-                                    <form>
-                                        <input class="date" id="datepicker1" type="text" value="DD/MM/YY"
-                                            onfocus="this.value = '';"
+                                    </div>
+                                </li>
+                                <li class="span1_of_1 left">
+                                    <h5>check-out-date:</h5>
+                                    <div class="book_date">
+                                        <input name="checkout" class="date" id="datepicker1" type="text"
+                                            value="DD/MM/YY" onfocus="this.value = '';"
                                             onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
-                                    </form>
-                                </div>
-                            </li>
-                            <li class="span1_of_2 left">
+                                    </div>
+                                </li>
+                                {{-- <li class="span1_of_2 left">
                                 <h5>Adults:</h5>
                                 <!----------start section_room----------->
                                 <div class="section_room">
@@ -100,16 +100,15 @@
                                         <option value="AX">4</option>
                                     </select>
                                 </div>
-                            </li>
-                            <li class="span1_of_3">
-                                <div class="date_btn">
-                                    <form>
+                            </li> --}}
+                                <li class="span1_of_3">
+                                    <div class="date_btn">
                                         <input type="submit" value="book now" />
-                                    </form>
-                                </div>
-                            </li>
-                            <div class="clear"></div>
-                        </ul>
+                                    </div>
+                                </li>
+                                <div class="clear"></div>
+                            </ul>
+                        </form>
                     </div>
                     <div class="clear"></div>
                 </div>

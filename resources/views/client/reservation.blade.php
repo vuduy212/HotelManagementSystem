@@ -19,10 +19,8 @@
                     <div class="span2_of_1">
                         <h4>check-in:</h4>
                         <div class="book_date btm">
-                            <form>
-                                <input class="date" id="datepicker1" type="text" value="DD/MM/YY"
-                                    onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
-                            </form>
+                            <input class="date" id="datepicker1" type="text" value="DD/MM/YY"
+                                onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
                         </div>
                         <div class="sel_room">
                             <h4>number of rooms</h4>
@@ -46,10 +44,8 @@
                     <div class="span2_of_1">
                         <h4>check-out:</h4>
                         <div class="book_date btm">
-                            <form>
-                                <input class="date" id="datepicker1" type="text" value="DD/MM/YY"
-                                    onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
-                            </form>
+                            <input class="date" id="datepicker1" type="text" value="DD/MM/YY"
+                                onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
                         </div>
                         <div class="sel_room">
                             <h4>childern 0-5:</h4>
