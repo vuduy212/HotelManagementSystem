@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RoomBillController;
 use App\Http\Controllers\RoomCategoriesController;
 use App\Http\Controllers\RoomController;
@@ -28,6 +29,18 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/denies', [App\Http\Controllers\HomeController::class, 'denies'])->name('denies');
+
+/*------ Client ------*/
+Route::prefix('client')->name('client.')->group(function () {
+
+    $class = ClientController::class;
+    Route::get('/', [$class, 'index'])->name('index');
+    Route::get('/activities', [$class, 'activities'])->name('activities');
+    Route::get('/contact', [$class, 'contact'])->name('contact');
+    Route::get('/details', [$class, 'details'])->name('details');
+    Route::get('/reservation', [$class, 'reservation'])->name('reservation');
+    Route::get('/rooms', [$class, 'rooms'])->name('rooms');
+});
 
 /*------ Admin ------*/
 Route::prefix('admin')->middleware('auth')->group(function () {
