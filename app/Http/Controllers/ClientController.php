@@ -21,7 +21,7 @@ class ClientController extends Controller
         return view('client/index', compact('categories'));
     }
 
-    public function book(Request $request)
+    public function selectRoom(Request $request)
     {
         $room_category = $request->room_category;
         $checkin = $request->checkin;

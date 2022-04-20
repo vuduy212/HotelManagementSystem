@@ -5,7 +5,8 @@
     <div class="main_bg">
         <div class="wrap">
             <div class="main">
-                <form method="POST" action="{{ route('bills.store') }}">
+                <form method="POST" action="{{ route('client.book') }}">
+                    @csrf
                     <div class="res_online">
                         <h4>basic information</h4>
                         <select name="category_id">
@@ -26,7 +27,7 @@
                         <div class="span2_of_1">
                             <h4>check-in:</h4>
                             <div class="book_date btm">
-                                <input name="date_start" class="date" id="datepicker1" type="text"
+                                <input name="date_start" class="date" id="datepicker" type="text"
                                     value="{{ $checkin }}" onfocus="this.value = '';"
                                     onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
                             </div>
@@ -88,7 +89,7 @@
                         <div class="clear"></div>
                     </div>
                     <div class="res_btn">
-                        <input type="submit" value="book now" style="width: 280px;">
+                        <button type="submit" style="width: 280px;">Book now</button>
                     </div>
                 </form>
             </div>

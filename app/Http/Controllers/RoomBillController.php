@@ -54,6 +54,12 @@ class RoomBillController extends Controller
         return view("AdminPage.room_bills.success");
     }
 
+    public function book(CreateRoomBillRequest $request)
+    {
+        $this->bills->saveBill($request);
+        return view("client.index");
+    }
+
     /**
      * Display the specified resource.
      *

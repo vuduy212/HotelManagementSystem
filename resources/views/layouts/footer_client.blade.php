@@ -2,8 +2,9 @@
     <div class="wrap">
         <div class="footer">
             <div class="copy">
-                <p class="link"><span>© All rights reserved | Template by&nbsp;<a href="http://w3layouts.com/">
-                            W3Layouts</a></span></p>
+                <p class="link"><span>© All rights reserved | By&nbsp;<a
+                            href="https://www.facebook.com/duyvu212/">
+                            Duy</a></span></p>
             </div>
             <div class="f_nav">
                 <ul>
