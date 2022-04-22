@@ -8,6 +8,7 @@ use App\Models\RoomBill;
 use App\Models\RoomCategories;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class RoomBillController extends Controller
 {
@@ -57,7 +58,7 @@ class RoomBillController extends Controller
     public function book(CreateRoomBillRequest $request)
     {
         $this->bills->saveBill($request);
-        return view("client.index");
+        return Redirect::back()->with('success', 'The reservation is successful ! Please wait for the receptionist to contact you to confirm !');
     }
 
     /**

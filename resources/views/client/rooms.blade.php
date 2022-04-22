@@ -14,33 +14,17 @@
                             to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum
                             generators on the Internet tend to repeat.</p>
                     </div>
-                    <div class="grids_of_2">
-                        <div class="grids_of_img">
-                            <img src="images/pic4.jpg" alt="" />
+                    @foreach ($categories as $category)
+                        <div class="grids_of_2">
+                            <div class="grids_of_img">
+                                <img src="{{ $category->getImage() }}" alt="" />
+                            </div>
+                            <div class="grids_of_para">
+                                <p class="para">{{ $category->description }}</p>
+                            </div>
+                            <div class="clear"></div>
                         </div>
-                        <div class="grids_of_para">
-                            <p class="para">There are many variations of passages of Lorem Ipsum available, but the
-                                majority have suffered alteration in some form, by injected humour, or randomised words
-                                which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
-                                you need to be sure there isn't anything embarrassing hidden in the middle of text. All the
-                                Lorem Ipsum generators on the Internet tend to repeat.</p>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="grids_of_2">
-                        <div class="grids_of_img">
-                            <img src="images/pic5.jpg" alt="" />
-                        </div>
-                        <div class="grids_of_para">
-                            <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                the majority have suffered alteration in some form, by injected humour, or randomised words
-                                which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
-                                you need to be sure there isn't anything embarrassing hidden in the middle of text. All the
-                                Lorem Ipsum generators on the Internet tend to repeat.</p>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-
+                    @endforeach
                 </div>
                 <div class="sidebar">
                     <div class="date_btn">

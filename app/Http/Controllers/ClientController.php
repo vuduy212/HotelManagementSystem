@@ -55,6 +55,7 @@ class ClientController extends Controller
 
     public function rooms()
     {
-        return view('client/rooms');
+        $categories = RoomCategories::all();
+        return view('client/rooms', compact('categories'));
     }
 }

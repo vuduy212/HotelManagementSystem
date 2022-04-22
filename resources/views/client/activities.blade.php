@@ -1,7 +1,6 @@
 @extends('layouts.client')
 
 @section('content')
-    <!--start main -->
     <div class="main_bg">
         <div class="wrap">
             <div class="main">
@@ -10,7 +9,7 @@
                     <li>
                         <div class="ser_img">
                             <a href="details.html">
-                                <img src="images/ser_pic1.jpg" alt="" />
+                                <img src="{{ asset('images/client/ser_pic1.jpg') }}" alt="" />
                                 <span class="next"> </span>
                             </a>
                         </div>
@@ -23,7 +22,7 @@
                     <li>
                         <div class="ser_img">
                             <a href="details.html">
-                                <img src="images/ser_pic2.jpg" alt="" />
+                                <img src="{{ asset('images/client/ser_pic2.jpg') }}" alt="" />
                                 <span class="next"> </span>
                             </a>
                         </div>
@@ -36,7 +35,7 @@
                     <li>
                         <div class="ser_img">
                             <a href="details.html">
-                                <img src="images/ser_pic3.jpg" alt="" />
+                                <img src="{{ asset('images/client/ser_pic3.jpg') }}" alt="" />
                                 <span class="next"> </span>
                             </a>
                         </div>
@@ -49,7 +48,7 @@
                     <li>
                         <div class="ser_img">
                             <a href="details.html">
-                                <img src="images/ser_pic4.jpg" alt="" />
+                                <img src="{{ asset('images/client/ser_pic4.jpg') }}" alt="" />
                                 <span class="next"> </span>
                             </a>
                         </div>
@@ -65,7 +64,7 @@
                     <li>
                         <div class="ser_img">
                             <a href="details.html">
-                                <img src="images/ser_pic5.jpg" alt="" />
+                                <img src="{{ asset('images/client/ser_pic5.jpg') }}" alt="" />
                                 <span class="next"> </span>
                             </a>
                         </div>
@@ -78,7 +77,7 @@
                     <li>
                         <div class="ser_img">
                             <a href="details.html">
-                                <img src="images/ser_pic6.jpg" alt="" />
+                                <img src="{{ asset('images/client/ser_pic6.jpg') }}" alt="" />
                                 <span class="next"> </span>
                             </a>
                         </div>
@@ -91,7 +90,7 @@
                     <li>
                         <div class="ser_img">
                             <a href="details.html">
-                                <img src="images/ser_pic7.jpg" alt="" />
+                                <img src="{{ asset('images/client/ser_pic7.jpg') }}" alt="" />
                                 <span class="next"> </span>
                             </a>
                         </div>
@@ -105,7 +104,7 @@
                     <li>
                         <div class="ser_img">
                             <a href="details.html">
-                                <img src="images/ser_pic8.jpg" alt="" />
+                                <img src="{{ asset('images/client/ser_pic8.jpg') }}" alt="" />
                                 <span class="next"> </span>
                             </a>
                         </div>
@@ -123,5 +122,4 @@
             </div>
         </div>
     </div>
-    <!--start main -->
 @endsection

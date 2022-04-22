@@ -30,8 +30,10 @@ class CreateRoomBillRequest extends FormRequest
                 'alpha',
                 new StrLengthRule()
             ],
-            'date_start' => 'required|date_format:"d-m-Y"|after_or_equal:today',
-            'date_finish' => 'required|date_format:"d-m-Y"|after_or_equal:date_start',
+            'date_start' => 'required|after_or_equal:today',
+            'date_finish' => 'required|after_or_equal:date_start',
+            // 'date_start' => 'required|date_format:"d-m-Y"|after_or_equal:today',
+            // 'date_finish' => 'required|date_format:"d-m-Y"|after_or_equal:date_start',
             'CMND' => 'digits:12',
             'phone' => 'digits:10',
             'email' => 'required|email',
