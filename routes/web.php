@@ -5,6 +5,7 @@ use App\Http\Controllers\RoomBillController;
 use App\Http\Controllers\RoomCategoriesController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomStatusController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\UserController;
 use App\Models\RoomBill;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,9 @@ Route::prefix('client')->name('client.')->group(function () {
     Route::get('/selectRoom', [$class, 'selectRoom'])->name('selectRoom');
     Route::post('/', [RoomBillController::class, 'book'])->name('book');
 });
+
+Route::get('/list_status', [StatusController::class, 'index'])->name('listStatus');
+Route::get('/searchStatus', [StatusController::class, 'search'])->name('searchStatus');
 
 /*------ Admin ------*/
 Route::prefix('admin')->middleware('auth')->group(function () {
