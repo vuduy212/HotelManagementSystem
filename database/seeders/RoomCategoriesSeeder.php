@@ -18,7 +18,9 @@ class RoomCategoriesSeeder extends Seeder
             'category_name' => 'VIP1',
             'description' => 'This is VIP Room for one people',
             'price' => 1000.00,
-            'images' => 'vip1.jpg'
+            'images' => 'vip1.jpg',
+            'area' => 15,
+
         ]);
 
         $vip2 = RoomCategories::updateOrCreate([

@@ -59,9 +59,19 @@
                             @csrf
                             <ul>
                                 <li class="span1_of_1">
-                                    <h5>Type of room:</h5>
+                                    <h5>Number of adults</h5>
                                     <!----------start section_room----------->
                                     <div class="section_room">
+                                        <select id="country" onchange="change_country(this.value)"
+                                            class="frm-field required" name="room_category">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                    </div>
+
+                                    {{-- <div class="section_room">
                                         <select id="country" onchange="change_country(this.value)"
                                             class="frm-field required" name="room_category">
                                             <option value="null">Select a type of room</option>
@@ -69,6 +79,19 @@
                                                 <option value="{{ $category->category_name }}">
                                                     {{ $category->category_name }}</option>
                                             @endforeach
+                                        </select>
+                                    </div> --}}
+                                </li>
+                                <li class="span1_of_1 left">
+                                    <h5>Number of children</h5>
+                                    <div class="section_room">
+                                        <select id="country" onchange="change_country(this.value)"
+                                            class="frm-field required" name="room_category">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
                                         </select>
                                     </div>
                                 </li>
