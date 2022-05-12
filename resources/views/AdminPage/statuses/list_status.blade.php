@@ -66,7 +66,7 @@
                                             class="frm-field required" name="room_category">
                                             <option value="null">Select a type of room</option>
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">
+                                                <option value="{{ $category->category_name }}">
                                                     {{ $category->category_name }}</option>
                                             @endforeach
                                         </select>

@@ -18,7 +18,6 @@ class CreateStatusesTable extends Migration
             $table->bigInteger('room_id')->unsigned();
             $table->datetime('check_in');
             $table->datetime('check_out');
-            //$table->unique(['room_id', 'time']);
             $table->foreign('room_id')->references('id')->on('rooms');
             $table->timestamps();
         });

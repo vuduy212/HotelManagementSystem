@@ -62,14 +62,15 @@ class Status extends Model
 
     public function listSuitableRoom($category, $checkInTime, $checkOutTime)
     {
-        $query1 = 'select r.id from rooms r
+        $query1 = 'select * from rooms r
                     join room_categories rc on r.category_id = rc.id
-                    where r.id not in';
+                    where category_name like \'%' . $category . '%\'
+                    and r.id not in';
         $query2 = 'select room_id from statuses s
                     join rooms r on s.room_id = r.id
                     join room_categories rc on r.category_id = rc.id
-                    where category_id = ' . $category
-            . ' and (\'' . $checkInTime . '\' < check_in < \'' . $checkOutTime . '\' or \'' . $checkInTime . ' \' < check_out < \'' . $checkOutTime . '\')';
+                    like \'%' . $category . '%\'
+                    and (\'' . $checkInTime . '\' < check_in < \'' . $checkOutTime . '\' or \'' . $checkInTime . ' \' < check_out < \'' . $checkOutTime . '\')';
         $result = DB::select($query1 . ' (' . $query2 . ')');
         return $result;
     }
