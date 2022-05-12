@@ -22,8 +22,8 @@ class CreateRoomCategoriesTable extends Migration
             $table->integer('area')->nullable();
             $table->integer('number_of_adults')->nullable();
             $table->integer('number_of_children')->nullable();
-            $table->integer('number_of_double_bed')->nullable();
-            $table->integer('number_of_single_bed')->nullable();
+            $table->integer('double_bed')->nullable();
+            $table->integer('single_bed')->nullable();
             $table->timestamps();
         });
     }

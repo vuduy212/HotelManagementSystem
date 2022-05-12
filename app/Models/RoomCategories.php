@@ -16,7 +16,9 @@ class RoomCategories extends Model
         'category_name',
         'description',
         'images',
-        'price'
+        'price',
+        'double_bed',
+        'single_bed'
     ];
 
     public function rooms()
@@ -31,7 +33,7 @@ class RoomCategories extends Model
 
     public function getImage()
     {
-        return asset("images/room_categories/".$this->images);
+        return asset("images/room_categories/" . $this->images);
     }
 
     public function store(Request $request)
@@ -42,11 +44,9 @@ class RoomCategories extends Model
             'price' => $request->input('price'),
         ];
 
-        if($request->hasFile('images'))
-        {
+        if ($request->hasFile('images')) {
             $data['images'] = $this->saveFile($request, 'images');
-        }
-        else {
+        } else {
             $data['images'] = 'null';
         }
 
@@ -60,15 +60,14 @@ class RoomCategories extends Model
         $file = $request->file($file);
         $extension = $file->getClientOriginalExtension();
         $fileName = time() . '.' . $extension;
-        $path = public_path().'/images/room_categories/';
+        $path = public_path() . '/images/room_categories/';
         $file->move($path, $fileName);
         return $fileName;
     }
 
     public function deleteFile(string $path)
     {
-        if(file_exists($path))
-        {
+        if (file_exists($path)) {
             File::delete($path);
         }
     }
@@ -79,9 +78,8 @@ class RoomCategories extends Model
         $roomCategories->description = $request->input('description');
         $roomCategories->price = $request->input('price');
 
-        if($request->hasFile('images'))
-        {
-            $path = public_path().'/images/room_categories/' . $roomCategories->images;
+        if ($request->hasFile('images')) {
+            $path = public_path() . '/images/room_categories/' . $roomCategories->images;
             $this->deleteFile($path);
             $roomCategories['images'] = $this->saveFile($request, 'images');
         }
@@ -97,26 +95,21 @@ class RoomCategories extends Model
         $roomCategoryName = array_key_exists('key', $data) ? $data['key'] : null;
         $filterPrice = array_key_exists('sort_by_price', $data) ? $data['sort_by_price'] : null;
 
-        if($filterPrice == 'ascending')
-        {
+        if ($filterPrice == 'ascending') {
             return $this
-                    ->SearchRoomCategoryName($roomCategoryName)
-                    ->orderBy('price')
-                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
-        }
-        elseif ($filterPrice == 'descending')
-        {
+                ->SearchRoomCategoryName($roomCategoryName)
+                ->orderBy('price')
+                ->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
+        } elseif ($filterPrice == 'descending') {
             return $this
-                    ->SearchRoomCategoryName($roomCategoryName)
-                    ->orderBy('price', 'desc')
-                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
-        }
-        else
-        {
+                ->SearchRoomCategoryName($roomCategoryName)
+                ->orderBy('price', 'desc')
+                ->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
+        } else {
             return $this
-                    ->SearchRoomCategoryName($roomCategoryName)
-                    ->oldest('id')
-                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
+                ->SearchRoomCategoryName($roomCategoryName)
+                ->oldest('id')
+                ->paginate(array_key_exists('number', $data) ? $data['number'] : 3);
         }
     }
 
