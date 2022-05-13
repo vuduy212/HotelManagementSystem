@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Room;
 use App\Models\RoomCategories;
 use App\Models\Status;
+use App\Models\StatusDTO;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Type\Integer;
 
 class StatusController extends Controller
 {
@@ -30,13 +32,40 @@ class StatusController extends Controller
 
     public function search(Request $request)
     {
-        $room_category = $request->room_category;
+        //process time input
         $date_checkin = str_replace("T", " ", $request->checkin);
         $date_checkout = str_replace("T", " ", $request->checkout);
         $request['checkin'] = $date_checkin . ':00';
         $request['checkout'] = $date_checkout . ':00';
-        $roomStatus = $this->roomStatus->search($request->all());
-        return view('AdminPage.statuses.index', compact('roomStatus'));
+
+        //search by time input
+        $list_search = $this->roomStatus->searchByTimeInput($request->all());
+
+        $results = array();
+
+        $number_of_adults = $request->number_of_adults;
+        $number_of_children = $request->number_of_children;
+
+        //search by slots
+        $slot_from_request = (int) ($number_of_adults + 0.5 * $number_of_children);
+        foreach ($list_search as $search) {
+            $slot_from_room = $search->double_bed * 2 + $search->single_bed;
+            if ($slot_from_request <= $slot_from_room && $slot_from_request >= $slot_from_room - 1) {
+                array_push($results, $search);
+            }
+        }
+
+        //add STT
+        $index = 0;
+        foreach ($results as $status) {
+            $index++;
+            $status->index = $index;
+            //convert to array to show
+            $array_status = (array) $status;
+            $status->array_status = $array_status;
+        }
+
+        return view('AdminPage.statuses.index', compact('results', 'number_of_adults', 'number_of_children'));
     }
 
     /**
@@ -70,12 +99,32 @@ class StatusController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Status $roomStatus)
+    public function show($array_status)
     {
-        return view('AdminPage.room_statuses.show')->with([
-            'roomStatus' => $roomStatus,
+        $status = $array_status;
+        return view('AdminPage.statuses.show')->with([
+            'category_name' => $status['category_name'],
+            'room_name' => $status['room_name'],
+            'double_bed' => $status['double_bed'],
+            'single_bed' => $status['single_bed'],
+            'images' => $status['images'],
+            'price' => $status['price'],
+            'description' => $status['description']
         ]);
     }
+
+    // public function show(StatusDTO $status)
+    // {
+    //     return view('AdminPage.statuses.show')->with([
+    //         'category_name' => $status->category_name,
+    //         'room_name' => $status->room_name,
+    //         'double_bed' => $status->double_bed,
+    //         'single_bed' => $status->single_bed,
+    //         'images' => $status->images,
+    //         'price' => $status->price,
+    //         'description' => $status->description
+    //     ]);
+    // }
 
     /**
      * Show the form for editing the specified resource.

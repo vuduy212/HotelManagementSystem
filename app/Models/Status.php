@@ -33,18 +33,26 @@ class Status extends Model
         return $status;
     }
 
-    public function search(array $data)
+    public function search_by_checkin_checkout($checkInTime, $checkOutTime)
+    {
+        $query1 = 'select *, r.id as room_id from rooms r
+                    join room_categories rc on r.category_id = rc.id
+                    and r.id not in';
+        $query2 = 'select room_id from statuses s
+                    join rooms r on s.room_id = r.id
+                    join room_categories rc on r.category_id = rc.id
+                    where (\'' . $checkInTime . '\' < check_in < \'' . $checkOutTime . '\' or \'' . $checkInTime . ' \' < check_out < \'' . $checkOutTime . '\')';
+        $result = DB::select($query1 . ' (' . $query2 . ')');
+        return $result;
+    }
+
+    public function searchByTimeInput(array $data)
     {
         $checkInTime = array_key_exists('checkin', $data) ? $data['checkin'] : null;
         $checkOutTime = array_key_exists('checkout', $data) ? $data['checkout'] : null;
-        $category = array_key_exists('room_category', $data) ? $data['room_category'] : null;
-        $filterStatus = array_key_exists('filter_status', $data) ? $data['filter_status'] : null;
-        $room = array_key_exists('room_id', $data) ? $data['room_id'] : null;
 
         return $this
-            ->listSuitableRoom($category, $checkInTime, $checkOutTime);
-        // ->FilterByStatus($filterStatus)
-        // ->WhereHasRoom($room)
+            ->search_by_checkin_checkout($checkInTime, $checkOutTime);
         // ->latest('id')
         // ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
     }

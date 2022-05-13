@@ -47,6 +47,8 @@ Route::prefix('client')->name('client.')->group(function () {
 
 Route::get('/list_status', [StatusController::class, 'index'])->name('listStatus');
 Route::get('/searchStatus', [StatusController::class, 'search'])->name('searchStatus');
+Route::get('/searchStatus/{array_status}', [StatusController::class, 'show'])->name('showDetail');
+
 
 /*------ Admin ------*/
 Route::prefix('admin')->middleware('auth')->group(function () {

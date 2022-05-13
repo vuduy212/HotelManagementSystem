@@ -64,7 +64,7 @@ class RoomCategoriesSeeder extends Seeder
             'description' => 'This is T30 room',
             'double_bed' => 3,
             'single_bed' => 0,
-            'price' => 40,
+            'price' => 400,
             'area' => 15,
         ]);
 
@@ -73,7 +73,7 @@ class RoomCategoriesSeeder extends Seeder
             'description' => 'This is T11 room',
             'double_bed' => 1,
             'single_bed' => 1,
-            'price' => 25,
+            'price' => 250,
             'area' => 15,
         ]);
 
@@ -111,7 +111,7 @@ class RoomCategoriesSeeder extends Seeder
             'double_bed' => 0,
             'single_bed' => 2,
             'price' => 200,
-            'area' => 25,
+            'area' => 250,
         ]);
 
         RoomCategories::updateOrCreate([

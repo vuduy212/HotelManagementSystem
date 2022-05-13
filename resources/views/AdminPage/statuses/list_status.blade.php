@@ -63,7 +63,7 @@
                                     <!----------start section_room----------->
                                     <div class="section_room">
                                         <select id="country" onchange="change_country(this.value)"
-                                            class="frm-field required" name="room_category">
+                                            class="frm-field required" name="number_of_adults">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -86,7 +86,7 @@
                                     <h5>Number of children</h5>
                                     <div class="section_room">
                                         <select id="country" onchange="change_country(this.value)"
-                                            class="frm-field required" name="room_category">
+                                            class="frm-field required" name="number_of_children">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
