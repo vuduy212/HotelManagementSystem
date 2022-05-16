@@ -29,8 +29,18 @@
                     <p class="product-description">{{ $description }}</p>
                     <br>
                     <h4 class="price">Price for 1 day: {{ $price }}$</h4>
-                    <a href="{{ route('categories.select', $id) }}"><button type="button"
-                            class="btn btn-danger">Order</button></a>
+                    <a
+                        href="{{ route('order', [
+                            'category_name' => $category_name,
+                            'room_name' => $room_name,
+                            'price' => $price,
+                            // out parameter
+                            'number_of_adults' => $number_of_adults,
+                            'number_of_children' => $number_of_children,
+                            'checkin' => $checkin,
+                            'checkout' => $checkout,
+                        ]) }}"><button
+                            type="button" class="btn btn-danger">Order</button></a>
                 </div>
             </div>
         </div>

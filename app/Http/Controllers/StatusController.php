@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use App\Models\Room;
 use App\Models\RoomCategories;
 use App\Models\Status;
@@ -11,11 +12,12 @@ use Ramsey\Uuid\Type\Integer;
 
 class StatusController extends Controller
 {
-    protected $roomStatus;
+    protected $roomStatus, $reservation;
 
-    public function __construct(Status $roomStatus)
+    public function __construct(Status $roomStatus, Reservation $reservation)
     {
         $this->roomStatus = $roomStatus;
+        $this->reservation = $reservation;
         //$this->middleware('auth');
     }
 
@@ -37,6 +39,9 @@ class StatusController extends Controller
         $date_checkout = str_replace("T", " ", $request->checkout);
         $request['checkin'] = $date_checkin . ':00';
         $request['checkout'] = $date_checkout . ':00';
+
+        $checkin = $request['checkin'];
+        $checkout = $request['checkout'];
 
         //search by time input
         $list_search = $this->roomStatus->searchByTimeInput($request->all());
@@ -60,12 +65,16 @@ class StatusController extends Controller
         foreach ($results as $status) {
             $index++;
             $status->index = $index;
-            //convert to array to show
-            $array_status = (array) $status;
-            $status->array_status = $array_status;
+
+            if ($status->images == null) {
+                $status->images = 'a';
+            }
+            // //convert to array to show
+            // $array_status = (array) $status;
+            // $status->array_status = $array_status;
         }
 
-        return view('AdminPage.statuses.index', compact('results', 'number_of_adults', 'number_of_children'));
+        return view('AdminPage.statuses.index', compact('results', 'number_of_adults', 'number_of_children', 'checkin', 'checkout'));
     }
 
     /**
@@ -99,32 +108,75 @@ class StatusController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($array_status)
+    // public function show($array_status)
+    // {
+    //     $status = $array_status;
+    //     return view('AdminPage.statuses.show')->with([
+    //         'category_name' => $status['category_name'],
+    //         'room_name' => $status['room_name'],
+    //         'double_bed' => $status['double_bed'],
+    //         'single_bed' => $status['single_bed'],
+    //         'images' => $status['images'],
+    //         'price' => $status['price'],
+    //         'description' => $status['description']
+    //     ]);
+    // }
+
+    public function show($category_name, $room_name, $double_bed, $single_bed, $images, $price, $description, $number_of_adults, $number_of_children, $checkin, $checkout)
     {
-        $status = $array_status;
         return view('AdminPage.statuses.show')->with([
-            'category_name' => $status['category_name'],
-            'room_name' => $status['room_name'],
-            'double_bed' => $status['double_bed'],
-            'single_bed' => $status['single_bed'],
-            'images' => $status['images'],
-            'price' => $status['price'],
-            'description' => $status['description']
+            'category_name' => $category_name,
+            'room_name' => $room_name,
+            'double_bed' => $double_bed,
+            'single_bed' => $single_bed,
+            'images' => $images,
+            'price' => $price,
+            'description' => $description,
+            // out parameter
+            'number_of_adults' => $number_of_adults,
+            'number_of_children' => $number_of_children,
+            'checkin' => $checkin,
+            'checkout' => $checkout
         ]);
     }
 
-    // public function show(StatusDTO $status)
-    // {
-    //     return view('AdminPage.statuses.show')->with([
-    //         'category_name' => $status->category_name,
-    //         'room_name' => $status->room_name,
-    //         'double_bed' => $status->double_bed,
-    //         'single_bed' => $status->single_bed,
-    //         'images' => $status->images,
-    //         'price' => $status->price,
-    //         'description' => $status->description
-    //     ]);
-    // }
+    public function order($category_name, $room_name, $price, $number_of_adults, $number_of_children, $checkin, $checkout)
+    {
+        return view('AdminPage.statuses.order')->with([
+            'category_name' => $category_name,
+            'room_name' => $room_name,
+            'price' => $price,
+            // out parameter
+            'number_of_adults' => $number_of_adults,
+            'number_of_children' => $number_of_children,
+            'checkin' => $checkin,
+            'checkout' => $checkout,
+        ]);
+    }
+
+    public function reservation(Request $request)
+    {
+        // dd($request);
+        $result = $this->reservation->saveReservation($request);
+        return view('AdminPage.statuses.reservation')->with([
+            // full info
+            'id' => $result->id,
+            'client_name' => $result->client_name,
+            'phone' => $result->phone,
+            'email' => $result->email,
+            'cmnd' => $result->CMND,
+            'payment' => $result->payment,
+            'category_name' => $result->category_name,
+            'room_name' => $result->room_name,
+            'number_of_adults' => $result->number_of_adults,
+            'number_of_children' => $result->number_of_children,
+            'checkin' => $result->check_in,
+            'checkout' => $result->check_out,
+            'price' => $result->price,
+            'created_at' => $result->created_at,
+            'notification' => 'Success !'
+        ]);
+    }
 
     /**
      * Show the form for editing the specified resource.

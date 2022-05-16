@@ -34,11 +34,23 @@
                                         <td>{{ $status->single_bed }}</td>
                                         <td>{{ $status->description }}</td>
                                         <td>{{ $status->price }}</td>
-                                        {{-- <td>{{ dd($status->array_status) }}</td> --}}
                                         {{-- <td><a href="{{ route('showDetail', ['status' => $status->array_status]) }}"><button --}}
-                                        {{ $array_status = serialize($status->array_status) }}
-                                        <td><a href="{{ route('showDetail', $array_status) }}"><button type="button"
-                                                    class="btn btn-success">DETAIL</button></a></td>
+                                        <td><a
+                                                href="{{ route('showDetail', [
+                                                    'category_name' => $status->category_name,
+                                                    'room_name' => $status->room_name,
+                                                    'double_bed' => $status->double_bed,
+                                                    'single_bed' => $status->single_bed,
+                                                    'images' => $status->images,
+                                                    'price' => $status->price,
+                                                    'description' => $status->description,
+                                                    // out parameter
+                                                    'number_of_adults' => $number_of_adults,
+                                                    'number_of_children' => $number_of_children,
+                                                    'checkin' => $checkin,
+                                                    'checkout' => $checkout,
+                                                ]) }}"><button
+                                                    type="button" class="btn btn-success">DETAIL</button></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
