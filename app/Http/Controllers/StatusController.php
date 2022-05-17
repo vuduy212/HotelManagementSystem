@@ -89,6 +89,11 @@ class StatusController extends Controller
         return view('AdminPage.room_statuses.create', compact('rooms', 'status'));
     }
 
+    public function chart()
+    {
+        return view('AdminPage.statuses.chart');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
