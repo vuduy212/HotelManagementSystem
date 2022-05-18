@@ -13,8 +13,8 @@ class Status extends Model
 
     protected $fillable = [
         'room_id',
-        'check_in',
-        'check_out',
+        'checkin',
+        'checkout',
     ];
 
     public function rooms()
@@ -26,8 +26,8 @@ class Status extends Model
     {
         $status = $this->create([
             'room_id' => $data['room_id'],
-            'check_in' => $data['check_in'],
-            'check_out' => $data['check_out'],
+            'checkin' => $data['checkin'],
+            'checkout' => $data['checkout'],
         ]);
 
         return $status;
@@ -41,7 +41,7 @@ class Status extends Model
         $query2 = 'select room_id from statuses s
                     join rooms r on s.room_id = r.id
                     join room_categories rc on r.category_id = rc.id
-                    where (\'' . $checkInTime . '\' < check_in < \'' . $checkOutTime . '\' or \'' . $checkInTime . ' \' < check_out < \'' . $checkOutTime . '\')';
+                    where (\'' . $checkInTime . '\' < checkin < \'' . $checkOutTime . '\' or \'' . $checkInTime . ' \' < checkout < \'' . $checkOutTime . '\')';
         $result = DB::select($query1 . ' (' . $query2 . ')');
         return $result;
     }
@@ -63,7 +63,7 @@ class Status extends Model
                     join rooms r on s.room_id = r.id
                     join room_categories rc on r.category_id = rc.id
                     where category_id = ' . $category
-            . ' and (\'' . $checkInTime . '\' < check_in < \'' . $checkOutTime . '\' or \'' . $checkInTime . ' \' < check_out < \'' . $checkOutTime . '\')';
+            . ' and (\'' . $checkInTime . '\' < checkin < \'' . $checkOutTime . '\' or \'' . $checkInTime . ' \' < checkout < \'' . $checkOutTime . '\')';
         $result = DB::select($query);
         return $result;
     }
@@ -78,7 +78,7 @@ class Status extends Model
                     join rooms r on s.room_id = r.id
                     join room_categories rc on r.category_id = rc.id
                     like \'%' . $category . '%\'
-                    and (\'' . $checkInTime . '\' < check_in < \'' . $checkOutTime . '\' or \'' . $checkInTime . ' \' < check_out < \'' . $checkOutTime . '\')';
+                    and (\'' . $checkInTime . '\' < checkin < \'' . $checkOutTime . '\' or \'' . $checkInTime . ' \' < checkout < \'' . $checkOutTime . '\')';
         $result = DB::select($query1 . ' (' . $query2 . ')');
         return $result;
     }

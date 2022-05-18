@@ -79,6 +79,13 @@
                         </div>
                         <br>
                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Time</label>
+                            <div class="col-md-6">
+                                <p>{{ $time }} day</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Price</label>
                             <div class="col-md-6">
                                 <p>{{ $price }}</p>

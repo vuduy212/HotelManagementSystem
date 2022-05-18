@@ -16,8 +16,8 @@ class CreateStatusesTable extends Migration
         Schema::create('statuses', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('room_id')->unsigned();
-            $table->datetime('check_in');
-            $table->datetime('check_out');
+            $table->datetime('checkin');
+            $table->datetime('checkout');
             $table->foreign('room_id')->references('id')->on('rooms');
             $table->timestamps();
         });

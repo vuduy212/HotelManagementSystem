@@ -23,10 +23,11 @@ class CreateReservationsTable extends Migration
             $table->string('room_name');
             $table->integer('number_of_adults')->unsigned();
             $table->integer('number_of_children')->unsigned();
-            $table->datetime('check_in');
-            $table->datetime('check_out');
+            $table->datetime('checkin');
+            $table->datetime('checkout');
             $table->float('price');
             $table->integer('payment');
+            $table->double('time');
             $table->timestamps();
         });
     }

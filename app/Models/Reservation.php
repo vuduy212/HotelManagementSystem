@@ -20,16 +20,21 @@ class Reservation extends Model
         'room_name',
         'number_of_adults',
         'number_of_children',
-        'check_in',
-        'check_out',
+        'checkin',
+        'checkout',
         'price',
         'payment',
         'created_at',
+        'time'
     ];
 
     public function saveReservation(Request $data)
     {
-        // dd($data);
+        //add time
+        $sec_checkin = strtotime($data['checkin']);
+        $sec_checkout = strtotime($data['checkout']);
+        $time = ($sec_checkout - $sec_checkin) / 86400;
+
         $reservation = $this->create([
             'client_name' => $data['client_name'],
             'CMND' => $data['CMND'],
@@ -39,10 +44,11 @@ class Reservation extends Model
             'room_name' => $data['room_name'],
             'number_of_adults' => $data['number_of_adults'],
             'number_of_children' => $data['number_of_children'],
-            'check_in' => $data['checkin'],
-            'check_out' => $data['checkout'],
+            'checkin' => $data['checkin'],
+            'checkout' => $data['checkout'],
             'price' => $data['price'],
             'payment' => $data['payment'],
+            'time' => $time,
         ]);
 
         return $reservation;

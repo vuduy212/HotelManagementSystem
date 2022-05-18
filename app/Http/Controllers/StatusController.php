@@ -7,6 +7,7 @@ use App\Models\Room;
 use App\Models\RoomCategories;
 use App\Models\Status;
 use App\Models\StatusDTO;
+use DateTime;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Type\Integer;
 
@@ -35,10 +36,12 @@ class StatusController extends Controller
     public function search(Request $request)
     {
         //process time input
-        $date_checkin = str_replace("T", " ", $request->checkin);
-        $date_checkout = str_replace("T", " ", $request->checkout);
-        $request['checkin'] = $date_checkin . ':00';
-        $request['checkout'] = $date_checkout . ':00';
+        $request['checkin'] = $request->checkin . ' ' . $request->checkin_time;
+        $request['checkout'] = $request->checkout . ' ' . $request->checkout_time;
+        // $date_checkin = str_replace("T", " ", $request->checkin);
+        // $date_checkout = str_replace("T", " ", $request->checkout);
+        // $request['checkin'] = $date_checkin . ':00';
+        // $request['checkout'] = $date_checkout . ':00';
 
         $checkin = $request['checkin'];
         $checkout = $request['checkout'];
@@ -66,9 +69,16 @@ class StatusController extends Controller
             $index++;
             $status->index = $index;
 
+            //add time
+            $sec_checkin = strtotime($request->checkin);
+            $sec_checkout = strtotime($request->checkout);
+            $time = $sec_checkout - $sec_checkin;
+            $status->time = $time;
+
             if ($status->images == null) {
                 $status->images = 'a';
             }
+
             // //convert to array to show
             // $array_status = (array) $status;
             // $status->array_status = $array_status;
@@ -91,7 +101,17 @@ class StatusController extends Controller
 
     public function chart()
     {
-        return view('AdminPage.statuses.chart');
+        $listReservation = Reservation::all();
+        foreach ($listReservation as $reservation) {
+            $dt_checkin = DateTime::createFromFormat("Y-m-d H:i:s", $reservation->checkin);
+            $hour_checkin = $dt_checkin->format('H'); // '20'
+            $reservation->hour_checkin = $hour_checkin;
+
+            $dt_checkout = DateTime::createFromFormat("Y-m-d H:i:s", $reservation->checkout);
+            $hour_checkout = $dt_checkout->format('H'); // '20'
+            $reservation->hour_checkout = $hour_checkout;
+        }
+        return view('AdminPage.statuses.chart', compact('listReservation'));
     }
 
     /**
@@ -175,10 +195,11 @@ class StatusController extends Controller
             'room_name' => $result->room_name,
             'number_of_adults' => $result->number_of_adults,
             'number_of_children' => $result->number_of_children,
-            'checkin' => $result->check_in,
-            'checkout' => $result->check_out,
+            'checkin' => $result->checkin,
+            'checkout' => $result->checkout,
             'price' => $result->price,
             'created_at' => $result->created_at,
+            'time' => $result->time,
             'notification' => 'Success !'
         ]);
     }

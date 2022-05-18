@@ -98,19 +98,31 @@
                                 <li class="span1_of_1 left">
                                     <h5>check-in-date:</h5>
                                     <div class="book_date">
-                                        {{-- <input name="checkin" class="date" id="datepicker" type="text"
-                                            value="DD/MM/YY" onfocus="this.value = '';"
-                                            onblur="if (this.value == '') {this.value = 'DD/MM/YY';}"> --}}
-                                        <input type="datetime-local" name="checkin">
+                                        <input type="date" name="checkin">
+                                    </div>
+                                </li>
+                                <li class="span1_of_1 left">
+                                    <h5>Time check-in</h5>
+                                    <div class="book_date">
+                                        <select name="checkin_time">
+                                            <option value="09:00:00">9h AM</option>
+                                            <option value="21:00:00">9h PM</option>
+                                        </select>
                                     </div>
                                 </li>
                                 <li class="span1_of_1 left">
                                     <h5>check-out-date:</h5>
                                     <div class="book_date">
-                                        {{-- <input name="checkout" class="date" id="datepicker1" type="text"
-                                            value="DD/MM/YY" onfocus="this.value = '';"
-                                            onblur="if (this.value == '') {this.value = 'DD/MM/YY';}"> --}}
-                                        <input type="datetime-local" name="checkout">
+                                        <input type="date" name="checkout">
+                                    </div>
+                                </li>
+                                <li class="span1_of_1 left">
+                                    <h5>Time check-out</h5>
+                                    <div class="book_date">
+                                        <select name="checkout_time">
+                                            <option value="09:00:00">9h AM</option>
+                                            <option value="21:00:00">9h PM</option>
+                                        </select>
                                     </div>
                                 </li>
                                 {{-- <li class="span1_of_2 left">

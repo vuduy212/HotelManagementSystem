@@ -1,8 +1,8 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-<link rel="stylesheet" href="a.css" />
+<link rel="stylesheet" href="{{ asset('css/chart.css') }}" />
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="a.js"></script>
+<script src="{{ asset('js/chart.js') }}"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <!DOCTYPE html>
@@ -14,6 +14,9 @@
 
     <script>
         $(document).ready(function() {
+            // var listReservation = {!! $listReservation !!};
+            var listReservation = @json($listReservation);
+            // document.getElementById("data").innerHTML = listReservation;
             var date = new Date();
             var d = date.getDate();
             var m = date.getMonth();
@@ -45,6 +48,10 @@
                     revertDuration: 0, //  original position after the drag
                 });
             });
+
+            function myFunction() {
+
+            }
 
             /* initialize the calendar
             		-----------------------------------------------------------------*/
@@ -115,41 +122,12 @@
                 },
 
                 events: [{
-                        title: "All Day Event",
-                        start: new Date(y, m, 1),
-                    },
-                    {
-                        id: 999,
-                        title: "Repeating Event",
-                        start: new Date(y, m, d - 3, 16, 0),
+                        id: reservation.id,
+                        title: reservation.client_name,
+                        start: new Date(y, m, d, reservation.hour_checkin, 0),
+                        end: new Date(y, m, d, reservation.hour_checkout, 0),
                         allDay: false,
-                        className: "info",
-                    },
-                    {
-                        id: 999,
-                        title: "Repeating Event",
-                        start: new Date(y, m, d + 4, 16, 0),
-                        allDay: false,
-                        className: "info",
-                    },
-                    {
-                        title: "Meeting",
-                        start: new Date(y, m, d, 10, 30),
-                        allDay: false,
-                        className: "important",
-                    },
-                    {
-                        title: "Lunch",
-                        start: new Date(y, m, d, 12, 0),
-                        end: new Date(y, m, d, 14, 0),
-                        allDay: false,
-                        className: "important",
-                    },
-                    {
-                        title: "Birthday Party",
-                        start: new Date(y, m, d + 1, 19, 0),
-                        end: new Date(y, m, d + 1, 22, 30),
-                        allDay: false,
+                        className: "info"
                     },
                     {
                         title: "Click for Google",
@@ -229,9 +207,11 @@
 <body>
     <div id="wrap">
         <div id="calendar"></div>
+        <div id="data"></div>
 
+        {{-- <div id="data"></div> --}}
         <div style="clear: both"></div>
-    </div>
+
 </body>
 
 </html>
