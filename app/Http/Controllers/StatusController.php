@@ -99,17 +99,21 @@ class StatusController extends Controller
         return view('AdminPage.room_statuses.create', compact('rooms', 'status'));
     }
 
-    public function chart()
+    public function chart($room_name)
     {
-        $listReservation = Reservation::all();
+        $listReservation = $this->reservation->reservationByRoom($room_name);
         foreach ($listReservation as $reservation) {
             $dt_checkin = DateTime::createFromFormat("Y-m-d H:i:s", $reservation->checkin);
             $hour_checkin = $dt_checkin->format('H'); // '20'
+            $day_checkin = $dt_checkin->format('d');
             $reservation->hour_checkin = $hour_checkin;
+            $reservation->day_checkin = $day_checkin;
 
             $dt_checkout = DateTime::createFromFormat("Y-m-d H:i:s", $reservation->checkout);
             $hour_checkout = $dt_checkout->format('H'); // '20'
+            $day_checkout = $dt_checkout->format('d');
             $reservation->hour_checkout = $hour_checkout;
+            $reservation->day_checkout = $day_checkout;
         }
         return view('AdminPage.statuses.chart', compact('listReservation'));
     }

@@ -14,13 +14,24 @@
 
     <script>
         $(document).ready(function() {
-            // var listReservation = {!! $listReservation !!};
             var listReservation = @json($listReservation);
+            var arrayReservation = [];
             // document.getElementById("data").innerHTML = listReservation;
             var date = new Date();
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear();
+            for (let i = 0; i < listReservation.length; i++) {
+                var reservation1 = {
+                    id: listReservation[i].id,
+                    title: listReservation[i].client_name,
+                    start: new Date(y, m, listReservation[i].day_checkin, listReservation[i].hour_checkin, 0),
+                    end: new Date(y, m, listReservation[i].day_checkout, listReservation[i].hour_checkout, 0),
+                    allDay: false,
+                    className: "info"
+                }
+                arrayReservation.push(reservation1);
+            }
 
             /*  className colors
             		
@@ -120,23 +131,16 @@
                         $(this).remove();
                     }
                 },
-
-                events: [{
-                        id: reservation.id,
-                        title: reservation.client_name,
-                        start: new Date(y, m, d, reservation.hour_checkin, 0),
-                        end: new Date(y, m, d, reservation.hour_checkout, 0),
-                        allDay: false,
-                        className: "info"
-                    },
-                    {
-                        title: "Click for Google",
-                        start: new Date(y, m, 28),
-                        end: new Date(y, m, 29),
-                        url: "https://ccp.cloudaccess.net/aff.php?aff=5188",
-                        className: "success",
-                    },
-                ],
+                events: arrayReservation,
+                // events: [
+                //     {
+                //         title: "Click for Google",
+                //         start: new Date(y, m, 28),
+                //         end: new Date(y, m, 29),
+                //         url: "https://ccp.cloudaccess.net/aff.php?aff=5188",
+                //         className: "success",
+                //     },
+                // ],
             });
         });
     </script>

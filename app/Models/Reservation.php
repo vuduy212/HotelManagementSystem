@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Reservation extends Model
 {
@@ -52,5 +53,14 @@ class Reservation extends Model
         ]);
 
         return $reservation;
+    }
+
+    public function reservationByRoom($room_name)
+    {
+        $query = "select * from reservations r
+                    join rooms r2 where r.room_name = r2.room_name
+                    and r.room_name = " . $room_name;
+        $result = DB::select($query);
+        return $result;
     }
 }
