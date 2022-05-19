@@ -26,7 +26,7 @@ class CreateReservationsTable extends Migration
             $table->datetime('checkin');
             $table->datetime('checkout');
             $table->float('price');
-            $table->integer('payment');
+            $table->string('payment');
             $table->double('time');
             $table->timestamps();
         });

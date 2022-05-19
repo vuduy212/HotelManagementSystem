@@ -9,6 +9,7 @@ use App\Models\Status;
 use App\Models\StatusDTO;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Ramsey\Uuid\Type\Integer;
 
 class StatusController extends Controller
@@ -83,7 +84,6 @@ class StatusController extends Controller
             // $array_status = (array) $status;
             // $status->array_status = $array_status;
         }
-
         return view('AdminPage.statuses.index', compact('results', 'number_of_adults', 'number_of_children', 'checkin', 'checkout'));
     }
 
@@ -137,19 +137,7 @@ class StatusController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    // public function show($array_status)
-    // {
-    //     $status = $array_status;
-    //     return view('AdminPage.statuses.show')->with([
-    //         'category_name' => $status['category_name'],
-    //         'room_name' => $status['room_name'],
-    //         'double_bed' => $status['double_bed'],
-    //         'single_bed' => $status['single_bed'],
-    //         'images' => $status['images'],
-    //         'price' => $status['price'],
-    //         'description' => $status['description']
-    //     ]);
-    // }
+
 
     public function show($category_name, $room_name, $double_bed, $single_bed, $images, $price, $description, $number_of_adults, $number_of_children, $checkin, $checkout)
     {
@@ -185,27 +173,31 @@ class StatusController extends Controller
 
     public function reservation(Request $request)
     {
-        // dd($request);
-        $result = $this->reservation->saveReservation($request);
-        return view('AdminPage.statuses.reservation')->with([
-            // full info
-            'id' => $result->id,
-            'client_name' => $result->client_name,
-            'phone' => $result->phone,
-            'email' => $result->email,
-            'cmnd' => $result->CMND,
-            'payment' => $result->payment,
-            'category_name' => $result->category_name,
-            'room_name' => $result->room_name,
-            'number_of_adults' => $result->number_of_adults,
-            'number_of_children' => $result->number_of_children,
-            'checkin' => $result->checkin,
-            'checkout' => $result->checkout,
-            'price' => $result->price,
-            'created_at' => $result->created_at,
-            'time' => $result->time,
-            'notification' => 'Success !'
-        ]);
+        $notification = $this->roomStatus->checkReservationDuplicated($request->room_name, $request->checkin, $request->checkout);
+        if ($notification == true) {
+            return Redirect::back()->with('message', 'Xin lỗi quý khách, phòng đã được đặt mất rồi :(. Mời quý khách chọn phòng khác ạ :D');
+        } else {
+            $result = $this->reservation->saveReservation($request);
+            return view('AdminPage.statuses.reservation')->with([
+                // full info
+                'id' => $result->id,
+                'client_name' => $result->client_name,
+                'phone' => $result->phone,
+                'email' => $result->email,
+                'cmnd' => $result->CMND,
+                'payment' => $result->payment,
+                'category_name' => $result->category_name,
+                'room_name' => $result->room_name,
+                'number_of_adults' => $result->number_of_adults,
+                'number_of_children' => $result->number_of_children,
+                'checkin' => $result->checkin,
+                'checkout' => $result->checkout,
+                'price' => $result->price,
+                'created_at' => $result->created_at,
+                'time' => $result->time,
+                'notification' => 'Success !'
+            ]);
+        }
     }
 
     /**

@@ -36,6 +36,9 @@ class Reservation extends Model
         $sec_checkout = strtotime($data['checkout']);
         $time = ($sec_checkout - $sec_checkin) / 86400;
 
+        //count price
+        $price = $data['price'] * $time;
+
         $reservation = $this->create([
             'client_name' => $data['client_name'],
             'CMND' => $data['CMND'],
@@ -47,7 +50,7 @@ class Reservation extends Model
             'number_of_children' => $data['number_of_children'],
             'checkin' => $data['checkin'],
             'checkout' => $data['checkout'],
-            'price' => $data['price'],
+            'price' => $price,
             'payment' => $data['payment'],
             'time' => $time,
         ]);

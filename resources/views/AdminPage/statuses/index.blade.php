@@ -51,6 +51,8 @@
                                                     'checkout' => $checkout,
                                                 ]) }}"><button
                                                     type="button" class="btn btn-success">DETAIL</button></a></td>
+                                        <td><a href="{{ route('chart', $status->room_name) }}"><button type="button"
+                                                    class="btn btn-primary">STATUS</button></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

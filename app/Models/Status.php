@@ -33,15 +33,15 @@ class Status extends Model
         return $status;
     }
 
-    public function search_by_checkin_checkout($checkInTime, $checkOutTime)
+    public function search_by_checkin_checkout($checkin, $checkout)
     {
         $query1 = 'select *, r.id as room_id from rooms r
                     join room_categories rc on r.category_id = rc.id
-                    and r.id not in';
-        $query2 = 'select room_id from statuses s
-                    join rooms r on s.room_id = r.id
+                    and r.room_name not in';
+        $query2 = 'select r.room_name from rooms r
+                    join reservations r1 on r.room_name = r1.room_name
                     join room_categories rc on r.category_id = rc.id
-                    where (\'' . $checkInTime . '\' < checkin < \'' . $checkOutTime . '\' or \'' . $checkInTime . ' \' < checkout < \'' . $checkOutTime . '\')';
+                    where ((r1.checkin <= ' . '\'' . $checkin . '\' and ' . '\'' . $checkin . '\'' . ' < r1.checkout) or (r1.checkin < ' . '\'' . $checkout  . '\' and ' . '\'' . $checkout . '\'' . ' <= r1.checkout))';
         $result = DB::select($query1 . ' (' . $query2 . ')');
         return $result;
     }
@@ -55,6 +55,26 @@ class Status extends Model
             ->search_by_checkin_checkout($checkInTime, $checkOutTime);
         // ->latest('id')
         // ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+    }
+
+    public function reservationDuplicate($room_name, $checkin, $checkout)
+    {
+        $query = 'select * from rooms r
+                    join reservations r1 on r.room_name = r1.room_name
+                    where r.room_name = ' . '\'' . $room_name . '\'' . '
+                    and ((r1.checkin <= ' . '\'' . $checkin . '\' and ' . '\'' . $checkin . '\'' . ' < r1.checkout) or (r1.checkin < ' . '\'' . $checkout  . '\' and ' . '\'' . $checkout . '\'' . ' <= r1.checkout))';
+        $result = DB::select($query);
+        return $result;
+    }
+
+    public function checkReservationDuplicated($room_name, $checkin, $checkout)
+    {
+        $data = $this->reservationDuplicate($room_name, $checkin, $checkout);
+        if ($data != []) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function listConflictRoom($category, $checkInTime, $checkOutTime)

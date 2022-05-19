@@ -55,7 +55,7 @@
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
                     </div>
                     <div class="reservation">
-                        <form method="GET" action="{{ route('searchStatus') }}">
+                        <form method="GET" action="{{ route('search') }}">
                             @csrf
                             <ul>
                                 <li class="span1_of_1">

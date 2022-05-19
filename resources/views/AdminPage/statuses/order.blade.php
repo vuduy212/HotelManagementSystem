@@ -9,6 +9,11 @@
                     <li class="breadcrumb-item active">Welcome to Room Order !!</li>
                 </ol>
                 <div class="card">
+                    @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <div class="card-header">{{ __('Order') }}</div>
 
                     <div class="card-body">
@@ -70,11 +75,11 @@
                                 <label for="role" class="col-md-4 col-form-label text-md-right">Payment method</label>
                                 <div class="col-md-6">
                                     <div class="form-check">
-                                        <input type="radio" name="payment" value="0" checked>
+                                        <input type="radio" name="payment" value="Cash" checked>
                                         <label for="">Cash</label>
                                     </div>
                                     <div class="form-check">
-                                        <input type="radio" name="payment" value="1">
+                                        <input type="radio" name="payment" value="Bank">
                                         <label for="">Bank Card</label>
                                     </div>
                                 </div>
