@@ -84,7 +84,13 @@ class StatusController extends Controller
             // $array_status = (array) $status;
             // $status->array_status = $array_status;
         }
-        return view('AdminPage.statuses.index', compact('results', 'number_of_adults', 'number_of_children', 'checkin', 'checkout'));
+        return view('AdminPage.statuses.index', compact(
+            'results',
+            'number_of_adults',
+            'number_of_children',
+            'checkin',
+            'checkout'
+        ));
     }
 
     /**

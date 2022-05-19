@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomBillController;
 use App\Http\Controllers\RoomCategoriesController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomStatusController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\UserController;
-use App\Models\RoomBill;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -53,7 +53,9 @@ Route::get('/order/{category_name}/{room_name}/{price}/{number_of_adults}/{numbe
 // Route::post('/reservation/{client_name}/{phone}/{email}/{cmnd}/{category_name}/{room_name}/{number_of_adults}/{number_of_children}/{checkin}/{checkout}/{price}/{payment}', [StatusController::class, 'reservation'])->name('reservation');
 Route::post('/reservation', [StatusController::class, 'reservation'])->name('reservation');
 Route::get('/chart/{room_name}', [StatusController::class, 'chart'])->name('chart');
-Route::get('/searchReservation', [ClientController::class, 'searchReservation'])->name('searchReservation');
+Route::get('/searchReservation', [ReservationController::class, 'searchReservation'])->name('searchReservation');
+Route::get('/viewDetailReservation/{id}', [ReservationController::class, 'viewDetail'])->name('viewDetail');
+Route::get('/listAllReservation', [ReservationController::class, 'index'])->name('listAllReservation');
 
 
 /*------ Admin ------*/

@@ -29,9 +29,45 @@ class Reservation extends Model
         'time'
     ];
 
-    public function searchReservation($input)
+    public function searchReservation(array $data)
+    {
+        $phone = array_key_exists('phone', $data) ? $data['phone'] : null;
+        $checkin = array_key_exists('checkin', $data) ? $data['checkin'] : null;
+        $checkout = array_key_exists('checkout', $data) ? $data['checkout'] : null;
+
+        return $this
+            ->SearchPhone($phone)
+            ->SearchCheckin($checkin)
+            ->SearchCheckout($checkout)
+            ->latest('id')
+            ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+    }
+
+    public function scopeSearchPhone($query, $phone)
+    {
+        return $query->where('phone', 'like', '%' . $phone . '%');
+    }
+
+    public function scopeSearchCheckin($query, $checkin)
+    {
+        return $query->where('phone', 'like', '%' . $checkin . '%');
+    }
+
+    public function scopeSearchCheckout($query, $checkout)
+    {
+        return $query->where('phone', 'like', '%' . $checkout . '%');
+    }
+
+    public function searchReservationByInput($input)
     {
         $query = 'select * from reservations r where r.phone = ' . '\'' . $input . '\'' . ' or r.email = ' . '\'' . $input . '\'' . ' or r.CMND = ' . '\'' . $input . '\'';
+        $result = DB::select($query);
+        return $result;
+    }
+
+    public function showDetailReservation($id)
+    {
+        $query = 'select * from reservations r where r.id = ' . $id . ' limit 1';
         $result = DB::select($query);
         return $result;
     }
