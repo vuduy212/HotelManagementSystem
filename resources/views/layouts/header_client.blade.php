@@ -13,6 +13,10 @@
                     <li><a href="{{ route('client.reservation') }}">reservation</a></li>
                     <li><a href="{{ route('client.activities') }}">activities</a></li>
                     <li><a href="{{ route('client.contact') }}">contact</a></li>
+                    <form action="{{ route('searchReservation') }}">
+                        <input type="text" name="input">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
                     <div class="clear"></div>
                 </ul>
                 <!-- start profile_details -->

@@ -29,6 +29,13 @@ class Reservation extends Model
         'time'
     ];
 
+    public function searchReservation($input)
+    {
+        $query = 'select * from reservations r where r.phone = ' . '\'' . $input . '\'' . ' or r.email = ' . '\'' . $input . '\'' . ' or r.CMND = ' . '\'' . $input . '\'';
+        $result = DB::select($query);
+        return $result;
+    }
+
     public function saveReservation(Request $data)
     {
         //add time
