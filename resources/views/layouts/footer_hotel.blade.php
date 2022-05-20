@@ -82,19 +82,16 @@
                     </div>
                     <div class="cell-sm-8 cell-md-4 wow fadeInUp" data-wow-delay=".3s">
                         <div class="page-footer-minimal-inner-subscribe">
-                            <h4>Join Our Newsletter</h4>
+                            <h4>Search Reservation</h4>
                             <!-- RD Mailform-->
-                            <form class="rd-mailform rd-mailform-inline form-center"
-                                data-form-output="form-output-global" data-form-type="subscribe" method="post"
-                                action="bat/rd-mailform.php">
+                            <form method="get" action="{{ route('searchReservation') }}" class="form-center">
                                 <div class="form-wrap">
-                                    <input class="form-input" id="subscribe-email" type="email" name="email"
-                                        data-constraints="@Email @Required" />
-                                    <label class="form-label" for="subscribe-email">Enter your e-mail</label>
+                                    <input class="form-input" type="text" name="input"
+                                        placeholder="Enter phone, email or CMND" />
                                 </div>
-                                <button class="button button-primary-2 button-effect-ujarak button-square"
-                                    type="submit">
-                                    <span>Subscribe</span>
+                                <button type="submit"
+                                    class="button button-primary-2 button-effect-ujarak button-square">
+                                    <span>Search</span>
                                 </button>
                             </form>
                         </div>

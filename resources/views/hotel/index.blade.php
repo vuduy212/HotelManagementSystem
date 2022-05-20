@@ -136,7 +136,7 @@
                                                 class="icon icon-primary fa-calendar"></span><span>Check-out
                                                 Date</span></label>
                                         <input class="form-input" id="date-out" data-time-picker="date" type="text"
-                                            name="checkin" />
+                                            name="checkout" />
                                         {{-- <input class="form-input" id="date-out" data-time-picker="date" type="text"
                                             name="checkout" /> --}}
                                     </div>
@@ -252,7 +252,7 @@
                 <div class="cell-sm-6">
                     <div class="box-outline box-outline__mod-1">
                         <figure>
-                            <img src="{{ asset('images/services-05-546x516.jpg')}}" alt="" width="546" height="516" />
+                            <img src="{{ asset('images/services-05-546x516.jpg') }}" alt="" width="546" height="516" />
                         </figure>
                     </div>
                 </div>
@@ -278,8 +278,9 @@
                     <div class="col-xs-12 col-sm-6 col-md-3 grid-sizer"></div>
                     <div class="col-xs-12 col-sm-6 col-md-3 isotope-item wow fadeInUp" data-filter="Category 1"
                         data-wow-delay=".1s">
-                        <a class="portfolio-item thumbnail-classic" href="{{ asset('images/gallery-1-533x800_original.jpg')}}"
-                            data-size="533x800" data-lightgallery="item"><img src="{{ asset('images/gallery-1-420x584.jpg')}}" alt=""
+                        <a class="portfolio-item thumbnail-classic"
+                            href="{{ asset('images/gallery-1-533x800_original.jpg') }}" data-size="533x800"
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-1-420x584.jpg') }}" alt=""
                                 width="420" height="584" />
                             <figure></figure>
                             <div class="caption">
@@ -289,8 +290,9 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-3 isotope-item wow fadeInUp" data-filter="Category 1"
                         data-wow-delay=".2s">
-                        <a class="portfolio-item thumbnail-classic" href="{{ asset('images/gallery-2-1199x800_original.jpg')}}"
-                            data-size="1199x800" data-lightgallery="item"><img src="{{ asset('images/gallery-2-420x278.jpg')}}" alt=""
+                        <a class="portfolio-item thumbnail-classic"
+                            href="{{ asset('images/gallery-2-1199x800_original.jpg') }}" data-size="1199x800"
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-2-420x278.jpg') }}" alt=""
                                 width="420" height="278" />
                             <figure></figure>
                             <div class="caption">
@@ -300,8 +302,9 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-3 isotope-item wow fadeInUp" data-filter="Category 1"
                         data-wow-delay=".4s">
-                        <a class="portfolio-item thumbnail-classic" href="{{ asset('images/gallery-3-584x800_original.jpg')}}"
-                            data-size="584x800" data-lightgallery="item"><img src="{{ asset('images/gallery-3-420x584.jpg')}}" alt=""
+                        <a class="portfolio-item thumbnail-classic"
+                            href="{{ asset('images/gallery-3-584x800_original.jpg') }}" data-size="584x800"
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-3-420x584.jpg') }}" alt=""
                                 width="420" height="584" />
                             <figure></figure>
                             <div class="caption">
@@ -311,8 +314,9 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-3 isotope-item wow fadeInUp" data-filter="Category 1"
                         data-wow-delay=".5s">
-                        <a class="portfolio-item thumbnail-classic" href="{{ asset('images/gallery-4-1200x800_original.jpg')}}"
-                            data-size="1200x800" data-lightgallery="item"><img src="{{ asset('images/gallery-4-420x278.jpg')}}" alt=""
+                        <a class="portfolio-item thumbnail-classic"
+                            href="{{ asset('images/gallery-4-1200x800_original.jpg') }}" data-size="1200x800"
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-4-420x278.jpg') }}" alt=""
                                 width="420" height="278" />
                             <figure></figure>
                             <div class="caption">
@@ -322,8 +326,9 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-3 isotope-item wow fadeInUp" data-filter="Category 1"
                         data-wow-delay=".3s">
-                        <a class="portfolio-item thumbnail-classic" href="{{ asset('images/gallery-5-1200x800_original.jpg')}}"
-                            data-size="1200x800" data-lightgallery="item"><img src="{{ asset('images/gallery-5-420x278.jpg')}}" alt=""
+                        <a class="portfolio-item thumbnail-classic"
+                            href="{{ asset('images/gallery-5-1200x800_original.jpg') }}" data-size="1200x800"
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-5-420x278.jpg') }}" alt=""
                                 width="420" height="278" />
                             <figure></figure>
                             <div class="caption">
@@ -333,8 +338,9 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-3 isotope-item wow fadeInUp" data-filter="Category 1"
                         data-wow-delay=".6s">
-                        <a class="portfolio-item thumbnail-classic" href="{{ asset('images/gallery-6-1200x798_original.jpg')}}"
-                            data-size="1200x798" data-lightgallery="item"><img src="{{ asset('images/gallery-6-420x278.jpg')}}" alt=""
+                        <a class="portfolio-item thumbnail-classic"
+                            href="{{ asset('images/gallery-6-1200x798_original.jpg') }}" data-size="1200x798"
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-6-420x278.jpg') }}" alt=""
                                 width="420" height="278" />
                             <figure></figure>
                             <div class="caption">
@@ -359,7 +365,8 @@
                 <div class="post-box post-box-minimal post-box-horizontal wow fadeInUp" data-wow-delay=".1s">
                     <a class="post-box-image" href="blog-post.html">
                         <figure>
-                            <img src="{{ asset('images/layout-2-blog-01-460x369.jpg')}}" alt="" width="460" height="369" />
+                            <img src="{{ asset('images/layout-2-blog-01-460x369.jpg') }}" alt="" width="460"
+                                height="369" />
                         </figure>
                     </a>
                     <div class="post-box-minimal-caption">
@@ -380,7 +387,8 @@
                 <div class="post-box post-box-minimal post-box-horizontal wow fadeInUp" data-wow-delay=".2s">
                     <a class="post-box-image" href="blog-post.html">
                         <figure>
-                            <img src="{{ asset('images/layout-2-blog-02-460x369.jpg')}}" alt="" width="460" height="369" />
+                            <img src="{{ asset('images/layout-2-blog-02-460x369.jpg') }}" alt="" width="460"
+                                height="369" />
                         </figure>
                     </a>
                     <div class="post-box-minimal-caption">
@@ -401,7 +409,8 @@
                 <div class="post-box post-box-minimal post-box-horizontal wow fadeInUp" data-wow-delay=".3s">
                     <a class="post-box-image" href="blog-post.html">
                         <figure>
-                            <img src="{{ asset('images/layout-2-blog-03-460x369.jpg')}}" alt="" width="460" height="369" />
+                            <img src="{{ asset('images/layout-2-blog-03-460x369.jpg') }}" alt="" width="460"
+                                height="369" />
                         </figure>
                     </a>
                     <div class="post-box-minimal-caption">
