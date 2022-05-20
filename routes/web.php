@@ -57,6 +57,9 @@ Route::get('/searchReservation', [ReservationController::class, 'searchReservati
 Route::get('/viewDetailReservation/{id}', [ReservationController::class, 'viewDetail'])->name('viewDetail');
 Route::get('/listAllReservation', [ReservationController::class, 'index'])->name('listAllReservation');
 
+//new UI
+Route::get('/hotel', [ReservationController::class, 'index'])->name('listAllReservation');
+
 
 /*------ Admin ------*/
 Route::prefix('admin')->middleware('auth')->group(function () {

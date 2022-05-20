@@ -28,17 +28,20 @@ class StatusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $categories = RoomCategories::all();
-        return view('AdminPage/statuses/list_status', compact('categories'));
+        // return view('AdminPage/statuses/list_status');
+        return view('hotel.index');
     }
 
     public function search(Request $request)
     {
         //process time input
+        $request->checkin = date("Y-m-d", strtotime($request->checkin));
+        $request->checkout = date("Y-m-d", strtotime($request->checkout));
         $request['checkin'] = $request->checkin . ' ' . $request->checkin_time;
         $request['checkout'] = $request->checkout . ' ' . $request->checkout_time;
+
         // $date_checkin = str_replace("T", " ", $request->checkin);
         // $date_checkout = str_replace("T", " ", $request->checkout);
         // $request['checkin'] = $date_checkin . ':00';
@@ -52,8 +55,8 @@ class StatusController extends Controller
 
         $results = array();
 
-        $number_of_adults = $request->number_of_adults;
-        $number_of_children = $request->number_of_children;
+        $number_of_adults = (int) $request->number_of_adults;
+        $number_of_children = (int) $request->number_of_children;
 
         //search by slots
         $slot_from_request = (int) ($number_of_adults + 0.5 * $number_of_children);

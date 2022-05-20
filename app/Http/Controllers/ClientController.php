@@ -20,8 +20,7 @@ class ClientController extends Controller
 
     public function index()
     {
-        $categories = RoomCategories::all();
-        return view('client/index', compact('categories'));
+        return view('hotel.index');
     }
 
     public function selectRoom(Request $request)
