@@ -72,8 +72,7 @@
                                         </dt>
                                         <dd class="text-gray-darker">
                                             Call Us:
-                                            <a class="link link-gray-darker" href="tel:#">+1 (409)
-                                                987–5874</a>
+                                            <a class="link link-gray-darker" href="tel:#">+84 (96) 777–5035</a>
                                         </dd>
                                     </dl>
                                 </li>

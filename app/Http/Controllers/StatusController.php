@@ -187,7 +187,10 @@ class StatusController extends Controller
             return Redirect::back()->with('message', 'Xin lỗi quý khách, phòng đã được đặt mất rồi :(. Mời quý khách chọn phòng khác ạ :D');
         } else {
             $result = $this->reservation->saveReservation($request);
-            return view('AdminPage.statuses.reservation')->with([
+            // return view('AdminPage.reservation.list_reservation')->with([
+            //     'result' => $result
+            // ]);
+            return view('AdminPage.reservation.detail')->with([
                 // full info
                 'id' => $result->id,
                 'client_name' => $result->client_name,
