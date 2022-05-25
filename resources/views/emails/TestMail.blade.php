@@ -1,114 +1,31 @@
-@extends('layouts.hotel')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">ID: {{ $details['id'] }}</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Your reservation</title>
+</head>
 
-                    <div class="card-body">
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Client name</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['client_name'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Phone</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['phone'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Email</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['email'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">CMND</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['cmnd'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Category name</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['category_name'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Room's name</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['room_name'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Number of adults</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['number_of_adults'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Number of children</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['number_of_children'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Check-in time</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['checkin'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Check-out time</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['checkout'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Time</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['time'] }} day</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Price</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['price'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Payment</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['payment'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Create time</label>
-                            <div class="col-md-6">
-                                <p>{{ $details['created_at'] }}</p>
-                            </div>
-                        </div>
-                        <br>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
+<body>
+    <h1>{{ $details['title'] }}</h1>
+    <h1>{{ $details['body'] }}</h1>
+    <h1>ID: {{ $details['id'] }}</h1>
+    <h1>Name: {{ $details['client_name'] }}</h1>
+    <h1>Phone: {{ $details['phone'] }}</h1>
+    <h1>Email: {{ $details['email'] }}</h1>
+    <h1>CMND: {{ $details['cmnd'] }}</h1>
+    <h1>Payment method: {{ $details['payment'] }}</h1>
+    <h1>Room category: {{ $details['category_name'] }}</h1>
+    <h1>Room: {{ $details['room_name'] }}</h1>
+    <h1>Number of adults: {{ $details['number_of_adults'] }}</h1>
+    <h1>Number of children: {{ $details['number_of_children'] }}</h1>
+    <h1>Check-in: {{ $details['checkin'] }}</h1>
+    <h1>Check-out: {{ $details['checkout'] }}</h1>
+    <h1>Price: {{ $details['price'] }}</h1>
+    <h1>Time create: {{ $details['created_at'] }}</h1>
+    <h1>Total time use room:{{ $details['time'] }}</h1>
+</body>
+
+</html>
