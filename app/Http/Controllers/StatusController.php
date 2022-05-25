@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TestMail;
 use App\Models\Reservation;
 use App\Models\Room;
 use App\Models\RoomCategories;
@@ -9,6 +10,7 @@ use App\Models\Status;
 use App\Models\StatusDTO;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Ramsey\Uuid\Type\Integer;
 
@@ -187,9 +189,30 @@ class StatusController extends Controller
             return Redirect::back()->with('message', 'Xin lỗi quý khách, phòng đã được đặt mất rồi :(. Mời quý khách chọn phòng khác ạ :D');
         } else {
             $result = $this->reservation->saveReservation($request);
-            // return view('AdminPage.reservation.list_reservation')->with([
-            //     'result' => $result
-            // ]);
+
+            //send mail
+            $details = [
+                'title' => 'Dear Mr/Mrs ' . $result->client_name,
+                'body' => 'This is your reservation !',
+                'id' => $result->id,
+                'client_name' => $result->client_name,
+                'phone' => $result->phone,
+                'email' => $result->email,
+                'cmnd' => $result->CMND,
+                'payment' => $result->payment,
+                'category_name' => $result->category_name,
+                'room_name' => $result->room_name,
+                'number_of_adults' => $result->number_of_adults,
+                'number_of_children' => $result->number_of_children,
+                'checkin' => $result->checkin,
+                'checkout' => $result->checkout,
+                'price' => $result->price,
+                'created_at' => $result->created_at,
+                'time' => $result->time,
+            ];
+
+            Mail::to($result->email)->send(new TestMail($details));
+
             return view('AdminPage.reservation.detail')->with([
                 // full info
                 'id' => $result->id,

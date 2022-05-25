@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomBillController;
 use App\Http\Controllers\RoomCategoriesController;
@@ -59,6 +60,9 @@ Route::get('/listAllReservation', [ReservationController::class, 'index'])->name
 
 //new UI
 Route::get('/hotel', [ReservationController::class, 'index'])->name('listAllReservation');
+
+//email
+Route::get('/send_email', [MailController::class, 'sendEmail'])->name('sendEmail');
 
 
 /*------ Admin ------*/
