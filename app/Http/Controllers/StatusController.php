@@ -209,12 +209,13 @@ class StatusController extends Controller
                 'price' => $result->price,
                 'created_at' => $result->created_at,
                 'time' => $result->time,
+                'code' => $result->code
             ];
 
             Mail::to($result->email)->send(new TestMail($details));
 
             //send sms
-            NotificationController::sms($result->phone, $result->email);
+            NotificationController::sms($result->phone, $result->code);
 
             return view('AdminPage.reservation.detail')->with([
                 // full info
@@ -233,6 +234,7 @@ class StatusController extends Controller
                 'price' => $result->price,
                 'created_at' => $result->created_at,
                 'time' => $result->time,
+                'code' => $result->code,
                 'notification' => 'Success !'
             ]);
         }

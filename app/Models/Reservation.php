@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\NotificationController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class Reservation extends Model
         'price',
         'payment',
         'created_at',
-        'time'
+        'time',
+        'code'
     ];
 
     public function searchReservation(array $data)
@@ -96,6 +98,8 @@ class Reservation extends Model
             'price' => $price,
             'payment' => $data['payment'],
             'time' => $time,
+            // 'code' => $data['code']
+            'code' => NotificationController::randomCode()
         ]);
 
         return $reservation;
@@ -106,6 +110,13 @@ class Reservation extends Model
         $query = "select * from reservations r
                     join rooms r2 where r.room_name = r2.room_name
                     and r.room_name = " . $room_name;
+        $result = DB::select($query);
+        return $result;
+    }
+
+    public function searchReservationByCode($code)
+    {
+        $query = "select * from reservations r where r.code = " . '\'' . $code . '\'';
         $result = DB::select($query);
         return $result;
     }

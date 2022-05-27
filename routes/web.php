@@ -58,6 +58,7 @@ Route::get('/chart/{room_name}', [StatusController::class, 'chart'])->name('char
 Route::get('/searchReservation', [ReservationController::class, 'searchReservation'])->name('searchReservation');
 Route::get('/viewDetailReservation/{id}', [ReservationController::class, 'viewDetail'])->name('viewDetail');
 Route::get('/listAllReservation', [ReservationController::class, 'index'])->name('listAllReservation');
+Route::get('/searchReservationByCode', [ReservationController::class, 'searchReservationByCode'])->name('searchReservationByCode');
 
 //new UI
 Route::get('/hotel', [ReservationController::class, 'index'])->name('listAllReservation');
@@ -70,6 +71,9 @@ Route::get('/send_sms', [NotificationController::class, 'sendSms'])->name('sendS
 
 //SMS twilio
 Route::get('/sms', [NotificationController::class, 'sms'])->name('sms');
+
+//test random
+Route::get('/random', [NotificationController::class, 'randomCode'])->name('randomCode');
 
 /*------ Admin ------*/
 Route::prefix('admin')->middleware('auth')->group(function () {

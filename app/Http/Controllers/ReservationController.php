@@ -20,6 +20,31 @@ class ReservationController extends Controller
         return view('AdminPage.reservation.list_reservation', compact('result'));
     }
 
+    public function searchReservationByCode(Request $request)
+    {
+        $listResult = $this->reservation->searchReservationByCode($request->code);
+        $result = $listResult[0];
+        return view('AdminPage.reservation.detail')->with([
+            // full info
+            'id' => $result->id,
+            'client_name' => $result->client_name,
+            'phone' => $result->phone,
+            'email' => $result->email,
+            'cmnd' => $result->CMND,
+            'payment' => $result->payment,
+            'category_name' => $result->category_name,
+            'room_name' => $result->room_name,
+            'number_of_adults' => $result->number_of_adults,
+            'number_of_children' => $result->number_of_children,
+            'checkin' => $result->checkin,
+            'checkout' => $result->checkout,
+            'price' => $result->price,
+            'created_at' => $result->created_at,
+            'time' => $result->time,
+            'code' => $result->code
+        ]);
+    }
+
     public function viewDetail($id)
     {
         $listResult = $this->reservation->showDetailReservation($id);
@@ -41,6 +66,7 @@ class ReservationController extends Controller
             'price' => $result->price,
             'created_at' => $result->created_at,
             'time' => $result->time,
+            'code' => $result->code
         ]);
     }
     /**

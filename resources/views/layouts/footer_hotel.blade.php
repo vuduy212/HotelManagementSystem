@@ -83,10 +83,10 @@
                         <div class="page-footer-minimal-inner-subscribe">
                             <h4>Search Reservation</h4>
                             <!-- RD Mailform-->
-                            <form method="get" action="{{ route('searchReservation') }}" class="form-center">
+                            <form method="get" action="{{ route('searchReservationByCode') }}" class="form-center">
                                 <div class="form-wrap">
-                                    <input class="form-input" type="text" name="input"
-                                        placeholder="Enter phone, email or CMND" />
+                                    <input class="form-input" type="text" name="code"
+                                        placeholder="Enter your reservation code" />
                                 </div>
                                 <button type="submit"
                                     class="button button-primary-2 button-effect-ujarak button-square">

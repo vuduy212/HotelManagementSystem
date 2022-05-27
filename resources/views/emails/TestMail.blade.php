@@ -12,6 +12,10 @@
     <h1>{{ $details['title'] }}</h1>
     <h1>{{ $details['body'] }}</h1>
 
+    {{-- 0. Ma don dat phong --}}
+    <br>
+    <h3>Reservation Code: {{ $details['code'] }}</h3>
+
     {{-- 1. Thong tin khach hang --}}
     <br>
     <h2>Client Information</h2>

@@ -28,6 +28,7 @@ class CreateReservationsTable extends Migration
             $table->float('price');
             $table->string('payment');
             $table->double('time');
+            $table->string('code')->nullable();
             $table->timestamps();
         });
     }

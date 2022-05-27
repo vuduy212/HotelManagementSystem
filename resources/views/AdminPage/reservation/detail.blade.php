@@ -9,6 +9,13 @@
 
                     <div class="card-body">
                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Reservation Code</label>
+                            <div class="col-md-6">
+                                <p>{{ $code }}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Client name</label>
                             <div class="col-md-6">
                                 <p>{{ $client_name }}</p>
