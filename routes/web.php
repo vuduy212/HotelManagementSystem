@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomBillController;
 use App\Http\Controllers\RoomCategoriesController;
@@ -64,6 +65,11 @@ Route::get('/hotel', [ReservationController::class, 'index'])->name('listAllRese
 //email
 Route::get('/send_email', [MailController::class, 'sendEmail'])->name('sendEmail');
 
+//sms
+Route::get('/send_sms', [NotificationController::class, 'sendSms'])->name('sendSms');
+
+//SMS twilio
+Route::get('/sms', [NotificationController::class, 'sms'])->name('sms');
 
 /*------ Admin ------*/
 Route::prefix('admin')->middleware('auth')->group(function () {

@@ -213,6 +213,9 @@ class StatusController extends Controller
 
             Mail::to($result->email)->send(new TestMail($details));
 
+            //send sms
+            NotificationController::sms($result->phone, $result->email);
+
             return view('AdminPage.reservation.detail')->with([
                 // full info
                 'id' => $result->id,
