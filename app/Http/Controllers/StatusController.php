@@ -189,7 +189,6 @@ class StatusController extends Controller
             return Redirect::back()->with('message', 'Xin lỗi quý khách, phòng đã được đặt mất rồi :(. Mời quý khách chọn phòng khác ạ :D');
         } else {
             $result = $this->reservation->saveReservation($request);
-
             //send mail
             $details = [
                 'title' => 'Dear Mr/Mrs ' . $result->client_name,
@@ -215,7 +214,7 @@ class StatusController extends Controller
             Mail::to($result->email)->send(new TestMail($details));
 
             //send sms
-            NotificationController::sms($result->phone, $result->code);
+            // NotificationController::sms($result->phone, $result->code);
 
             return view('AdminPage.reservation.detail')->with([
                 // full info

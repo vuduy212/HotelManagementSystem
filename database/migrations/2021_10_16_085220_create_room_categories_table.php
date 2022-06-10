@@ -19,7 +19,7 @@ class CreateRoomCategoriesTable extends Migration
             $table->string('description');
             $table->text('images')->nullable();
             $table->float('price')->nullable();
-            $table->integer('area')->nullable();
+            $table->float('area')->nullable();
             $table->integer('double_bed')->nullable();
             $table->integer('single_bed')->nullable();
             $table->timestamps();

@@ -15,10 +15,11 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->string('status');
             $table->string('client_name');
             $table->string('CMND');
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('category_name');
             $table->string('room_name');
             $table->integer('number_of_adults')->unsigned();
@@ -29,6 +30,8 @@ class CreateReservationsTable extends Migration
             $table->string('payment');
             $table->double('time');
             $table->string('code')->nullable();
+            // $table->bigInteger('room_id')->unsigned();
+            $table->foreign('room_name')->references('room_name')->on('rooms');
             $table->timestamps();
         });
     }

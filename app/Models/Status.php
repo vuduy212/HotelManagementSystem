@@ -36,11 +36,11 @@ class Status extends Model
     public function search_by_checkin_checkout($checkin, $checkout)
     {
         $query1 = 'select *, r.id as room_id from rooms r
-                    join room_categories rc on r.category_id = rc.id
+                    join room_categories rc on r.category_name = rc.category_name
                     and r.room_name not in';
         $query2 = 'select r.room_name from rooms r
                     join reservations r1 on r.room_name = r1.room_name
-                    join room_categories rc on r.category_id = rc.id
+                    join room_categories rc on r.category_name = rc.category_name
                     where ((r1.checkin <= ' . '\'' . $checkin . '\' and ' . '\'' . $checkin . '\'' . ' < r1.checkout) or (r1.checkin < ' . '\'' . $checkout  . '\' and ' . '\'' . $checkout . '\'' . ' <= r1.checkout))';
         $result = DB::select($query1 . ' (' . $query2 . ')');
         return $result;
@@ -81,7 +81,7 @@ class Status extends Model
     {
         $query = 'select room_id from statuses s
                     join rooms r on s.room_id = r.id
-                    join room_categories rc on r.category_id = rc.id
+                    join room_categories rc on r.category_name = rc.category_name
                     where category_id = ' . $category
             . ' and (\'' . $checkInTime . '\' < checkin < \'' . $checkOutTime . '\' or \'' . $checkInTime . ' \' < checkout < \'' . $checkOutTime . '\')';
         $result = DB::select($query);

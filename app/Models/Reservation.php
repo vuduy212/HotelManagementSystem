@@ -28,7 +28,8 @@ class Reservation extends Model
         'payment',
         'created_at',
         'time',
-        'code'
+        'code',
+        'status'
     ];
 
     public function searchReservation(array $data)
@@ -99,7 +100,8 @@ class Reservation extends Model
             'payment' => $data['payment'],
             'time' => $time,
             // 'code' => $data['code']
-            'code' => NotificationController::randomCode()
+            'code' => NotificationController::randomCode(),
+            'status' => 'Unconfirm',
         ]);
 
         return $reservation;

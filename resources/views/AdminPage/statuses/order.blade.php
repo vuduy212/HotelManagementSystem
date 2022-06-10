@@ -92,6 +92,7 @@
                             <input type="hidden" value="{{ $checkin }}" name="checkin">
                             <input type="hidden" value="{{ $checkout }}" name="checkout">
                             <input type="hidden" value="{{ $price }}" name="price">
+                            {{-- <input type="hidden" value="Unconfirm" name="status"> --}}
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">

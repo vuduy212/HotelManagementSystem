@@ -24,7 +24,7 @@ class Room extends Model
 
     public function categories()
     {
-        return $this->belongsTo(RoomCategories::class, 'category_id');
+        return $this->belongsTo(RoomCategories::class, 'category_name');
     }
 
     public function saveRoom(Request $data)
@@ -32,7 +32,7 @@ class Room extends Model
         $room = $this->create([
             'room_name' => $data['room_name'],
             'description' => $data['description'],
-            'category_id' => $data['category_id'],
+            'category_name' => $data['category_name'],
         ]);
 
         return $room;
@@ -44,10 +44,10 @@ class Room extends Model
         $category = array_key_exists('filter_category', $data) ? $data['filter_category'] : null;
 
         return $this
-                    ->SearchRoomName($roomName)
-                    ->WhereHasCategory($category)
-                    ->latest('id')
-                    ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+            ->SearchRoomName($roomName)
+            ->WhereHasCategory($category)
+            ->latest('id')
+            ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
     }
 
     public function scopeSearchRoomName($query, $roomName)
@@ -57,6 +57,6 @@ class Room extends Model
 
     public function scopeWhereHasCategory($query, $category)
     {
-        return $query->where('category_id', 'like', '%' . $category . '%');
+        return $query->where('category_name', 'like', '%' . $category . '%');
     }
 }

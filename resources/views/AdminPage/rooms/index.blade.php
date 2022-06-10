@@ -21,8 +21,8 @@
                         <select name="filter_category">
                             <option value="">Filter by Category</option>
                             @foreach ($roomCategories as $category)
-                                <option value="{{ $category->id }}"
-                                    {{ request('filter_category') == $category->id ? 'selected' : '' }}>
+                                <option value="{{ $category->name }}"
+                                    {{ request('filter_category') == $category->name ? 'selected' : '' }}>
                                     {{ $category->category_name }}</option>
                             @endforeach
                         </select>
@@ -60,7 +60,7 @@
                                         <th scope="row">{{ $room->id }}</th>
                                         <td>
                                             @foreach ($roomCategories as $category)
-                                                @if ($room->category_id == $category->id)
+                                                @if ($room->category_name == $category->category_name)
                                                     {{ $category->category_name }}
                                                 @endif
                                             @endforeach
