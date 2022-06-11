@@ -22,7 +22,7 @@
     <p>Name: {{ $details['client_name'] }}</p>
     <p>Phone: {{ $details['phone'] }}</p>
     <p>Email: {{ $details['email'] }}</p>
-    <p>CMND: {{ $details['cmnd'] }}</p>
+    <p>ID_Card: {{ $details['ID_Card'] }}</p>
 
     {{-- 2. Thong tin don dat phong --}}
     {{-- <p>ID: {{ $details['id'] }}</p> --}}

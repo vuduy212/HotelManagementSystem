@@ -19,7 +19,7 @@ class CreateRoomBillsTable extends Migration
             $table->date('date_start');
             $table->date('date_finish');
             $table->string('client_name');
-            $table->string('CMND');
+            $table->string('ID_Card');
             $table->string('phone');
             $table->string('email')->nullable();
             $table->integer('payment');

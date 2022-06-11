@@ -24,7 +24,7 @@ class MailController extends Controller
             'client_name' => $reservation->client_name,
             'phone' => $reservation->phone,
             'email' => $reservation->email,
-            'cmnd' => $reservation->CMND,
+            'ID_Card' => $reservation->ID_Card,
             'payment' => $reservation->payment,
             'category_name' => $reservation->category_name,
             'room_name' => $reservation->room_name,

@@ -37,9 +37,9 @@
                         </div>
                         <br>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">CMND</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">ID_Card</label>
                             <div class="col-md-6">
-                                <p>{{ $cmnd }}</p>
+                                <p>{{ $ID_Card }}</p>
                             </div>
                         </div>
                         <br>

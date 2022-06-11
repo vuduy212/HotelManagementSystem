@@ -17,7 +17,7 @@ class ReservationSeeder extends Seeder
         Reservation::updateOrCreate([
             'status' => 'Unconfirm',
             'client_name' => 'duy',
-            'CMND' => '000011110000',
+            'ID_Card' => '000011110000',
             'phone' => '0999888111',
             'email' => 'duy@gmail.com',
             'category_name' => 'T10',
@@ -34,7 +34,7 @@ class ReservationSeeder extends Seeder
         Reservation::updateOrCreate([
             'status' => 'Confirmed',
             'client_name' => 'an',
-            'CMND' => '000011110001',
+            'ID_Card' => '000011110001',
             'phone' => '0999888112',
             'email' => 'an@gmail.com',
             'category_name' => 'T10',
@@ -52,7 +52,7 @@ class ReservationSeeder extends Seeder
         Reservation::updateOrCreate([
             'status' => 'Paid',
             'client_name' => 'kien',
-            'CMND' => '000011110002',
+            'ID_Card' => '000011110002',
             'phone' => '0999888113',
             'email' => 'an@gmail.com',
             'category_name' => 'T10',
@@ -70,7 +70,7 @@ class ReservationSeeder extends Seeder
         Reservation::updateOrCreate([
             'status' => 'Cancelled',
             'client_name' => 'thanh',
-            'CMND' => '000011110003',
+            'ID_Card' => '000011110003',
             'phone' => '0999888114',
             'email' => 'thanh@gmail.com',
             'category_name' => 'T10',

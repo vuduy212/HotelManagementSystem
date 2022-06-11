@@ -17,7 +17,7 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->string('status');
             $table->string('client_name');
-            $table->string('CMND');
+            $table->string('ID_Card');
             $table->string('phone');
             $table->string('email')->nullable();
             $table->string('category_name');

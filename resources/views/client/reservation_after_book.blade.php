@@ -59,9 +59,9 @@
                                 @enderror
                             </div>
                             <div class="sel_room left">
-                                <h4>CMND</h4>
-                                <input name="CMND" type="text" class="frm-field required">
-                                @error('CMND')
+                                <h4>ID_Card</h4>
+                                <input name="ID_Card" type="text" class="frm-field required">
+                                @error('ID_Card')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

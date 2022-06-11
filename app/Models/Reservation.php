@@ -17,7 +17,7 @@ class Reservation extends Model
         'client_name',
         'email',
         'phone',
-        'CMND',
+        'ID_Card',
         'category_name',
         'room_name',
         'number_of_adults',
@@ -63,7 +63,7 @@ class Reservation extends Model
 
     public function searchReservationByInput($input)
     {
-        $query = 'select * from reservations r where r.phone = ' . '\'' . $input . '\'' . ' or r.email = ' . '\'' . $input . '\'' . ' or r.CMND = ' . '\'' . $input . '\'';
+        $query = 'select * from reservations r where r.phone = ' . '\'' . $input . '\'' . ' or r.email = ' . '\'' . $input . '\'' . ' or r.ID_Card = ' . '\'' . $input . '\'';
         $result = DB::select($query);
         return $result;
     }
@@ -87,7 +87,7 @@ class Reservation extends Model
 
         $reservation = $this->create([
             'client_name' => $data['client_name'],
-            'CMND' => $data['CMND'],
+            'ID_Card' => $data['ID_Card'],
             'phone' => $data['phone'],
             'email' => $data['email'],
             'category_name' => $data['category_name'],
