@@ -22,17 +22,17 @@
                                     <div class="group-xs">
                                         <div>
                                             <dl class="list-desc">
-                                                <dt>Weekdays:</dt>
+                                                <dt>Daytime:</dt>
                                                 <dd class="text-gray-darker">
-                                                    <span>8:00–20:00</span>
+                                                    <span>09:00 – 21:00</span>
                                                 </dd>
                                             </dl>
                                         </div>
                                         <div>
                                             <dl class="list-desc">
-                                                <dt>Weekends:</dt>
+                                                <dt>Night:</dt>
                                                 <dd class="text-gray-darker">
-                                                    <span>9:00–18:00</span>
+                                                    <span>21:00 – 09:00</span>
                                                 </dd>
                                             </dl>
                                         </div>
@@ -40,10 +40,8 @@
                                 </li>
                                 <li>
                                     <p class="rights">
-                                        <span>&copy;&nbsp;</span><span>2019</span><span>&nbsp;</span><span
-                                            class="copyright-year"></span>Royal Villas. All Rights
-                                        Reserved. Design by
-                                        <a href="https://www.templatemonster.com">TemplateMonster</a>
+                                        <span>&copy;&nbsp;</span><span>06 - 2022</span><span>&nbsp;</span><span
+                                            class="copyright-year"></span>Paradise Hotel
                                     </p>
                                 </li>
                             </ul>
@@ -59,9 +57,9 @@
                                             <span class="icon icon-sm mdi mdi-map-marker"></span>
                                         </dt>
                                         <dd>
-                                            <a class="link link-gray-darker" href="#">6036 Richmond hwy.,
-                                                Alexandria, VA,
-                                                2230</a>
+                                            <a class="link link-gray-darker" href="#">81/79 Cau Giay,
+                                                Ha Noi,
+                                                Vietnam</a>
                                         </dd>
                                     </dl>
                                 </li>

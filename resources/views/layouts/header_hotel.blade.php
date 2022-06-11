@@ -28,8 +28,10 @@
                     <div class="center-side">
                         <!-- RD Navbar Brand-->
                         <div class="rd-navbar-brand fullwidth-brand">
-                            <a class="brand-name" href="index.html"><img src="images/logo-default-314x48.png" alt=""
-                                    width="314" height="48" /></a>
+                            {{-- <a class="brand-name" href="index.html"><img src="images/logo-default-314x48.png" alt=""
+                                    width="314" height="48" /></a> --}}
+                            <a class="brand-name" href="index.html"><img src="images/Logo.png" alt="" width="314"
+                                    height="48" /></a>
                         </div>
                     </div>
                     <div class="right-side">
@@ -60,8 +62,10 @@
                     </button>
                     <!-- RD Navbar Brand-->
                     <div class="rd-navbar-brand mobile-brand">
-                        <a class="brand-name" href="index.html"><img src="images/logo-default-314x48.png" alt=""
-                                width="314" height="48" /></a>
+                        {{-- <a class="brand-name" href="index.html"><img src="images/logo-default-314x48.png" alt=""
+                                width="314" height="48" /></a> --}}
+                        <a class="brand-name" href="index.html"><img src="images/Logo.png" alt="" width="314"
+                                height="48" /></a>
                     </div>
                 </div>
                 <div class="rd-navbar-aside-right">

@@ -33,7 +33,7 @@
                             </div>
                             <br>
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">CMND*</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">ID Card</label>
                                 <div class="col-md-6">
                                     <input id="CMND" value="{{ old('CMND') }}" name="CMND" type="text"
                                         class="form-control @error('CMND') is-invalid @enderror">

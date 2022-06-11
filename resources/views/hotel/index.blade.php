@@ -208,12 +208,12 @@
                             </p>
                             <div class="group">
                                 <dl class="list-desc">
-                                    <dt>Weekdays:</dt>
-                                    <dd><span>8:00–20:00</span></dd>
+                                    <dt>Daytime:</dt>
+                                    <dd><span>09:00 – 21:00</span></dd>
                                 </dl>
                                 <dl class="list-desc">
-                                    <dt>Weekends:</dt>
-                                    <dd><span>9:00–18:00</span></dd>
+                                    <dt>Night:</dt>
+                                    <dd><span>21:00 – 09:00</span></dd>
                                 </dl>
                             </div>
                             <a class="button button-effect-ujarak button-lg button-secondary-outline button-square"
@@ -376,7 +376,7 @@
                                     Spa Procedures</a>
                             </h5>
                             <div class="post-box-minimal-meta-bottom">
-                                <time class="post-box-icon mdi mdi-clock" datetime="2017">October 12, 2017</time>
+                                <time class="post-box-icon mdi mdi-clock" datetime="2021">October 12, 2021</time>
                                 <p>
                                     <a class="post-box-icon mdi mdi-thumb-up-outline" href="blog-post.html">78</a>
                                 </p>
@@ -398,7 +398,7 @@
                                     Villas Spa Resort and Hotel</a>
                             </h5>
                             <div class="post-box-minimal-meta-bottom">
-                                <time class="post-box-icon mdi mdi-clock" datetime="2017">October 26, 2017</time>
+                                <time class="post-box-icon mdi mdi-clock" datetime="2021">October 26, 2021</time>
                                 <p>
                                     <a class="post-box-icon mdi mdi-thumb-up-outline" href="blog-post.html">15</a>
                                 </p>
@@ -420,7 +420,7 @@
                                     Why Your Relaxing Getaway Starts Here</a>
                             </h5>
                             <div class="post-box-minimal-meta-bottom">
-                                <time class="post-box-icon mdi mdi-clock" datetime="2017">August 23, 2017</time>
+                                <time class="post-box-icon mdi mdi-clock" datetime="2021">August 23, 2021</time>
                                 <p>
                                     <a class="post-box-icon mdi mdi-thumb-up-outline" href="blog-post.html">40</a>
                                 </p>

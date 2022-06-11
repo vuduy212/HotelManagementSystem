@@ -81,9 +81,9 @@ class StatusController extends Controller
             $time = $sec_checkout - $sec_checkin;
             $status->time = $time;
 
-            if ($status->images == null) {
-                $status->images = 'a';
-            }
+            // if ($status->images == null) {
+            //     $status->images = 'a';
+            // }
 
             // //convert to array to show
             // $array_status = (array) $status;
@@ -150,14 +150,14 @@ class StatusController extends Controller
      */
 
 
-    public function show($category_name, $room_name, $double_bed, $single_bed, $images, $price, $description, $number_of_adults, $number_of_children, $checkin, $checkout)
+    public function show($category_name, $room_name, $double_bed, $single_bed, $price, $description, $number_of_adults, $number_of_children, $checkin, $checkout)
     {
         return view('AdminPage.statuses.show')->with([
             'category_name' => $category_name,
             'room_name' => $room_name,
             'double_bed' => $double_bed,
             'single_bed' => $single_bed,
-            'images' => $images,
+            // 'images' => $images,
             'price' => $price,
             'description' => $description,
             // out parameter

@@ -41,7 +41,7 @@
                                                     'room_name' => $status->room_name,
                                                     'double_bed' => $status->double_bed,
                                                     'single_bed' => $status->single_bed,
-                                                    'images' => $status->images,
+                                                    // 'images' => $status->images,
                                                     'price' => $status->price,
                                                     'description' => $status->description,
                                                     // out parameter

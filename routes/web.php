@@ -50,7 +50,7 @@ Route::prefix('client')->name('client.')->group(function () {
 Route::get('/index', [StatusController::class, 'index'])->name('listStatus');
 Route::get('/search', [StatusController::class, 'search'])->name('search');
 // Route::get('/searchStatus/{array}', [StatusController::class, 'show'])->name('showDetail');
-Route::get('/showDetail/{category_name}/{room_name}/{double_bed}/{single_bed}/{images}/{price}/{description}/{number_of_adults}/{number_of_children}/{checkin}/{checkout}', [StatusController::class, 'show'])->name('showDetail');
+Route::get('/showDetail/{category_name}/{room_name}/{double_bed}/{single_bed}/{price}/{description}/{number_of_adults}/{number_of_children}/{checkin}/{checkout}', [StatusController::class, 'show'])->name('showDetail');
 Route::get('/order/{category_name}/{room_name}/{price}/{number_of_adults}/{number_of_children}/{checkin}/{checkout}', [StatusController::class, 'order'])->name('order');
 // Route::post('/reservation/{client_name}/{phone}/{email}/{cmnd}/{category_name}/{room_name}/{number_of_adults}/{number_of_children}/{checkin}/{checkout}/{price}/{payment}', [StatusController::class, 'reservation'])->name('reservation');
 Route::post('/reservation', [StatusController::class, 'reservation'])->name('reservation');
