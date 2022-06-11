@@ -122,4 +122,18 @@ class Reservation extends Model
         $result = DB::select($query);
         return $result;
     }
+
+    public function countReservationByRoom($room_name)
+    {
+        $query = "select count(*) from reservations r where r.room_name = " . '\'' . $room_name . '\'';
+        $result = DB::select($query);
+        return $result;
+    }
+
+    public function countReservationByRoomCategory($category_name)
+    {
+        $query = "select count(*) from reservations r where r.category_name = " . '\'' . $category_name . '\'';
+        $result = DB::select($query);
+        return $result;
+    }
 }

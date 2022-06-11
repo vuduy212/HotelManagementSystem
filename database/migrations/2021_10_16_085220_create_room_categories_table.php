@@ -17,7 +17,7 @@ class CreateRoomCategoriesTable extends Migration
             $table->id();
             $table->string('category_name')->unique();
             $table->string('description');
-            $table->text('images')->nullable();
+            // $table->text('images')->nullable();
             $table->float('price')->nullable();
             $table->float('area')->nullable();
             $table->integer('double_bed')->nullable();
