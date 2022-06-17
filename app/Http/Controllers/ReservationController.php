@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use DateTime;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -77,6 +78,14 @@ class ReservationController extends Controller
     public function index(Request $request)
     {
         $result = $this->reservation->searchReservation($request->all());
+        foreach ($result as $res) {
+            $checkinString = $res->checkin;
+            $checkoutString = $res->checkout;
+            $checkinTime = DateTime::createFromFormat('Y-m-d H:i:s', $checkinString);
+            $checkoutTime = DateTime::createFromFormat('Y-m-d', $checkoutString);
+            $res->checkin1 = $checkinTime->format('H, d/m/Y');
+            $res->checkout1 = $checkinTime->format('H, d/m/Y');
+        }
         return view('AdminPage.reservation.list_reservation', compact('result'));
     }
 

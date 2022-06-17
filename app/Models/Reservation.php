@@ -38,12 +38,36 @@ class Reservation extends Model
         $checkin = array_key_exists('checkin', $data) ? $data['checkin'] : null;
         $checkout = array_key_exists('checkout', $data) ? $data['checkout'] : null;
 
-        return $this
-            ->SearchPhone($phone)
-            ->SearchCheckin($checkin)
-            ->SearchCheckout($checkout)
-            ->latest('id')
-            ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+        if ($checkin == null and $checkout == null) {
+            return $this
+                ->SearchPhone($phone)
+                ->SearchCheckin($checkin)
+                ->SearchCheckout($checkout)
+                ->latest('id')
+                ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+        } else if ($checkin != null and $checkout == null) {
+            return $this
+                ->SearchPhone($phone)
+                ->SearchInCheckin($checkin)
+                ->latest('id')
+                ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+        } else {
+            return $this
+                ->SearchPhone($phone)
+                ->SearchInCheckout($checkout)
+                ->latest('id')
+                ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+        }
+    }
+
+    public function scopeSearchInCheckin($query, $checkin)
+    {
+        return $query->where('checkin', '>=', $checkin);
+    }
+
+    public function scopeSearchInCheckout($query, $checkout)
+    {
+        return $query->where('checkout', '<=', $checkout);
     }
 
     public function scopeSearchPhone($query, $phone)
@@ -53,12 +77,12 @@ class Reservation extends Model
 
     public function scopeSearchCheckin($query, $checkin)
     {
-        return $query->where('phone', 'like', '%' . $checkin . '%');
+        return $query->where('checkin', 'like', '%' . $checkin . '%');
     }
 
     public function scopeSearchCheckout($query, $checkout)
     {
-        return $query->where('phone', 'like', '%' . $checkout . '%');
+        return $query->where('checkout', 'like', '%' . $checkout . '%');
     }
 
     public function searchReservationByInput($input)

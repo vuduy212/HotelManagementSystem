@@ -15,8 +15,6 @@
                         <a href="{{ route('rooms.create') }}" class="btn btn-primary">Create New Rooms</a>
                         @endif
                     </div>
-
-
                     <form action="{{ route('rooms.index') }}" method="GET" class="md-3 d-flex">
                         <select name="filter_category">
                             <option value="">Filter by Category</option>

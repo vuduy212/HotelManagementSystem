@@ -15,9 +15,9 @@
                         <input type="text" class="form-control" placeholder="Enter phone number..." name="phone"
                             value="{{ request('phone') }}">
                         <input type="date" class="form-control" placeholder="Enter checkin..." name="checkin"
-                            value="{{ request('date_start') }}">
+                            value="{{ request('checkin') }}">
                         <input type="date" class="form-control" placeholder="Enter checkout..." name="checkout"
-                            value="{{ request('date_end') }}">
+                            value="{{ request('checkout') }}">
                         <input type="text" class="form-control" placeholder="Enter number per page" name="number"
                             value="{{ request('number') }}">
 
@@ -47,8 +47,8 @@
                                     <tr>
                                         <th scope="row">{{ $reservation->id }}</th>
                                         <td>{{ $reservation->client_name }}</td>
-                                        <td>{{ $reservation->checkin }}</td>
-                                        <td>{{ $reservation->checkout }}</td>
+                                        <td>{{ $reservation->checkin1 }}</td>
+                                        <td>{{ $reservation->checkout1 }}</td>
                                         <td>{{ $reservation->phone }}</td>
                                         <td>{{ $reservation->email }}</td>
                                         <td>{{ $reservation->payment }}</td>
