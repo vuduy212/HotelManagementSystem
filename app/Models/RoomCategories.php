@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
@@ -29,6 +30,17 @@ class RoomCategories extends Model
     public function bills()
     {
         return $this->hasMany(RoomBill::class);
+    }
+
+    public static function getImage1($room_name)
+    {
+        $query = "select i.value from room_categories rc
+                        join images i on rc.category_name = i.category_name
+                        join rooms r on r.category_name = rc.category_name
+                        where r.room_name = " . '\'' . $room_name . '\'';
+        // $query = "select count(*) from reservations r where r.category_name = " . '\'' . $category_name . '\'';
+        $result = DB::select($query);
+        return asset("images/room_categories/" . $result);
     }
 
     public function getImage()
