@@ -32,15 +32,24 @@ class RoomCategories extends Model
         return $this->hasMany(RoomBill::class);
     }
 
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'room_category_service', 'category_id', 'service_id');
+    }
+
     public static function getImage1($room_name)
     {
         $query = "select i.value from room_categories rc
                         join images i on rc.category_name = i.category_name
-                        join rooms r on r.category_name = rc.category_name
-                        where r.room_name = " . '\'' . $room_name . '\'';
+                        where rc.category_name = " . '\'' . $room_name . '\'';
         // $query = "select count(*) from reservations r where r.category_name = " . '\'' . $category_name . '\'';
         $result = DB::select($query);
-        return asset("images/room_categories/" . $result);
+        $listImage = [];
+        foreach ($result as $image) {
+            $linkImage = asset("images/room_categories/" . $image->value);
+            array_push($listImage, $linkImage);
+        }
+        return $listImage;
     }
 
     public function getImage()

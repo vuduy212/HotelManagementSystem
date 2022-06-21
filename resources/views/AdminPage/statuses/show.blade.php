@@ -7,10 +7,13 @@
             <div class="wrapper row">
                 <div class="preview col-md-6">
                     {{-- <img src="{{ $images }}" alt="{{ $category_name }}" class="imaged"> --}}
-                    <img src="" alt="{{ $category_name }}" class="imaged">
+                    @foreach ($listImage as $image)
+                        <img src="{{ $image }}" alt="{{ $category_name }}" class="imaged">
+                        <br><br><br>
+                    @endforeach
                 </div>
                 <div class="details col-md-3">
-                    <h3 class="">Room Category: {{ $category_name }}</h3>
+                    <h3 class="">{{ $category_name }}</h3>
                     <div class="rating">
                         <div class="stars"> <span class="fa fa-star checked"></span> <span
                                 class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span
@@ -18,13 +21,18 @@
                         </div>
                     </div>
                     <br>
-                    <h4>Room's name</h4>
+                    <h4>Room: </h4>
                     <p class="product-description">{{ $room_name }}</p>
                     <h4>Number of double bed</h4>
                     <p class="product-description">{{ $double_bed }}</p>
                     <br>
                     <h4>Number of single bed</h4>
                     <p class="product-description">{{ $single_bed }}</p>
+                    <br>
+                    <h4>Services</h4>
+                    <p class="product-description">
+                        {{ implode(', ',$category->services()->get()->pluck('service_name')->toArray()) }}
+                    </p>
                     <br>
                     <h4>Description</h4>
                     <p class="product-description">{{ $description }}</p>

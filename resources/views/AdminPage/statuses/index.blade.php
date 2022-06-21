@@ -21,10 +21,10 @@
                                     <div class="cell-sm-10 cell-md-8 cell-lg-7 wow fadeInUp" data-wow-delay=".1s">
                                         <div class="post-video post-video-border">
                                             <div class="post-video__image">
-                                                {{-- <img src="{{ RoomCategories::getImage1($status->room_name) }}" alt=""
-                                                    width="1020" height="525" /> --}}
-                                                <img src="{{ asset('images/room_categories/normal2.jpg') }}" alt=""
-                                                    width="1020" height="525" />
+                                                <img src="{{ $status->image }}" alt="" width="1020"
+                                                    height="525" />
+                                                {{-- <img src="{{ asset('images/room_categories/normal2.jpg') }}"
+                                                    alt="" width="1020" height="525" /> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -37,6 +37,8 @@
                                                         <dt>
                                                             <a
                                                                 href="{{ route('showDetail', [
+                                                                    // 'listImage' => $listImage,
+                                                                    // 'category' => $category,
                                                                     'category_name' => $status->category_name,
                                                                     'room_name' => $status->room_name,
                                                                     'double_bed' => $status->double_bed,
@@ -86,7 +88,23 @@
                                                     </dl>
                                                 </div>
                                                 <a class="button button-effect-ujarak button-lg button-secondary-outline button-square"
-                                                    href="about-us.html"><span>book now</span></a>
+                                                    href="{{ route('showDetail', [
+                                                        // 'listImage' => $listImage,
+                                                        // 'category' => $category,
+                                                        'category_name' => $status->category_name,
+                                                        'room_name' => $status->room_name,
+                                                        'double_bed' => $status->double_bed,
+                                                        'single_bed' => $status->single_bed,
+                                                        // 'images' => $status->images,
+                                                        'price' => $status->price,
+                                                        'description' => $status->description,
+                                                        // out parameter
+                                                        'number_of_adults' => $number_of_adults,
+                                                        'number_of_children' => $number_of_children,
+                                                        'checkin' => $checkin,
+                                                        'checkout' => $checkout,
+                                                    ]) }}">
+                                                    <span>book now</span></a>
                                             </div>
                                         </div>
                                     </div>

@@ -11,7 +11,14 @@
                 </ol>
                 <div class="card">
                     <form action="{{ route('listAllReservation') }}" method="GET" class="md-3 d-flex">
-
+                        <select name="filter_status">
+                            <option value="">Filter by Status</option>
+                            <option name="status" value="Unconfirm">Unconfirm</option>
+                            <option name="status" value="Confirmed">Confirmed</option>
+                            <option name="status" value="Using">Using</option>
+                            <option name="status" value="Paid">Paid</option>
+                            <option name="status" value="Cancelled">Cancelled</option>
+                        </select>
                         <input type="text" class="form-control" placeholder="Enter phone number..." name="phone"
                             value="{{ request('phone') }}">
                         <input type="date" class="form-control" placeholder="Enter checkin..." name="checkin"
@@ -30,6 +37,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Client name</th>
                                     <th scope="col">Check In</th>
                                     <th scope="col">Check Out</th>
@@ -46,6 +54,7 @@
                                 @foreach ($result as $reservation)
                                     <tr>
                                         <th scope="row">{{ $reservation->id }}</th>
+                                        <td>{{ $reservation->status }}</td>
                                         <td>{{ $reservation->client_name }}</td>
                                         <td>{{ $reservation->checkin1 }}</td>
                                         <td>{{ $reservation->checkout1 }}</td>
@@ -54,16 +63,10 @@
                                         <td>{{ $reservation->payment }}</td>
                                         <td>{{ $reservation->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('viewDetail', $reservation->id) }}"><button type="button"
-                                                    class="btn btn-success">DETAIL</button></a>
-                                            {{-- <a href="{{ route('result.edit', $reservation->id) }}"><button type="button"
-                                                    class="btn btn-warning">EDIT</button></a>
-                                            <form action="{{ route('result.destroy', $reservation) }}" method="POST"
-                                                class="float-left">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">DELETE</button>
-                                            </form> --}}
+                                            <a href="{{ route('showReservation', $reservation->id) }}"><button
+                                                    type="button" class="btn btn-success">DETAIL</button></a>
+                                            <a href="{{ route('editReservation', $reservation->id) }}"><button
+                                                    type="button" class="btn btn-warning">EDIT</button></a>
                                         </td>
                                     </tr>
                                 @endforeach

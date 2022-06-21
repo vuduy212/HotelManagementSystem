@@ -37,9 +37,11 @@ class Reservation extends Model
         $phone = array_key_exists('phone', $data) ? $data['phone'] : null;
         $checkin = array_key_exists('checkin', $data) ? $data['checkin'] : null;
         $checkout = array_key_exists('checkout', $data) ? $data['checkout'] : null;
+        $status = array_key_exists('filter_status', $data) ? $data['filter_status'] : null;
 
         if ($checkin == null and $checkout == null) {
             return $this
+                ->SearchStatus($status)
                 ->SearchPhone($phone)
                 ->SearchCheckin($checkin)
                 ->SearchCheckout($checkout)
@@ -47,17 +49,24 @@ class Reservation extends Model
                 ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
         } else if ($checkin != null and $checkout == null) {
             return $this
+                ->SearchStatus($status)
                 ->SearchPhone($phone)
                 ->SearchInCheckin($checkin)
                 ->latest('id')
                 ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
         } else {
             return $this
+                ->SearchStatus($status)
                 ->SearchPhone($phone)
                 ->SearchInCheckout($checkout)
                 ->latest('id')
                 ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
         }
+    }
+
+    public function scopeSearchStatus($query, $status)
+    {
+        return $query->where('status', 'like', '%' . $status . '%');
     }
 
     public function scopeSearchInCheckin($query, $checkin)

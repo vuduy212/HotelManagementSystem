@@ -29,21 +29,22 @@
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <!-- Right Side Of Navbar -->
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <!-- Authentication Links -->
                     <li>
-                        <a id="navbarDropdown" class="dropdown-item" href="#" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="dropdown-item" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
                     <div class="dropdown-item">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
@@ -81,8 +82,8 @@
                         </a>
                         <div class="sb-sidenav-menu-heading">Modules</div>
                         @admin
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-                            aria-expanded="false" aria-controls="collapsePages">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                             {{-- <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div> --}}
                             <a href="{{ route('users.index') }}" class="nav-link collapsed">User Management</a>
                         </a>
@@ -115,25 +116,27 @@
                             </div> --}}
 
 
-                        @room_manager
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <a href="{{ route('rooms.index') }}" class="nav-link collapsed">Rooms Management</a>
                         </a>
-                        @endif
 
+                        @room_manager
                         <a href="{{ route('categories.index') }}" class="nav-link collapsed" data-bs-toggle="collapse"
                             data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <a href="{{ route('categories.index') }}" class="nav-link collapsed">Room Categories</a>
                         </a>
+                        @endif
 
-                        @receptionist
+                        {{-- @receptionist
                         <a href="{{ route('categories.index') }}" class="nav-link collapsed"
                             data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false"
                             aria-controls="collapseLayouts">
                             <a href="{{ route('status.index') }}" class="nav-link collapsed">Statuses Management</a>
                         </a>
+                        @endif --}}
 
+                        @receptionist
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             {{-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> --}}
@@ -144,14 +147,14 @@
                         </a>
                         @endif
 
-                        @client
+                        {{-- @client
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            {{-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> --}}
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             <a href="{{ route('bills.create') }}" class="nav-link collapsed">Room Order</a>
-                            {{-- <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> --}}
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        @endif
+                        @endif --}}
 
                         {{-- <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">

@@ -88,6 +88,7 @@ class StatusController extends Controller
             // //convert to array to show
             // $array_status = (array) $status;
             // $status->array_status = $array_status;
+            $status->image = RoomCategories::getImage1($status->category_name)[0];
         }
         return view('AdminPage.statuses.index', compact(
             'results',
@@ -150,14 +151,16 @@ class StatusController extends Controller
      */
 
 
-    public function show($category_name, $room_name, $double_bed, $single_bed, $price, $description, $number_of_adults, $number_of_children, $checkin, $checkout)
+    public function show(RoomCategories $category, $category_name, $room_name, $double_bed, $single_bed, $price, $description, $number_of_adults, $number_of_children, $checkin, $checkout)
     {
+        $listImage = RoomCategories::getImage1($category_name);
         return view('AdminPage.statuses.show')->with([
+            'listImage' => $listImage,
+            'category' => $category,
             'category_name' => $category_name,
             'room_name' => $room_name,
             'double_bed' => $double_bed,
             'single_bed' => $single_bed,
-            // 'images' => $images,
             'price' => $price,
             'description' => $description,
             // out parameter
@@ -211,7 +214,7 @@ class StatusController extends Controller
                 'code' => $result->code
             ];
 
-            Mail::to($result->email)->send(new TestMail($details));
+            // Mail::to($result->email)->send(new TestMail($details));
 
             //send sms
             // NotificationController::sms($result->phone, $result->code);

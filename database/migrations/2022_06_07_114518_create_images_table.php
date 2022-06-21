@@ -15,10 +15,11 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('image_name');
+            $table->string('image_name')->nullable();
             $table->text('value');
             $table->string('category_name');
             $table->foreign('category_name')->references('category_name')->on('room_categories');
+            $table->timestamps();
         });
     }
 

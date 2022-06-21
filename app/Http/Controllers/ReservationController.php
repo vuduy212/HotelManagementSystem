@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Rules\StrLengthRule;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ReservationController extends Controller
 {
@@ -118,7 +120,25 @@ class ReservationController extends Controller
      */
     public function show(Reservation $reservation)
     {
-        //
+        return view('AdminPage.reservation.show')->with([
+            // full info
+            'id' => $reservation->id,
+            'client_name' => $reservation->client_name,
+            'phone' => $reservation->phone,
+            'email' => $reservation->email,
+            'ID_Card' => $reservation->ID_Card,
+            'payment' => $reservation->payment,
+            'category_name' => $reservation->category_name,
+            'room_name' => $reservation->room_name,
+            'number_of_adults' => $reservation->number_of_adults,
+            'number_of_children' => $reservation->number_of_children,
+            'checkin' => $reservation->checkin,
+            'checkout' => $reservation->checkout,
+            'price' => $reservation->price,
+            'created_at' => $reservation->created_at,
+            'time' => $reservation->time,
+            'code' => $reservation->code
+        ]);
     }
 
     /**
@@ -129,7 +149,9 @@ class ReservationController extends Controller
      */
     public function edit(Reservation $reservation)
     {
-        return view('');
+        return view('AdminPage.reservation.edit')->with([
+            'reservation' => $reservation,
+        ]);;
     }
 
     /**
@@ -141,7 +163,27 @@ class ReservationController extends Controller
      */
     public function update(Request $request, Reservation $reservation)
     {
-        //
+        // $this->validate($request, [
+        //     'client_name' => [
+        //         'required',
+        //         'alpha_dash',
+        //         Rule::unique('reservations')->ignore($reservation),
+        //         new StrLengthRule()
+        //     ],
+        //     'email' => 'required|unique:users,email',
+        //     'phone' => 'required|number',
+        // ]);
+        $reservation = $this->reservation->where('id', $reservation->id)->first();
+        $reservation->client_name = $request->client_name;
+        $reservation->ID_Card = $request->ID_Card;
+        $reservation->phone = $request->phone;
+        $reservation->email = $request->email;
+        $reservation->status = $request->status;
+        $reservation->payment = $request->payment;
+        // dd($reservation);
+        $reservation->save();
+
+        return redirect()->route('listAllReservation');
     }
 
     /**

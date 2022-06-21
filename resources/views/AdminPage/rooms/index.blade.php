@@ -65,10 +65,10 @@
                                         </td>
                                         <td>{{ $room->room_name }}</td>
                                         <td>{{ $room->description }}</td>
-                                        @room_manager
                                         <td>
                                             <a href="{{ route('chart', $room->room_name) }}"><button type="button"
                                                     class="btn btn-primary">STATUS</button></a>
+                                            @room_manager
                                             <a href="{{ route('rooms.show', $room->id) }}"><button type="button"
                                                     class="btn btn-success">DETAIL</button></a>
                                             <a href="{{ route('rooms.edit', $room->id) }}"><button type="button"
@@ -78,8 +78,8 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">DELETE</button>
                                             </form>
-                                        </td>
                                 @endif
+                                </td>
                                 </tr>
                                 @endforeach
                             </tbody>

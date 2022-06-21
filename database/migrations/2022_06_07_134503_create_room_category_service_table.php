@@ -15,10 +15,11 @@ class CreateRoomCategoryServiceTable extends Migration
     {
         Schema::create('room_category_service', function (Blueprint $table) {
             $table->id();
-            $table->string('category_name');
-            $table->string('service_name');
-            $table->foreign('category_name')->references('category_name')->on('room_categories');
-            $table->foreign('service_name')->references('service_name')->on('services');
+            $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('service_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('room_categories');
+            $table->foreign('service_id')->references('id')->on('services');
+            $table->timestamps();
         });
     }
 

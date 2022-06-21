@@ -6,8 +6,7 @@
         <div class="container-fliud">
             <div class="wrapper row">
                 <div class="preview col-md-6">
-                    <img src="{{ $roomCategories->getImage() }}" alt="{{ $roomCategories->name }}"
-                        class="imaged">
+                    <img src="{{ $roomCategories->getImage() }}" alt="{{ $roomCategories->name }}" class="imaged">
                 </div>
                 <div class="details col-md-3">
                     <h3 class="">Category: {{ $roomCategories->category_name }}</h3>
