@@ -38,9 +38,9 @@ Route::prefix('client')->name('client.')->group(function () {
 
     $class = ClientController::class;
     Route::get('/', [$class, 'index'])->name('index');
-    Route::get('/activities', [$class, 'activities'])->name('activities');
-    Route::get('/contact', [$class, 'contact'])->name('contact');
-    Route::get('/details', [$class, 'details'])->name('details');
+    Route::get('/about-us', [$class, 'aboutUs'])->name('about-us');
+    Route::get('/contacts', [$class, 'contacts'])->name('contacts');
+    Route::get('/typography', [$class, 'typography'])->name('typography');
     Route::get('/reservation', [$class, 'reservation'])->name('reservation');
     Route::get('/rooms', [$class, 'rooms'])->name('rooms');
     Route::get('/selectRoom', [$class, 'selectRoom'])->name('selectRoom');
@@ -62,9 +62,12 @@ Route::get('/viewDetailReservation/{id}', [ReservationController::class, 'viewDe
 Route::get('/showReservation/{reservation}', [ReservationController::class, 'show'])->name('showReservation');
 Route::get('/listAllReservation', [ReservationController::class, 'index'])->name('listAllReservation');
 Route::get('/searchReservationByCode', [ReservationController::class, 'searchReservationByCode'])->name('searchReservationByCode');
+Route::get('/createReservation', [ReservationController::class, 'create'])->name('createReservation');
+
+Route::get('/s', [StatusController::class, 'listCategories'])->name('listCategories');
 
 //new UI
-Route::get('/hotel', [ReservationController::class, 'index'])->name('listAllReservation');
+Route::get('/listReservation', [ReservationController::class, 'index'])->name('listAllReservation');
 
 //email
 Route::get('/send_email', [MailController::class, 'sendEmail'])->name('sendEmail');

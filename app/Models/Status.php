@@ -35,7 +35,7 @@ class Status extends Model
 
     public function search_by_checkin_checkout($checkin, $checkout)
     {
-        $query1 = 'select *, r.id as room_id from rooms r
+        $query1 = 'select *, r.id as room_id, r.category_name as category from rooms r
                     join room_categories rc on r.category_name = rc.category_name
                     and r.room_name not in';
         $query2 = 'select r.room_name from rooms r

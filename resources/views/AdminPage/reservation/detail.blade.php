@@ -50,13 +50,13 @@
                             </div>
                         </div>
                         <br>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Room's name</label>
                             <div class="col-md-6">
                                 <p>{{ $room_name }}</p>
                             </div>
                         </div>
-                        <br>
+                        <br> --}}
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Number of adults</label>
                             <div class="col-md-6">

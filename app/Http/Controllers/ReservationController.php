@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Models\Room;
+use App\Models\RoomCategories;
 use App\Rules\StrLengthRule;
 use DateTime;
 use Illuminate\Http\Request;
@@ -80,6 +82,8 @@ class ReservationController extends Controller
     public function index(Request $request)
     {
         $result = $this->reservation->searchReservation($request->all());
+        $roomCategories = RoomCategories::all();
+        $rooms = Room::all();
         foreach ($result as $res) {
             $checkinString = $res->checkin;
             $checkoutString = $res->checkout;
@@ -88,7 +92,7 @@ class ReservationController extends Controller
             $res->checkin1 = $checkinTime->format('H, d/m/Y');
             $res->checkout1 = $checkinTime->format('H, d/m/Y');
         }
-        return view('AdminPage.reservation.list_reservation', compact('result'));
+        return view('AdminPage.reservation.list_reservation', compact('result', 'roomCategories', 'rooms'));
     }
 
     /**
@@ -98,9 +102,10 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //
+        $rooms = Room::all();
+        $roomCategories = RoomCategories::all();
+        return view('AdminPage.reservation.create', compact('rooms', 'roomCategories'));
     }
-
     /**
      * Store a newly created resource in storage.
      *

@@ -38,30 +38,56 @@ class Reservation extends Model
         $checkin = array_key_exists('checkin', $data) ? $data['checkin'] : null;
         $checkout = array_key_exists('checkout', $data) ? $data['checkout'] : null;
         $status = array_key_exists('filter_status', $data) ? $data['filter_status'] : null;
+        $roomCategory = array_key_exists('room_categories', $data) ? $data['room_categories'] : null;
+        $room = array_key_exists('rooms', $data) ? $data['rooms'] : null;
 
         if ($checkin == null and $checkout == null) {
             return $this
+                ->SearchRoomCategory($roomCategory)
+                ->SearchRoom($room)
+                ->SearchStatus($status)
+                ->SearchPhone($phone)
+                ->latest('id')
+                ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+        } else if ($checkin != null and $checkout == null) {
+            return $this
+                ->SearchRoomCategory($roomCategory)
+                ->SearchRoom($room)
+                ->SearchStatus($status)
+                ->SearchPhone($phone)
+                ->SearchInCheckin($checkin)
+                ->latest('id')
+                ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+        } else if ($checkin == null && $checkout != null) {
+            return $this
+                ->SearchRoomCategory($roomCategory)
+                ->SearchRoom($room)
+                ->SearchStatus($status)
+                ->SearchPhone($phone)
+                ->SearchInCheckout($checkout)
+                ->latest('id')
+                ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
+        } else {
+            return $this
+                ->SearchRoomCategory($roomCategory)
+                ->SearchRoom($room)
                 ->SearchStatus($status)
                 ->SearchPhone($phone)
                 ->SearchCheckin($checkin)
                 ->SearchCheckout($checkout)
                 ->latest('id')
                 ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
-        } else if ($checkin != null and $checkout == null) {
-            return $this
-                ->SearchStatus($status)
-                ->SearchPhone($phone)
-                ->SearchInCheckin($checkin)
-                ->latest('id')
-                ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
-        } else {
-            return $this
-                ->SearchStatus($status)
-                ->SearchPhone($phone)
-                ->SearchInCheckout($checkout)
-                ->latest('id')
-                ->paginate(array_key_exists('number', $data) ? $data['number'] : 5);
         }
+    }
+
+    public function scopeSearchRoomCategory($query, $roomCategory)
+    {
+        return $query->where('category_name', 'like', '%' . $roomCategory . '%');
+    }
+
+    public function scopeSearchRoom($query, $room)
+    {
+        return $query->where('room_name', 'like', '%' . $room . '%');
     }
 
     public function scopeSearchStatus($query, $status)

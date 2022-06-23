@@ -27,7 +27,7 @@
                                                 </h3>
                                             </div>
                                             <a class="button button-effect-ujarak button-lg button-white-outline button-square"
-                                                href="about-us.html" data-caption-animate="slideInLeft"
+                                                href="about-us.blade.php" data-caption-animate="slideInLeft"
                                                 data-caption-delay="1150"><span>learn more</span></a>
                                         </div>
                                     </div>
@@ -49,7 +49,7 @@
                                                 </h3>
                                             </div>
                                             <a class="button button-effect-ujarak button-lg button-white-outline button-square"
-                                                href="about-us.html" data-caption-animate="slideInLeft"
+                                                href="about-us.blade.php" data-caption-animate="slideInLeft"
                                                 data-caption-delay="1150"><span>learn more</span></a>
                                         </div>
                                     </div>
@@ -71,7 +71,7 @@
                                                 </h3>
                                             </div>
                                             <a class="button button-effect-ujarak button-lg button-white-outline button-square"
-                                                href="about-us.html" data-caption-animate="slideInLeft"
+                                                href="about-us.blade.php" data-caption-animate="slideInLeft"
                                                 data-caption-delay="1150"><span>learn more</span></a>
                                         </div>
                                     </div>
@@ -189,7 +189,8 @@
                 <div class="cell-sm-10 cell-md-8 cell-lg-7 wow fadeInUp" data-wow-delay=".1s">
                     <div class="post-video post-video-border">
                         <div class="post-video__image">
-                            <img src="{{ asset('images/video-bg-1020x525.jpg') }}" alt="" width="1020" height="525" />
+                            <img src="{{ asset('images/video-bg-1020x525.jpg') }}" alt="" width="1020"
+                                height="525" />
                         </div>
                         <div class="post-video__body">
                             <a class="link-control post-video__control" data-lightgallery="item"
@@ -217,7 +218,7 @@
                                 </dl>
                             </div>
                             <a class="button button-effect-ujarak button-lg button-secondary-outline button-square"
-                                href="about-us.html"><span>book now</span></a>
+                                href="about-us.blade.php"><span>book now</span></a>
                         </div>
                     </div>
                 </div>
@@ -246,13 +247,15 @@
                         Daily aqua aerobics classes help keep guests fit while on
                         the road.
                     </p>
-                    <a class="button button-primary button button-square button-effect-ujarak button-lg" href="#"><span>read
+                    <a class="button button-primary button button-square button-effect-ujarak button-lg"
+                        href="#"><span>read
                             more</span></a>
                 </div>
                 <div class="cell-sm-6">
                     <div class="box-outline box-outline__mod-1">
                         <figure>
-                            <img src="{{ asset('images/services-05-546x516.jpg') }}" alt="" width="546" height="516" />
+                            <img src="{{ asset('images/services-05-546x516.jpg') }}" alt="" width="546"
+                                height="516" />
                         </figure>
                     </div>
                 </div>
@@ -280,8 +283,8 @@
                         data-wow-delay=".1s">
                         <a class="portfolio-item thumbnail-classic"
                             href="{{ asset('images/gallery-1-533x800_original.jpg') }}" data-size="533x800"
-                            data-lightgallery="item"><img src="{{ asset('images/gallery-1-420x584.jpg') }}" alt=""
-                                width="420" height="584" />
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-1-420x584.jpg') }}"
+                                alt="" width="420" height="584" />
                             <figure></figure>
                             <div class="caption">
                                 <span class="icon mdi-thumb-up-outline">346</span><span class="icon mdi-eye">220</span>
@@ -292,8 +295,8 @@
                         data-wow-delay=".2s">
                         <a class="portfolio-item thumbnail-classic"
                             href="{{ asset('images/gallery-2-1199x800_original.jpg') }}" data-size="1199x800"
-                            data-lightgallery="item"><img src="{{ asset('images/gallery-2-420x278.jpg') }}" alt=""
-                                width="420" height="278" />
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-2-420x278.jpg') }}"
+                                alt="" width="420" height="278" />
                             <figure></figure>
                             <div class="caption">
                                 <span class="icon mdi-thumb-up-outline">346</span><span class="icon mdi-eye">220</span>
@@ -304,8 +307,8 @@
                         data-wow-delay=".4s">
                         <a class="portfolio-item thumbnail-classic"
                             href="{{ asset('images/gallery-3-584x800_original.jpg') }}" data-size="584x800"
-                            data-lightgallery="item"><img src="{{ asset('images/gallery-3-420x584.jpg') }}" alt=""
-                                width="420" height="584" />
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-3-420x584.jpg') }}"
+                                alt="" width="420" height="584" />
                             <figure></figure>
                             <div class="caption">
                                 <span class="icon mdi-thumb-up-outline">346</span><span class="icon mdi-eye">220</span>
@@ -316,8 +319,8 @@
                         data-wow-delay=".5s">
                         <a class="portfolio-item thumbnail-classic"
                             href="{{ asset('images/gallery-4-1200x800_original.jpg') }}" data-size="1200x800"
-                            data-lightgallery="item"><img src="{{ asset('images/gallery-4-420x278.jpg') }}" alt=""
-                                width="420" height="278" />
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-4-420x278.jpg') }}"
+                                alt="" width="420" height="278" />
                             <figure></figure>
                             <div class="caption">
                                 <span class="icon mdi-thumb-up-outline">346</span><span class="icon mdi-eye">220</span>
@@ -328,8 +331,8 @@
                         data-wow-delay=".3s">
                         <a class="portfolio-item thumbnail-classic"
                             href="{{ asset('images/gallery-5-1200x800_original.jpg') }}" data-size="1200x800"
-                            data-lightgallery="item"><img src="{{ asset('images/gallery-5-420x278.jpg') }}" alt=""
-                                width="420" height="278" />
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-5-420x278.jpg') }}"
+                                alt="" width="420" height="278" />
                             <figure></figure>
                             <div class="caption">
                                 <span class="icon mdi-thumb-up-outline">346</span><span class="icon mdi-eye">220</span>
@@ -340,8 +343,8 @@
                         data-wow-delay=".6s">
                         <a class="portfolio-item thumbnail-classic"
                             href="{{ asset('images/gallery-6-1200x798_original.jpg') }}" data-size="1200x798"
-                            data-lightgallery="item"><img src="{{ asset('images/gallery-6-420x278.jpg') }}" alt=""
-                                width="420" height="278" />
+                            data-lightgallery="item"><img src="{{ asset('images/gallery-6-420x278.jpg') }}"
+                                alt="" width="420" height="278" />
                             <figure></figure>
                             <div class="caption">
                                 <span class="icon mdi-thumb-up-outline">346</span><span class="icon mdi-eye">220</span>
@@ -363,66 +366,66 @@
                 data-xl-stage-padding="0" data-loop="true" data-margin="30" data-mouse-drag="false"
                 data-nav-class='["owl-button-prev fl-budicons-free-left161","owl-button-next  fl-budicons-free-right163"]'>
                 <div class="post-box post-box-minimal post-box-horizontal wow fadeInUp" data-wow-delay=".1s">
-                    <a class="post-box-image" href="blog-post.html">
+                    <a class="post-box-image" href="blog-post.blade.php">
                         <figure>
-                            <img src="{{ asset('images/layout-2-blog-01-460x369.jpg') }}" alt="" width="460"
-                                height="369" />
+                            <img src="{{ asset('images/layout-2-blog-01-460x369.jpg') }}" alt=""
+                                width="460" height="369" />
                         </figure>
                     </a>
                     <div class="post-box-minimal-caption">
                         <div class="post-box-minimal-caption-inner">
                             <h5 class="post-box-minimal-title">
-                                <a href="blog-post.html">Top 3 Reasons Why Royal Villas Offers the Best
+                                <a href="blog-post.blade.php">Top 3 Reasons Why Royal Villas Offers the Best
                                     Spa Procedures</a>
                             </h5>
                             <div class="post-box-minimal-meta-bottom">
                                 <time class="post-box-icon mdi mdi-clock" datetime="2021">October 12, 2021</time>
                                 <p>
-                                    <a class="post-box-icon mdi mdi-thumb-up-outline" href="blog-post.html">78</a>
+                                    <a class="post-box-icon mdi mdi-thumb-up-outline" href="blog-post.blade.php">78</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="post-box post-box-minimal post-box-horizontal wow fadeInUp" data-wow-delay=".2s">
-                    <a class="post-box-image" href="blog-post.html">
+                    <a class="post-box-image" href="blog-post.blade.php">
                         <figure>
-                            <img src="{{ asset('images/layout-2-blog-02-460x369.jpg') }}" alt="" width="460"
-                                height="369" />
+                            <img src="{{ asset('images/layout-2-blog-02-460x369.jpg') }}" alt=""
+                                width="460" height="369" />
                         </figure>
                     </a>
                     <div class="post-box-minimal-caption">
                         <div class="post-box-minimal-caption-inner">
                             <h5 class="post-box-minimal-title">
-                                <a href="blog-post.html">Featured Therapies and Activities at Royal
+                                <a href="blog-post.blade.php">Featured Therapies and Activities at Royal
                                     Villas Spa Resort and Hotel</a>
                             </h5>
                             <div class="post-box-minimal-meta-bottom">
                                 <time class="post-box-icon mdi mdi-clock" datetime="2021">October 26, 2021</time>
                                 <p>
-                                    <a class="post-box-icon mdi mdi-thumb-up-outline" href="blog-post.html">15</a>
+                                    <a class="post-box-icon mdi mdi-thumb-up-outline" href="blog-post.blade.php">15</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="post-box post-box-minimal post-box-horizontal wow fadeInUp" data-wow-delay=".3s">
-                    <a class="post-box-image" href="blog-post.html">
+                    <a class="post-box-image" href="blog-post.blade.php">
                         <figure>
-                            <img src="{{ asset('images/layout-2-blog-03-460x369.jpg') }}" alt="" width="460"
-                                height="369" />
+                            <img src="{{ asset('images/layout-2-blog-03-460x369.jpg') }}" alt=""
+                                width="460" height="369" />
                         </figure>
                     </a>
                     <div class="post-box-minimal-caption">
                         <div class="post-box-minimal-caption-inner">
                             <h5 class="post-box-minimal-title">
-                                <a href="blog-post.html">
+                                <a href="blog-post.blade.php">
                                     Why Your Relaxing Getaway Starts Here</a>
                             </h5>
                             <div class="post-box-minimal-meta-bottom">
                                 <time class="post-box-icon mdi mdi-clock" datetime="2021">August 23, 2021</time>
                                 <p>
-                                    <a class="post-box-icon mdi mdi-thumb-up-outline" href="blog-post.html">40</a>
+                                    <a class="post-box-icon mdi mdi-thumb-up-outline" href="blog-post.blade.php">40</a>
                                 </p>
                             </div>
                         </div>

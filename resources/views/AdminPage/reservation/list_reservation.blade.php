@@ -5,11 +5,14 @@
         <div class="row justify-content-center">
 
             <div class="col-md-12">
-                <h1 class="mt-4">Room Orders Management</h1>
+                <h1 class="mt-4">Reservations Management</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Welcome to Room Orders Management !!</li>
+                    <li class="breadcrumb-item active">Welcome to Reservations Management !!</li>
                 </ol>
                 <div class="card">
+                    <div class="card-header">
+                        <a href="{{ route('createReservation') }}" class="btn btn-primary">Create New Reservation</a>
+                    </div>
                     <form action="{{ route('listAllReservation') }}" method="GET" class="md-3 d-flex">
                         <select name="filter_status">
                             <option value="">Filter by Status</option>
@@ -18,6 +21,22 @@
                             <option name="status" value="Using">Using</option>
                             <option name="status" value="Paid">Paid</option>
                             <option name="status" value="Cancelled">Cancelled</option>
+                        </select>
+                        <select name="room_categories">
+                            <option value="">Filter by Room Categories</option>
+                            @foreach ($roomCategories as $category)
+                                <option value="{{ $category->category_name }}"
+                                    {{ request('room_categories') == $category->category_name ? 'selected' : '' }}>
+                                    {{ $category->category_name }}</option>
+                            @endforeach
+                        </select>
+                        <select name="rooms">
+                            <option value="">Filter by Room</option>
+                            @foreach ($rooms as $room)
+                                <option value="{{ $room->room_name }}"
+                                    {{ request('rooms') == $room->room_name ? 'selected' : '' }}>
+                                    {{ $room->room_name }}</option>
+                            @endforeach
                         </select>
                         <input type="text" class="form-control" placeholder="Enter phone number..." name="phone"
                             value="{{ request('phone') }}">
@@ -37,6 +56,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Room</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Client name</th>
                                     <th scope="col">Check In</th>
@@ -54,6 +75,8 @@
                                 @foreach ($result as $reservation)
                                     <tr>
                                         <th scope="row">{{ $reservation->id }}</th>
+                                        <td>{{ $reservation->category_name }}</td>
+                                        <td>{{ $reservation->room_name }}</td>
                                         <td>{{ $reservation->status }}</td>
                                         <td>{{ $reservation->client_name }}</td>
                                         <td>{{ $reservation->checkin1 }}</td>
@@ -72,7 +95,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $result->appends(request()->only('phone', 'number', 'checkin', 'checkout'))->links() }} --}}
+                        {{ $result->appends(request()->only('phone', 'number', 'checkin', 'checkout', 'room_categories', 'rooms', 'status'))->links() }}
                     </div>
                 </div>
             </div>

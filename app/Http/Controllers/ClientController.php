@@ -35,19 +35,19 @@ class ClientController extends Controller
     {
     }
 
-    public function activities()
+    public function aboutUs()
     {
-        return view('client/activities');
+        return view('hotel/about-us');
     }
 
-    public function contact()
+    public function contacts()
     {
-        return view('client/contact');
+        return view('hotel/contacts');
     }
 
-    public function details()
+    public function typography()
     {
-        return view('client/details');
+        return view('hotel/typography');
     }
 
     public function reservation()

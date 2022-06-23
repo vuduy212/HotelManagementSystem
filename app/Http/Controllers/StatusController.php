@@ -44,10 +44,72 @@ class StatusController extends Controller
         $request['checkin'] = $request->checkin . ' ' . $request->checkin_time;
         $request['checkout'] = $request->checkout . ' ' . $request->checkout_time;
 
-        // $date_checkin = str_replace("T", " ", $request->checkin);
-        // $date_checkout = str_replace("T", " ", $request->checkout);
-        // $request['checkin'] = $date_checkin . ':00';
-        // $request['checkout'] = $date_checkout . ':00';
+        $checkin = $request['checkin'];
+        $checkout = $request['checkout'];
+
+        //search by time input
+        $list_search = $this->roomStatus->searchByTimeInput($request->all());
+        $results = array();
+
+        $number_of_adults = (int) $request->number_of_adults;
+        $number_of_children = (int) $request->number_of_children;
+
+        //search by slots
+        $slot_from_request = (int) ($number_of_adults + 0.5 * $number_of_children);
+        foreach ($list_search as $search) {
+            $slot_from_room = $search->double_bed * 2 + $search->single_bed;
+            if ($slot_from_request <= $slot_from_room && $slot_from_request >= $slot_from_room - 1) {
+                array_push($results, $search);
+            }
+        }
+        $list = array();
+        $listCategoryName = ['a'];
+        foreach ($results as $res) {
+            foreach ($listCategoryName as $name) {
+                $i = 0;
+                if ($res->category == $name) {
+                    $i = 1;
+                } else {
+                    $i = 0;
+                    array_push($listCategoryName, $res->category);
+                }
+            }
+            if ($i == 0) {
+                array_push($list, $res);
+            }
+        }
+        $results = $list;
+        //add STT
+        $index = 0;
+        foreach ($results as $status) {
+            // dd($status);
+            $index++;
+            $status->index = $index;
+
+            //add time
+            $sec_checkin = strtotime($request->checkin);
+            $sec_checkout = strtotime($request->checkout);
+            $time = $sec_checkout - $sec_checkin;
+            $status->time = $time;
+
+            $status->image = RoomCategories::getImage1($status->category_name)[0];
+        }
+        return view('AdminPage.statuses.index', compact(
+            'results',
+            'number_of_adults',
+            'number_of_children',
+            'checkin',
+            'checkout'
+        ));
+    }
+
+    public function listCategories(Request $request)
+    {
+        //process time input
+        $request->checkin = date("Y-m-d", strtotime($request->checkin));
+        $request->checkout = date("Y-m-d", strtotime($request->checkout));
+        $request['checkin'] = $request->checkin . ' ' . $request->checkin_time;
+        $request['checkout'] = $request->checkout . ' ' . $request->checkout_time;
 
         $checkin = $request['checkin'];
         $checkout = $request['checkout'];
@@ -187,7 +249,8 @@ class StatusController extends Controller
 
     public function reservation(Request $request)
     {
-        $notification = $this->roomStatus->checkReservationDuplicated($request->room_name, $request->checkin, $request->checkout);
+        // $notification = $this->roomStatus->checkReservationDuplicated($request->room_name, $request->checkin, $request->checkout);
+        $notification = false;
         if ($notification == true) {
             return Redirect::back()->with('message', 'Xin lỗi quý khách, phòng đã được đặt mất rồi :(. Mời quý khách chọn phòng khác ạ :D');
         } else {
@@ -214,7 +277,7 @@ class StatusController extends Controller
                 'code' => $result->code
             ];
 
-            // Mail::to($result->email)->send(new TestMail($details));
+            Mail::to($result->email)->send(new TestMail($details));
 
             //send sms
             // NotificationController::sms($result->phone, $result->code);

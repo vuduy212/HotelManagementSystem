@@ -29,7 +29,7 @@
     <br>
     <h2>Reservation Information</h2>
     <p>Room category: {{ $details['category_name'] }}</p>
-    <p>Room: {{ $details['room_name'] }}</p>
+    {{-- <p>Room: {{ $details['room_name'] }}</p> --}}
     <p>Number of adults: {{ $details['number_of_adults'] }}</p>
     <p>Number of children: {{ $details['number_of_children'] }}</p>
     <p>Check-in: {{ $details['checkin'] }}</p>

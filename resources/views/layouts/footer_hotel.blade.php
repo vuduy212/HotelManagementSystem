@@ -3,7 +3,7 @@
         <!-- <div class="footer-banner section-sm">
                         <a
                             class="banner"
-                            href="https://www.templatemonster.com/website-templates/monstroid2.html"
+                            href="https://www.templatemonster.com/website-templates/monstroid2.blade.php"
                             target="_blank"
                             ><img
                                 src="images/monstroid_big.jpg"

@@ -78,14 +78,14 @@
                                     <a href="{{ route('listStatus') }}">Home</a>
                                 </li>
                                 <li>
-                                    <a href="about-us.html">About Us</a>
+                                    <a href="{{ route('client.about-us') }}">About Us</a>
                                 </li>
                                 <li>
-                                    <a href="contacts.html">Contacts</a>
+                                    <a href="{{ route('client.contacts') }}">Contacts</a>
                                 </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
+                                {{-- <li>
+                                    <a href="{{ route('client.typography') }}">Typography</a>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>

@@ -57,12 +57,12 @@
                                                             </a>
                                                         </dt>
                                                     </dl>
-                                                    <dl class="list-desc">
+                                                    {{-- <dl class="list-desc">
                                                         <dt>
                                                             <h2 style="float: left">
                                                                 Room: {{ $status->room_name }}&emsp;&emsp;</h2>
                                                         </dt>
-                                                    </dl>
+                                                    </dl> --}}
                                                     <dl class="list-desc">
                                                         <dt>Price:</dt>
                                                         <dd><span>{{ $status->price }}$/day</span></dd>

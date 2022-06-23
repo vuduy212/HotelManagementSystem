@@ -21,8 +21,8 @@
                         </div>
                     </div>
                     <br>
-                    <h4>Room: </h4>
-                    <p class="product-description">{{ $room_name }}</p>
+                    {{-- <h4>Room: </h4>
+                    <p class="product-description">{{ $room_name }}</p> --}}
                     <h4>Number of double bed</h4>
                     <p class="product-description">{{ $double_bed }}</p>
                     <br>
