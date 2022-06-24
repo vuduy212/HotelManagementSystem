@@ -19,8 +19,8 @@
                     <div class="span2_of_1">
                         <h4>check-in:</h4>
                         <div class="book_date btm">
-                            <input class="date" id="datepicker1" type="text" value="DD/MM/YY"
-                                onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
+                            <input class="date" id="datepicker1" type="text" value="DD/MM/YY" onfocus="this.value = '';"
+                                onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
                         </div>
                         <div class="sel_room">
                             <h4>number of rooms</h4>

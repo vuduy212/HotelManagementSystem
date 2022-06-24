@@ -11,8 +11,23 @@
                         {{ $reservation->email }}</div>
                     <div class="card-body">
                         <form action="{{ route('updateReservation', $reservation) }}" method="POST">
-                            @csrf
-                            @method('PUT')
+                            <div class="form-group row">
+                                @csrf
+                                @method('PUT')
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Select Room') }}</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="rooms">
+                                        <option value="">Room</option>
+                                        @foreach ($rooms as $room)
+                                            <option value="{{ $room->room_name }}"
+                                                {{ request('rooms') == $room->room_name ? 'selected' : '' }}>
+                                                {{ $room->room_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
                             <div class="form-group row">
                                 <label for="name"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Client name') }}</label>
@@ -74,7 +89,7 @@
                                 <div class="col-md-6">
                                     <div class="form-check">
                                         <input type="radio" name="payment" value="Cash"
-                                            @if ($reservation->payment == 'cash') checked @endif>
+                                            @if ($reservation->payment == 'Cash') checked @endif>
                                         <label for="">Cash</label>
                                     </div>
                                     <div class="form-check">

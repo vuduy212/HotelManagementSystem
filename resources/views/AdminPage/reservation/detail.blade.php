@@ -5,8 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">ID: {{ $id }}</div>
-
+                    <div class="card-header" style="color: red">
+                        <h4>Successful, reservation is sent to your email !</h4>
+                    </div>
+                    <br>
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Reservation Code</label>

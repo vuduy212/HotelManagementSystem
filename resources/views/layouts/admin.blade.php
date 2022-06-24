@@ -141,7 +141,7 @@
                             data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             {{-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> --}}
                             {{-- <a href="{{ route('bills.index') }}" class="nav-link collapsed">Orders Management</a> --}}
-                            <a href="{{ route('listAllReservation') }}" class="nav-link collapsed">Orders
+                            <a href="{{ route('listAllReservation') }}" class="nav-link collapsed">Reservations
                                 Management</a>
                             {{-- <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> --}}
                         </a>

@@ -16,12 +16,12 @@ class UserSeeder extends Seeder
     public function run()
     {
         //User::truncate();
-        
+
         $adminRole = Role::where('id', '1')->first();
         $room_managerRole = Role::where('id', '2')->first();
         $receptionistRole = Role::where('id', '3')->first();
         $clientRole = Role::where('id', '4')->first();
-        
+
         $superAdmin = User::updateOrCreate([
             'name' => 'Bảo',
             'email' => 'super_admin@gmail.com',
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
         $superAdmin->roles()->attach($room_managerRole);
         $superAdmin->roles()->attach($adminRole);
         $superAdmin->roles()->attach($clientRole);
-        
+
         $qtv = User::updateOrCreate([
             'name' => 'Duy',
             'email' => 'qtv@gmail.com',
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
         $qtv->roles()->attach($adminRole);
 
         $letan = User::updateOrCreate([
-            'name' => 'Quế',
+            'name' => 'Hằng',
             'email' => 'letan@gmail.com',
             'password' => bcrypt('12345678'),
         ]);

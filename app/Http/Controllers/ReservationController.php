@@ -82,6 +82,7 @@ class ReservationController extends Controller
     public function index(Request $request)
     {
         $result = $this->reservation->searchReservation($request->all());
+        $count = sizeof($result);
         $roomCategories = RoomCategories::all();
         $rooms = Room::all();
         foreach ($result as $res) {
@@ -92,7 +93,7 @@ class ReservationController extends Controller
             $res->checkin1 = $checkinTime->format('H, d/m/Y');
             $res->checkout1 = $checkinTime->format('H, d/m/Y');
         }
-        return view('AdminPage.reservation.list_reservation', compact('result', 'roomCategories', 'rooms'));
+        return view('AdminPage.reservation.list_reservation', compact('result', 'roomCategories', 'rooms', 'count'));
     }
 
     /**
@@ -154,8 +155,10 @@ class ReservationController extends Controller
      */
     public function edit(Reservation $reservation)
     {
+        $rooms = Room::all();
         return view('AdminPage.reservation.edit')->with([
             'reservation' => $reservation,
+            'rooms' => $rooms
         ]);;
     }
 

@@ -46,10 +46,8 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Description</th>
-                                    @room_manager
+                                    {{-- <th scope="col">Description</th> --}}
                                     <th scope="col">Actions</th>
-                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,7 +62,7 @@
                                             @endforeach
                                         </td>
                                         <td>{{ $room->room_name }}</td>
-                                        <td>{{ $room->description }}</td>
+                                        {{-- <td>{{ $room->description }}</td> --}}
                                         <td>
                                             <a href="{{ route('chart', $room->room_name) }}"><button type="button"
                                                     class="btn btn-primary">STATUS</button></a>

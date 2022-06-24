@@ -16,328 +16,274 @@ class RoomSeeder extends Seeder
     {
         //first
         $v1_101 = Room::updateOrCreate([
-            'room_name' => '11',
-            'description' => 'This is VIP Room for one people - 101',
+            'room_name' => '1.1',
             'category_name' => 'Standard01',
         ]);
 
         $v1_102 = Room::updateOrCreate([
-            'room_name' => '12',
-            'description' => 'This is VIP Room for one people - 102',
+            'room_name' => '1.2',
             'category_name' => 'Standard01',
         ]);
 
         $v1_103 = Room::updateOrCreate([
-            'room_name' => '13',
-            'description' => 'This is VIP Room for one people - 103',
+            'room_name' => '1.3',
             'category_name' => 'Standard01',
         ]);
 
         $v2_201 = Room::updateOrCreate([
-            'room_name' => '21',
-            'description' => 'This is VIP Room for 2 people - 201',
+            'room_name' => '2.1',
             'category_name' => 'Standard02',
         ]);
 
         $v2_202 = Room::updateOrCreate([
-            'room_name' => '22',
-            'description' => 'This is VIP Room for 2 people - 202',
+            'room_name' => '2.2',
             'category_name' => 'Standard02',
         ]);
 
         $v2_203 = Room::updateOrCreate([
-            'room_name' => '23',
-            'description' => 'This is VIP Room for 2 people - 203',
+            'room_name' => '2.3',
             'category_name' => 'Standard02',
         ]);
 
         $v4_301 = Room::updateOrCreate([
-            'room_name' => '31',
-            'description' => 'This is VIP Room for 4 people - 301',
+            'room_name' => '3.1',
             'category_name' => 'Standard03',
         ]);
 
         $v4_302 = Room::updateOrCreate([
-            'room_name' => '32',
-            'description' => 'This is VIP Room for 4 people - 302',
+            'room_name' => '3.2',
             'category_name' => 'Standard03',
         ]);
 
         $v4_303 = Room::updateOrCreate([
-            'room_name' => '33',
-            'description' => 'This is VIP Room for 4 people - 303',
+            'room_name' => '3.3',
             'category_name' => 'Standard03',
         ]);
 
         $n1_111 = Room::updateOrCreate([
-            'room_name' => '41',
-            'description' => 'This is Normal Room for one people - 111',
+            'room_name' => '4.1',
             'category_name' => 'Standard10',
         ]);
 
         $n1_112 = Room::updateOrCreate([
-            'room_name' => '42',
-            'description' => 'This is Normal Room for one people - 112',
+            'room_name' => '4.2',
             'category_name' => 'Standard10',
         ]);
 
         $n1_113 = Room::updateOrCreate([
-            'room_name' => '43',
-            'description' => 'This is Normal Room for one people - 113',
+            'room_name' => '4.3',
             'category_name' => 'Standard10',
         ]);
 
         $n2_211 = Room::updateOrCreate([
-            'room_name' => '51',
-            'description' => 'This is Normal Room for 2 people - 211',
+            'room_name' => '5.1',
             'category_name' => 'Standard20',
         ]);
 
         $n2_212 = Room::updateOrCreate([
-            'room_name' => '52',
-            'description' => 'This is Normal Room for 2 people - 212',
+            'room_name' => '5.2',
             'category_name' => 'Standard20',
         ]);
 
         $n2_213 = Room::updateOrCreate([
-            'room_name' => '53',
-            'description' => 'This is Normal Room for 2 people - 213',
+            'room_name' => '5.3',
             'category_name' => 'Standard20',
         ]);
 
         $n4_311 = Room::updateOrCreate([
-            'room_name' => '61',
-            'description' => 'This is Normal Room for 4 people - 311',
+            'room_name' => '6.1',
             'category_name' => 'Standard30',
         ]);
 
         $n4_312 = Room::updateOrCreate([
-            'room_name' => '62',
-            'description' => 'This is Normal Room for 4 people - 312',
+            'room_name' => '6.2',
             'category_name' => 'Standard30',
         ]);
 
         $n4_313 = Room::updateOrCreate([
-            'room_name' => '63',
-            'description' => 'This is Normal Room for 4 people - 313',
+            'room_name' => '6.3',
             'category_name' => 'Standard30',
         ]);
 
         //first
         $v1_101 = Room::updateOrCreate([
-            'room_name' => '71',
-            'description' => 'This is VIP Room for one people - 101',
+            'room_name' => '7.1',
             'category_name' => 'Superior11',
         ]);
 
         $v1_102 = Room::updateOrCreate([
-            'room_name' => '72',
-            'description' => 'This is VIP Room for one people - 102',
+            'room_name' => '7.2',
             'category_name' => 'Superior11',
         ]);
 
         $v1_103 = Room::updateOrCreate([
-            'room_name' => '73',
-            'description' => 'This is VIP Room for one people - 103',
+            'room_name' => '7.3',
             'category_name' => 'Superior11',
         ]);
 
         $v2_201 = Room::updateOrCreate([
-            'room_name' => '81',
-            'description' => 'This is VIP Room for 2 people - 201',
+            'room_name' => '8.1',
             'category_name' => 'Superior21',
         ]);
 
         $v2_202 = Room::updateOrCreate([
-            'room_name' => '82',
-            'description' => 'This is VIP Room for 2 people - 202',
+            'room_name' => '8.2',
             'category_name' => 'Superior21',
         ]);
 
         $v2_203 = Room::updateOrCreate([
-            'room_name' => '83',
-            'description' => 'This is VIP Room for 2 people - 203',
+            'room_name' => '8.3',
             'category_name' => 'Superior21',
         ]);
 
         $v4_301 = Room::updateOrCreate([
-            'room_name' => '91',
-            'description' => 'This is VIP Room for 4 people - 301',
+            'room_name' => '9.1',
             'category_name' => 'Superior12',
         ]);
 
         $v4_302 = Room::updateOrCreate([
-            'room_name' => '92',
-            'description' => 'This is VIP Room for 4 people - 302',
+            'room_name' => '9.2',
             'category_name' => 'Superior12',
         ]);
 
         $v4_303 = Room::updateOrCreate([
-            'room_name' => '93',
-            'description' => 'This is VIP Room for 4 people - 303',
+            'room_name' => '9.3',
             'category_name' => 'Superior12',
         ]);
 
         $n1_111 = Room::updateOrCreate([
-            'room_name' => '101',
-            'description' => 'This is Normal Room for one people - 111',
+            'room_name' => '10.1',
             'category_name' => 'Deluxe01',
         ]);
 
         $n1_112 = Room::updateOrCreate([
-            'room_name' => '102',
-            'description' => 'This is Normal Room for one people - 112',
+            'room_name' => '10.2',
             'category_name' => 'Deluxe01',
         ]);
 
         $n1_113 = Room::updateOrCreate([
-            'room_name' => '103',
-            'description' => 'This is Normal Room for one people - 113',
+            'room_name' => '10.3',
             'category_name' => 'Deluxe01',
         ]);
 
         $n2_211 = Room::updateOrCreate([
-            'room_name' => '111',
-            'description' => 'This is Normal Room for 2 people - 211',
+            'room_name' => '11.1',
             'category_name' => 'Deluxe02',
         ]);
 
         $n2_212 = Room::updateOrCreate([
-            'room_name' => '112',
-            'description' => 'This is Normal Room for 2 people - 212',
+            'room_name' => '11.2',
             'category_name' => 'Deluxe02',
         ]);
 
         $n2_213 = Room::updateOrCreate([
-            'room_name' => '113',
-            'description' => 'This is Normal Room for 2 people - 213',
+            'room_name' => '11.3',
             'category_name' => 'Deluxe02',
         ]);
 
         $n4_311 = Room::updateOrCreate([
-            'room_name' => '121',
-            'description' => 'This is Normal Room for 4 people - 311',
+            'room_name' => '12.1',
             'category_name' => 'Deluxe03',
         ]);
 
         $n4_312 = Room::updateOrCreate([
-            'room_name' => '122',
-            'description' => 'This is Normal Room for 4 people - 312',
+            'room_name' => '12.2',
             'category_name' => 'Deluxe03',
         ]);
 
         $n4_313 = Room::updateOrCreate([
-            'room_name' => '123',
-            'description' => 'This is Normal Room for 4 people - 313',
+            'room_name' => '12.3',
             'category_name' => 'Deluxe03',
         ]);
 
         //first
         $v1_101 = Room::updateOrCreate([
-            'room_name' => '131',
-            'description' => 'This is VIP Room for one people - 101',
+            'room_name' => '13.1',
             'category_name' => 'Deluxe10',
         ]);
 
         $v1_102 = Room::updateOrCreate([
-            'room_name' => '132',
-            'description' => 'This is VIP Room for one people - 102',
+            'room_name' => '13.2',
             'category_name' => 'Deluxe10',
         ]);
 
         $v1_103 = Room::updateOrCreate([
-            'room_name' => '133',
-            'description' => 'This is VIP Room for one people - 103',
+            'room_name' => '13.3',
             'category_name' => 'Deluxe10',
         ]);
 
         $v2_201 = Room::updateOrCreate([
-            'room_name' => '141',
-            'description' => 'This is VIP Room for 2 people - 201',
+            'room_name' => '14.1',
             'category_name' => 'Deluxe20',
         ]);
 
         $v2_202 = Room::updateOrCreate([
-            'room_name' => '142',
-            'description' => 'This is VIP Room for 2 people - 202',
+            'room_name' => '14.2',
             'category_name' => 'Deluxe20',
         ]);
 
         $v2_203 = Room::updateOrCreate([
-            'room_name' => '143',
-            'description' => 'This is VIP Room for 2 people - 203',
+            'room_name' => '14.3',
             'category_name' => 'Deluxe20',
         ]);
 
         $v4_301 = Room::updateOrCreate([
-            'room_name' => '151',
-            'description' => 'This is VIP Room for 4 people - 301',
+            'room_name' => '15.1',
             'category_name' => 'Deluxe30',
         ]);
 
         $v4_302 = Room::updateOrCreate([
-            'room_name' => '152',
-            'description' => 'This is VIP Room for 4 people - 302',
+            'room_name' => '15.2',
             'category_name' => 'Deluxe30',
         ]);
 
         $v4_303 = Room::updateOrCreate([
-            'room_name' => '153',
-            'description' => 'This is VIP Room for 4 people - 303',
+            'room_name' => '15.3',
             'category_name' => 'Deluxe30',
         ]);
 
         $n1_111 = Room::updateOrCreate([
-            'room_name' => '161',
-            'description' => 'This is Normal Room for one people - 111',
+            'room_name' => '16.1',
             'category_name' => 'Suite11',
         ]);
 
         $n1_112 = Room::updateOrCreate([
-            'room_name' => '162',
-            'description' => 'This is Normal Room for one people - 112',
+            'room_name' => '16.2',
             'category_name' => 'Suite11',
         ]);
 
         $n1_113 = Room::updateOrCreate([
-            'room_name' => '163',
-            'description' => 'This is Normal Room for one people - 113',
+            'room_name' => '16.3',
             'category_name' => 'Suite11',
         ]);
 
         $n2_211 = Room::updateOrCreate([
-            'room_name' => '171',
-            'description' => 'This is Normal Room for 2 people - 211',
+            'room_name' => '17.1',
             'category_name' => 'Suite21',
         ]);
 
         $n2_212 = Room::updateOrCreate([
-            'room_name' => '172',
-            'description' => 'This is Normal Room for 2 people - 212',
+            'room_name' => '17.2',
             'category_name' => 'Suite21',
         ]);
 
         $n2_213 = Room::updateOrCreate([
-            'room_name' => '173',
-            'description' => 'This is Normal Room for 2 people - 213',
+            'room_name' => '17.3',
             'category_name' => 'Suite21',
         ]);
 
         $n4_311 = Room::updateOrCreate([
-            'room_name' => '181',
-            'description' => 'This is Normal Room for 4 people - 311',
+            'room_name' => '18.1',
             'category_name' => 'Suite12',
         ]);
 
         $n4_312 = Room::updateOrCreate([
-            'room_name' => '182',
-            'description' => 'This is Normal Room for 4 people - 312',
+            'room_name' => '18.2',
             'category_name' => 'Suite12',
         ]);
 
         $n4_313 = Room::updateOrCreate([
-            'room_name' => '183',
-            'description' => 'This is Normal Room for 4 people - 313',
+            'room_name' => '18.3',
             'category_name' => 'Suite12',
         ]);
     }

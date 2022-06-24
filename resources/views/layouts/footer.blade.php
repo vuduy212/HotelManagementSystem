@@ -21,7 +21,7 @@
             <a href="#">Contact</a>
         </p>
 
-        <p class="footer-company-name">IT1 K59 UTC © 2021</p>
+        <p class="footer-company-name">IT1 K59 UTC © 2022</p>
     </div>
 
     <div class="footer-center">

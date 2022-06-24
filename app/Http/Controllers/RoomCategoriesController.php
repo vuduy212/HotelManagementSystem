@@ -6,6 +6,7 @@ use App\Http\Requests\CreateRoomCategoryRequest;
 use App\Http\Requests\UpdateRoomCategoryRequest;
 use App\Models\RoomBill;
 use App\Models\RoomCategories;
+use App\Models\Service;
 use App\Rules\StrLengthRule;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -85,8 +86,10 @@ class RoomCategoriesController extends Controller
      */
     public function edit(RoomCategories $roomCategories)
     {
+        $services = Service::all();
         return view("AdminPage.room_categories.edit")->with([
             'roomCategories' => $roomCategories,
+            'services' => $services
         ]);
     }
 
@@ -106,9 +109,11 @@ class RoomCategoriesController extends Controller
                 Rule::unique('room_categories')->ignore($roomCategories),
                 new StrLengthRule()
             ],
-            'description' => 'required|min:6|max:255',
+            'description' => 'required|min:6',
             'price' => 'numeric|min:100|max:2000',
         ]);
+
+        $roomCategories->services()->sync($request->services);
         $roomCategories->updateCategory($request, $roomCategories);
         return redirect()->route('categories.index');
     }
@@ -121,7 +126,7 @@ class RoomCategoriesController extends Controller
      */
     public function destroy(RoomCategories $roomCategories)
     {
-        $path = public_path().'/images/room_categories/' . $roomCategories->images;
+        $path = public_path() . '/images/room_categories/' . $roomCategories->images;
         $roomCategories->deleteFile($path);
         $roomCategories->delete();
         return redirect()->route('categories.index');

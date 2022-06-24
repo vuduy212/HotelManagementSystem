@@ -192,10 +192,10 @@
                             <img src="{{ asset('images/video-bg-1020x525.jpg') }}" alt="" width="1020"
                                 height="525" />
                         </div>
-                        <div class="post-video__body">
+                        {{-- <div class="post-video__body">
                             <a class="link-control post-video__control" data-lightgallery="item"
                                 href="https://www.youtube.com/watch?v=I5FlP07kdvM"></a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="cell-sm-10 cell-md-8 cell-lg-5 reveal-flex wow fadeInUp" data-wow-delay=".3s">

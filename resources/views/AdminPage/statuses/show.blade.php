@@ -49,7 +49,7 @@
                             'checkin' => $checkin,
                             'checkout' => $checkout,
                         ]) }}"><button
-                            type="button" class="btn btn-danger">Order</button></a>
+                            type="button" class="btn btn-danger">Book</button></a>
                 </div>
             </div>
         </div>

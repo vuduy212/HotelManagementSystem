@@ -10,20 +10,25 @@
                     <li class="breadcrumb-item active">Welcome to Reservations Management !!</li>
                 </ol>
                 <div class="card">
-                    <div class="card-header">
+                    {{-- <div class="card-header">
                         <a href="{{ route('createReservation') }}" class="btn btn-primary">Create New Reservation</a>
-                    </div>
+                    </div> --}}
                     <form action="{{ route('listAllReservation') }}" method="GET" class="md-3 d-flex">
                         <select name="filter_status">
-                            <option value="">Filter by Status</option>
-                            <option name="status" value="Unconfirm">Unconfirm</option>
-                            <option name="status" value="Confirmed">Confirmed</option>
-                            <option name="status" value="Using">Using</option>
-                            <option name="status" value="Paid">Paid</option>
-                            <option name="status" value="Cancelled">Cancelled</option>
+                            <option value="">Status</option>
+                            <option name="status" value="Unconfirm"
+                                {{ request('filter_status') == 'Unconfirm' ? 'selected' : '' }}>Unconfirm</option>
+                            <option name="status" value="Confirmed"
+                                {{ request('filter_status') == 'Confirmed' ? 'selected' : '' }}>Confirmed</option>
+                            <option name="status" value="Using"
+                                {{ request('filter_status') == 'Using' ? 'selected' : '' }}>Using</option>
+                            <option name="status" value="Paid"
+                                {{ request('filter_status') == 'Paid' ? 'selected' : '' }}>Paid</option>
+                            <option name="status" value="Cancelled"
+                                {{ request('filter_status') == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
                         </select>
                         <select name="room_categories">
-                            <option value="">Filter by Room Categories</option>
+                            <option value="">Room Category</option>
                             @foreach ($roomCategories as $category)
                                 <option value="{{ $category->category_name }}"
                                     {{ request('room_categories') == $category->category_name ? 'selected' : '' }}>
@@ -31,7 +36,7 @@
                             @endforeach
                         </select>
                         <select name="rooms">
-                            <option value="">Filter by Room</option>
+                            <option value="">Room</option>
                             @foreach ($rooms as $room)
                                 <option value="{{ $room->room_name }}"
                                     {{ request('rooms') == $room->room_name ? 'selected' : '' }}>
@@ -47,7 +52,7 @@
                         <input type="text" class="form-control" placeholder="Enter number per page" name="number"
                             value="{{ request('number') }}">
 
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Search</button>
                     </form>
                     <div class="card-body">
 
@@ -95,6 +100,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <p>Total: {{ $count }} reservations</p>
                         {{ $result->appends(request()->only('phone', 'number', 'checkin', 'checkout', 'room_categories', 'rooms', 'status'))->links() }}
                     </div>
                 </div>
