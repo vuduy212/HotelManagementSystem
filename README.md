@@ -9,7 +9,7 @@
 
 ## About Project
 
-Website Quản lý khách sạn
+Hotel management system
 
 ## Install
 
